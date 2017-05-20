@@ -1,0 +1,69 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v1.1",
+    "signature": "04ed27d901155ec2bd5d5a0e8128420651cd88b4"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v1.1": {
+      "fhelo/1.0.0": {
+        "dependencies": {
+          "FSharp.Core": "4.1.17",
+          "FSharp.NET.Sdk": "1.0.4"
+        },
+        "runtime": {
+          "fhelo.dll": {}
+        }
+      },
+      "fsharp.compiler.tools/4.1.15": {},
+      "fsharp.core/4.1.17": {
+        "runtime": {
+          "lib/netstandard1.6/FSharp.Core.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/any/native/FSharp.Core.optdata": {
+            "rid": "any",
+            "assetType": "native"
+          },
+          "runtimes/any/native/FSharp.Core.sigdata": {
+            "rid": "any",
+            "assetType": "native"
+          }
+        }
+      },
+      "fsharp.net.sdk/1.0.4": {
+        "dependencies": {
+          "FSharp.Compiler.Tools": "4.1.15"
+        }
+      }
+    }
+  },
+  "libraries": {
+    "fhelo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "fsharp.compiler.tools/4.1.15": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1z1Zu8WYxmK3ML91t4BKptRqHF+fVZCJsTGrlOj0Nnr5oNSt3r16yTYbLT2SBxCt+KSX0+/g1tpKwUsfo4rl6w==",
+      "path": "fsharp.compiler.tools/4.1.15",
+      "hashPath": "fsharp.compiler.tools.4.1.15.nupkg.sha512"
+    },
+    "fsharp.core/4.1.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kK9ZxpIiN/psnlBrIi9g+NP9We/pq08ePDiCPszhbMksK+DIjrX45U9BUtCEjWbjox5IZeR1hajaCBdVrOYgag==",
+      "path": "fsharp.core/4.1.17",
+      "hashPath": "fsharp.core.4.1.17.nupkg.sha512"
+    },
+    "fsharp.net.sdk/1.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1gdxXgkXpHSH5bE9JEuf+rEvyK1ltHxcn/pO04AaVO8M3TN+4rN5pVXK0dLIfrAs/ACn1NeWEPk514KNl5vK1A==",
+      "path": "fsharp.net.sdk/1.0.4",
+      "hashPath": "fsharp.net.sdk.1.0.4.nupkg.sha512"
+    }
+  }
+}

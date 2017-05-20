@@ -1,0 +1,7 @@
+/home/osboxes/Projects/MiscellaneousLinux/fsharp/fhelo/bin/Release/netcoreapp1.1/fhelo.deps.json
+/home/osboxes/Projects/MiscellaneousLinux/fsharp/fhelo/bin/Release/netcoreapp1.1/fhelo.runtimeconfig.json
+/home/osboxes/Projects/MiscellaneousLinux/fsharp/fhelo/bin/Release/netcoreapp1.1/fhelo.runtimeconfig.dev.json
+/home/osboxes/Projects/MiscellaneousLinux/fsharp/fhelo/bin/Release/netcoreapp1.1/fhelo.dll
+/home/osboxes/Projects/MiscellaneousLinux/fsharp/fhelo/bin/Release/netcoreapp1.1/fhelo.pdb
+/home/osboxes/Projects/MiscellaneousLinux/fsharp/fhelo/obj/Release/netcoreapp1.1/fhelo.dll
+/home/osboxes/Projects/MiscellaneousLinux/fsharp/fhelo/obj/Release/netcoreapp1.1/fhelo.pdb
