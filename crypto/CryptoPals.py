@@ -6,7 +6,7 @@ def hexToBase64(line):
     return base64.b64encode(bytes.fromhex(line))
 
 def xorStrings(hex1,hex2):
-    return "%x" % (int(hex1,16) ^ int(hex2,16))
+    return "%02x" % (int(hex1,16) ^ int(hex2,16))
 
 def singleByteXor(line):
     return [line[i:i+2] for i in range(0, len(line), 2)]
@@ -55,12 +55,6 @@ def decodeByCharacter(line):
             a = ''.join([chr(v) for v in values]).strip()
             n = next(filter(lambda i: i>122, values), None)
             if n == None and a.isprintable():
-                flag = False
-                for c in '!@#$%^&*()<>{}[]':
-                    if c in a:
-                        flag = True
-                        continue
-                if flag: continue
                 return a
 
 
@@ -106,14 +100,13 @@ def getKeySize(url):
     shortest = 100
     keySize = 0
     
+    keySizes = {}
     for s in range (2, 40):
         h = getHammingDistance(payload[:s], payload[s:2*s])
-        if (h < shortest): 
-            shortest = h
-            keySize = s
-        #print ("%02f" % getHammingDistance(one, two))
-    #print ("Shortest normalized haming distance is %02f for a keySize of %02d" % (shortest, keySize))
-    return keySize
+        keySizes[s] = h
+    [print ("%d %f" % (key, keySizes[key])) for key in sorted(keySizes, key=keySizes.get)]
+    return [key for key in sorted(keySizes, key=keySizes.get)]
+    #return keySizes
     
 
 if __name__ == '__main__':
@@ -129,8 +122,16 @@ if __name__ == '__main__':
 #I go crazy when I hear a cymbal'''.strip())
 #    print (getHammingDistanceString('this is a test', 'wokka wokka!!!'))
 #    print (getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
-    0
+    #response = requests.get("http://www.cryptopals.com/static/challenge-data/6.txt")
+    #[print ("%d %c" %(i,c)) for (i,c) in filter(lambda t:t[0]%5==0,enumerate(response.text))] 
+    #decodeByCharacter(''.join([c for i,c in filter(lambda t:t[0]%5==0,enumerate(response.text))]))
+    #for i, c in enumerate(text):
+    #[print ("%c"% c) for i, c in enumerate(response.text)]
 
+    keys = getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt")
+    #[print ("%d" % k) for k in keys]
+
+    0
 
 
 

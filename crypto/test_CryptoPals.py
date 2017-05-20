@@ -37,7 +37,9 @@ I go crazy when I hear a cymbal'''.strip()))
         self.assertEqual(37, getHammingDistanceString('this is a test', 'wokka wokka!!!'))
 
     def test_set1_ch6_step4_shortestNormalizedDistance(self):
-        self.assertEqual(5, getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
+        #getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
+        self.assertEqual([5, 38, 39], getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
+        #self.assertEqual(5, getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
 
 if __name__ == '__main__':
     unittest.main()
