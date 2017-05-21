@@ -24,7 +24,7 @@ class CryptoChallenge_Basic(unittest.TestCase):
 
     def test_set1_ch4_detectSingleCharacterXor(self):
         self.assertEqual("ow that the party is jumping",
-            findEncrypted("http://www.cryptopals.com/static/challenge-data/4.txt"))
+            findEncrypted("http://www.cryptopals.com/static/challenge-data/4.txt")[0][1])
 
     def test_set1_ch5_implementRepeatingKeyXor(self):
         self.assertEqual('0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272'
@@ -38,7 +38,7 @@ I go crazy when I hear a cymbal'''.strip()))
 
     def test_set1_ch6_step4_shortestNormalizedDistance(self):
         #getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
-        self.assertEqual([5, 38, 39], getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
+        self.assertEqual([5, 3, 2], getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt")[:3])
         #self.assertEqual(5, getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
 
 if __name__ == '__main__':
