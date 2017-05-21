@@ -19,8 +19,8 @@ class CryptoChallenge_Basic(unittest.TestCase):
 
     def test_set1_ch3_singleByteXorCipher(self):
         self.assertEqual("Cooking MC's like a pound of bacon",
-            decodeByCharacter('1b37373331363f78151b7f2b783431333d783978283'+
-                              '72d363c78373e783a393b3736'))
+            decodeByCharacter2('1b37373331363f78151b7f2b783431333d783978283'+
+                              '72d363c78373e783a393b3736')[0][1])
 
     def test_set1_ch4_detectSingleCharacterXor(self):
         self.assertEqual("ow that the party is jumping",
@@ -37,9 +37,11 @@ I go crazy when I hear a cymbal'''.strip()))
         self.assertEqual(37, getHammingDistanceString('this is a test', 'wokka wokka!!!'))
 
     def test_set1_ch6_step4_shortestNormalizedDistance(self):
-        #getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
         self.assertEqual([5, 3, 2], getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt")[:3])
-        #self.assertEqual(5, getKeySize("http://www.cryptopals.com/static/challenge-data/6.txt"))
+
+    @unittest.skip("getCryptoKey is not fully implemented")
+    def test_set1_ch6_step7_charKeysMakeFullKey(self):
+        self.assertEqual([5, 3, 2], getCryptoKey("http://www.cryptopals.com/static/challenge-data/6.txt")[:3])
 
 if __name__ == '__main__':
     unittest.main()
