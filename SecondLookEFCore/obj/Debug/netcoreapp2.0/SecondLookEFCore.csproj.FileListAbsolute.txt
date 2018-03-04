@@ -1,0 +1,10 @@
+/home/psgivens/Projects/SecondLookEFCore/bin/Debug/netcoreapp2.0/SecondLookEFCore.deps.json
+/home/psgivens/Projects/SecondLookEFCore/bin/Debug/netcoreapp2.0/SecondLookEFCore.runtimeconfig.json
+/home/psgivens/Projects/SecondLookEFCore/bin/Debug/netcoreapp2.0/SecondLookEFCore.runtimeconfig.dev.json
+/home/psgivens/Projects/SecondLookEFCore/bin/Debug/netcoreapp2.0/SecondLookEFCore.dll
+/home/psgivens/Projects/SecondLookEFCore/bin/Debug/netcoreapp2.0/SecondLookEFCore.pdb
+/home/psgivens/Projects/SecondLookEFCore/obj/Debug/netcoreapp2.0/SecondLookEFCore.csproj.CoreCompileInputs.cache
+/home/psgivens/Projects/SecondLookEFCore/obj/Debug/netcoreapp2.0/SecondLookEFCore.AssemblyInfoInputs.cache
+/home/psgivens/Projects/SecondLookEFCore/obj/Debug/netcoreapp2.0/SecondLookEFCore.AssemblyInfo.cs
+/home/psgivens/Projects/SecondLookEFCore/obj/Debug/netcoreapp2.0/SecondLookEFCore.dll
+/home/psgivens/Projects/SecondLookEFCore/obj/Debug/netcoreapp2.0/SecondLookEFCore.pdb

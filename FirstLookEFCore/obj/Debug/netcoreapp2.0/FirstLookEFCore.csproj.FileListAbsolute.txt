@@ -1,0 +1,10 @@
+/home/psgivens/Projects/FirstLookEFCore/bin/Debug/netcoreapp2.0/FirstLookEFCore.deps.json
+/home/psgivens/Projects/FirstLookEFCore/bin/Debug/netcoreapp2.0/FirstLookEFCore.runtimeconfig.json
+/home/psgivens/Projects/FirstLookEFCore/bin/Debug/netcoreapp2.0/FirstLookEFCore.runtimeconfig.dev.json
+/home/psgivens/Projects/FirstLookEFCore/bin/Debug/netcoreapp2.0/FirstLookEFCore.dll
+/home/psgivens/Projects/FirstLookEFCore/bin/Debug/netcoreapp2.0/FirstLookEFCore.pdb
+/home/psgivens/Projects/FirstLookEFCore/obj/Debug/netcoreapp2.0/FirstLookEFCore.csproj.CoreCompileInputs.cache
+/home/psgivens/Projects/FirstLookEFCore/obj/Debug/netcoreapp2.0/FirstLookEFCore.AssemblyInfoInputs.cache
+/home/psgivens/Projects/FirstLookEFCore/obj/Debug/netcoreapp2.0/FirstLookEFCore.AssemblyInfo.cs
+/home/psgivens/Projects/FirstLookEFCore/obj/Debug/netcoreapp2.0/FirstLookEFCore.dll
+/home/psgivens/Projects/FirstLookEFCore/obj/Debug/netcoreapp2.0/FirstLookEFCore.pdb
