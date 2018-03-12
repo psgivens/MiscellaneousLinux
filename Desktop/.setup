@@ -22,3 +22,12 @@ echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' | tee -a /etc/environment
 sudo apt install -y jq
 sudo apt install -y flashplugin-installer
 sudo apt install -y python-pip
+complete -C aws_completer aws
+echo complete -C aws_completer aws
+
+# TODO: Install dropbox through Ubuntu software center
+
+sudo apt install -y npm
+
+# https://www.pwsafe.org/readmore.shtml
+sudo pip install -U awscli
