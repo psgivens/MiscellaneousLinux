@@ -18,6 +18,7 @@ echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' | tee -a /etc/environment
 
 # TODO: install xmind
 # TODO: install eclipse
+# TODO: install DB Browser for Sqlite
 
 sudo apt install -y jq
 sudo apt install -y flashplugin-installer
@@ -31,3 +32,13 @@ sudo apt install -y npm
 
 # https://www.pwsafe.org/readmore.shtml
 sudo pip install -U awscli
+
+
+git clone https://github.com/ctrlpvim/ctrlp.vim.git /home/psgivens/.vim/bundle/ctrlp.vim
+
+# https://github.com/PowerShell/PowerShell/blob/master/docs/learning-powershell/using-vscode.md#editing-with-vs-code
+pwsh -c "Update-Help"
+
+
+# TODO: install "meld" through "Ubuntu Software" 
+
