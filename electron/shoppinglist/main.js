@@ -1,3 +1,12 @@
+/* 
+This application was created from the following video.
+https://www.youtube.com/watch?v=kN1Czs0m1SU
+
+Debugging can be enabled by setting up a launch.json file as per
+This has not been implemented in this project. 
+http://electron.rocks/debugging-electron-in-vs-code/
+*/
+
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
@@ -36,7 +45,6 @@ function createAddWindow() {
         protocol: 'file:',
         slashes: true
     }));
-
 }
 
 // Catch item:add

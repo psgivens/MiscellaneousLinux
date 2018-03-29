@@ -1,2 +1,5 @@
-/release-builds/
-/node_modules/
+*/release-builds/
+*/node_modules/**/*
+*/*/node_modules/**/*
+*/GPUCache/**/*
+*/Cache/**/*
