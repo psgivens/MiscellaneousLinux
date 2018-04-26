@@ -9,6 +9,7 @@ sudo apt install -y git
 sudo apt install -y curl
 sudo apt install -y vim
 sudo apt install -y tmux
+sudo apt install -y htop
 
 git config --global credential.helper 'cache --timeout 28800'
 
