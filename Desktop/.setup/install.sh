@@ -1,28 +1,6 @@
 #!/bin/sh
 
 
-#sudo apt install -y git
-
-
-sudo apt update
-sudo apt install -y git
-sudo apt install -y curl
-sudo apt install -y vim
-sudo apt install -y tmux
-sudo apt install -y htop
-
-git config --global credential.helper 'cache --timeout 28800'
-
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-###############################################
-# Install vim environment
-################################################
-
-git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
-git clone https://github.com/jpalardy/vim-slime.git ~/.vim/bundle/vim-slime
-git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
 
 exit
 
