@@ -1,13 +1,9 @@
 
-###############################################
 # Bootstrapping the environment
-################################################
 
 Before we can use the install scripts from tmux and vim, we need the scripts on the system
 
-###############################################
 ### Install tools
-################################################
 If you paste all of the following, it may not complete because packages may take a while to install. 
 
     sudo apt update
@@ -19,6 +15,7 @@ If you paste all of the following, it may not complete because packages may take
 ###############################################
 ### Git this repo
 ################################################
+
     mkdir -p ~/Repos/psgivens
     cd ~/Repos/psgivens
     git clone https://github.com/psgivens/MiscellaneousLinux.git misc.git
