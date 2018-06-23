@@ -4,12 +4,27 @@
 
 exit
 
+
+### Utils
+```
+
 sudo apt install -y docker.io
 sudo apt install -y docker
 sudo apt install -y jq
 sudo apt install -y python-pip
 sudo apt install -y npm
+
+```
 #sudo apt install -y flashplugin-installer
+
+
+### Docker Compose
+https://docs.docker.com/compose/install/#install-compose
+https://docs.docker.com/compose/completion/
+ 
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo curl -L https://raw.githubusercontent.com/docker/compose/1.21.2/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
 
 # TODO: Install dropbox through Ubuntu software center

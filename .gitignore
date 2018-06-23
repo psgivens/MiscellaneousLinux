@@ -4,5 +4,6 @@
 */GPUCache/**/*
 */Cache/**/*
 **/bin/Debug/**/*
+**/bin/Release/**/*
 **/out/**/*
 **/obj/**/*

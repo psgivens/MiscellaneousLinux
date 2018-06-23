@@ -2,7 +2,7 @@
   "name": "shoppinglist",
   "version": "1.0.0",
   "description": "shopping list desktop app",
-  "main": "main.js",
+  "main": "main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
@@ -17,5 +17,9 @@
   },
   "devDependencies": {
     "electron-packager": "^11.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/psgivens/MiscellaneousLinux.git"
   }
 }

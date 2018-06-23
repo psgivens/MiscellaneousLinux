@@ -17,6 +17,25 @@
         const {ipcRenderer} = electron;
         const ul = document.querySelector('ul');
 
+        fetch('http://localhost:5003/api/values')
+            .then(function(response){
+                return response.json();
+            }).then(function(response){
+                response.forEach(element => {
+                    ipcRenderer.send('item:receive', element);                  
+                });
+            });
+
+        fetch('http://localhost:5003/api/weightTracker')
+            .then(function(response){
+                return response.json();
+            }).then(function(response){
+                response.forEach(element => {
+                    ipcRenderer.send('item:receive', element.weight);                  
+                });
+            });
+
+
         ipcRenderer.on('item:add', function(e, item){
             ul.className = 'collection';
             const li = document.createElement('li');
