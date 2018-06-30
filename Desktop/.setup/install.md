@@ -124,6 +124,10 @@ sudo apt install libapache2-mod-php7.1 php-mcrypt php-pgsql
 sudo apache2ctl configtest
 
 
+sudo apt install -y go 
+# Add GOPATH to .profile
+
+go get -u github.com/govend/govend
 
 
 

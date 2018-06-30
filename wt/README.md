@@ -100,3 +100,10 @@
     # Required dotnet-sdk-2.1.300
     dotnet ef migrations add InitialMigration
     dotnet ef database update
+
+
+
+
+
+
+
