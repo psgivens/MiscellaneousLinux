@@ -2,10 +2,13 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { createStore, Store as ReduxStore } from 'redux'
-import { reducers, Store } from './reducers'
+import { reducers } from './reducers'
+import * as state from './reducers'
 import { incrementCounter } from './actions'
+import { Provider } from 'react-redux'
 
-const store: ReduxStore<Store.All> = createStore(reducers)
+
+const store: ReduxStore<state.All> = createStore(reducers, {} as state.All)
 
 
 
@@ -19,13 +22,15 @@ test()
 
 store.subscribe(() => {
     console.log(store.getState())
-  })
-  
-  store.dispatch(incrementCounter(1)) // { counter: { value: 1 } }
-  store.dispatch(incrementCounter(1)) // { counter: { value: 2 } }
-  store.dispatch(incrementCounter(1)) // { counter: { value: 3 } }
+});
+
+store.dispatch(incrementCounter(1)) // { counter: { value: 1 } }
+store.dispatch(incrementCounter(1)) // { counter: { value: 2 } }
+store.dispatch(incrementCounter(1)) // { counter: { value: 3 } }
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <Provider store={store}>
+    <Hello compiler="TypeScript" framework="React" />
+    </Provider>,
     document.getElementById("example")
 );

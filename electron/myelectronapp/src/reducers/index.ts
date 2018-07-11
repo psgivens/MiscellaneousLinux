@@ -1,11 +1,11 @@
-export namespace Store {
+// export namespace Store {
 
-    export type Counter = { value: number }
+//     export type Counter = { value: number }
   
-    export type All = {
-      counter: Counter
-    }
-  }
+//     export type All = {
+//       counter: Counter
+//     }
+//   }
 
 
 //   import { Action } from '../actions'
@@ -40,9 +40,9 @@ export type Counter = { value: number }
 
 export type All = {
   counter: Counter,
-  isSaving: boolean,
-  isLoading: boolean,
-  error: string,
+  // isSaving: boolean,
+  // isLoading: boolean,
+  // error: string,
 }
 
 function isSaving (state: boolean = false, action: Action): boolean {
@@ -112,9 +112,9 @@ export const initialState = {
 
 export const reducers = combineReducers<All>({
   counter,
-  isSaving,
-  isLoading,
-  error,
-})
+  // isSaving,
+  // isLoading,
+  // error,
+});
 
 //export reducers;
