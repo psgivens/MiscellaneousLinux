@@ -7,3 +7,4 @@
 **/bin/Release/**/*
 **/out/**/*
 **/obj/**/*
+electron/**/dist/*
