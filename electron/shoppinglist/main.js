@@ -7,13 +7,13 @@ This has not been implemented in this project.
 http://electron.rocks/debugging-electron-in-vs-code/
 */
 
-const electron = require('electron');
+//const electron = require('electron');
 const url = require('url');
 const path = require('path');
 
-const {app, BrowserWindow, Menu, ipcMain} = electron;
+const {app, BrowserWindow, Menu, ipcMain, ipcRenderer} =  require('electron');
 
-process.env.NODE_ENV = 'production';
+//process.env.NODE_ENV = 'production';
 let mainWindow;
 let addWindow;
 
@@ -32,7 +32,13 @@ app.on('ready', function (){
     // Build menu from template
     const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
     Menu.setApplicationMenu(mainMenu);
+
+    setTimeout(function(){        
+    mainWindow.webContents.send('item:add', "sample item");
+
+    },1000);
 });
+
 
 function createAddWindow() {
     addWindow = new BrowserWindow({
@@ -51,6 +57,11 @@ function createAddWindow() {
 ipcMain.on('item:add', function(e, item){
     mainWindow.webContents.send('item:add', item);
     addWindow.close();
+});
+
+// Catch item:add
+ipcMain.on('item:receive', function(e, item){
+    mainWindow.webContents.send('item:add', item);
 });
 
 const mainMenuTemplate = [

@@ -3,5 +3,9 @@
 */*/node_modules/**/*
 */GPUCache/**/*
 */Cache/**/*
-Docker/pwsh/root/.vim/bundle/emmet-vim
-Docker/pwsh/root/.vim/bundle/vim-slime
+**/bin/Debug/**/*
+**/bin/Release/**/*
+**/out/**/*
+**/obj/**/*
+electron/**/dist/*
+**/*.log
