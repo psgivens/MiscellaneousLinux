@@ -1,18 +1,37 @@
 
 
+export type CountdownAction = {
+    type: 'COUNTDOWN_DECREMENT'
+} | {
+    type: 'COUNTDOWN_RESET'
+} | {
+    type: 'COUNTDOWN_TOGGLE_PAUSE'
+}
+
+export const tick = (): CountdownAction => ({
+    type: 'COUNTDOWN_DECREMENT'
+})
 
 export type Action = {
     type: 'INCREMENT_COUNTER',
     delta: number,
 } | {
     type: 'RESET_COUNTER',
+} | {
+    type: 'SAVE_COUNTER',
+    value: number
 }
   
 export const incrementCounter = (delta: number): Action => ({
     type: 'INCREMENT_COUNTER',
     delta,
 })
-  
+
+export const saveCounter = (value: number): Action => ({
+    type: 'SAVE_COUNTER',
+    value,
+})
+
 export const resetCounter = (): Action => ({
     type: 'RESET_COUNTER',
 })

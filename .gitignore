@@ -8,3 +8,4 @@
 **/out/**/*
 **/obj/**/*
 electron/**/dist/*
+**/*.log

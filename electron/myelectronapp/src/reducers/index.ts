@@ -34,15 +34,33 @@
 
 import { combineReducers } from 'redux'
 
-import { Action } from '../actions'
+import { Action, CountdownAction } from '../actions'
+import { EAGAIN } from 'constants';
 
 export type Counter = { value: number }
+export type TimerState = { count: number, isPaused: boolean }
 
 export type All = {
   counter: Counter,
-  // isSaving: boolean,
+  timerState: TimerState,
+  isSaving: boolean,
   // isLoading: boolean,
-  // error: string,
+  // error: string, 
+}
+
+const timerState: TimerState = { count:25*60, isPaused:false }
+
+function timerCount (state: TimerState = timerState, action: CountdownAction): TimerState {
+  switch (action.type) {
+    case 'COUNTDOWN_RESET':
+      return { count: 25 * 60, isPaused: false }
+    case 'COUNTDOWN_DECREMENT':
+      return { count: --state.count, ...state }
+    case 'COUNTDOWN_TOGGLE_PAUSE':
+      return { ...state, isPaused: !state.isPaused }
+    default: 
+      return state
+  }  
 }
 
 function isSaving (state: boolean = false, action: Action): boolean {
@@ -52,10 +70,14 @@ function isSaving (state: boolean = false, action: Action): boolean {
     // case 'SAVE_COUNT_SUCCESS':
     // case 'SAVE_COUNT_ERROR':
     //   return false
+
+    case 'SAVE_COUNTER':
+      return !state
     default:
       return state
   }
 }
+
 
 function isLoading (state: boolean = false, action: Action): boolean {
   switch (action.type) {
@@ -105,6 +127,7 @@ function counter (state: Counter = counterState, action: Action): Counter {
 
 export const initialState = {
   counter: counterState,
+  timerCount: 25 * 60,
   isSaving: false,
   isLoading: false,
   error: '',
@@ -112,7 +135,8 @@ export const initialState = {
 
 export const reducers = combineReducers<All>({
   counter,
-  // isSaving,
+  timerState:timerCount,
+  isSaving,
   // isLoading,
   // error,
 });
