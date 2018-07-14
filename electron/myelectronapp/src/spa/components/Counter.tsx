@@ -18,8 +18,10 @@ const mapStateToProps = (state: state.All, ownProps: OwnProps): ConnectedState =
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<state.All>): ConnectedDispatch => ({
   increment: (n: number) => {
+    dispatch({type: 'USER_FETCH_REQUESTED', payload: {userId:13}})
     dispatch(tick())
-    dispatch(incrementCounter(n))    
+    dispatch(incrementCounter(n))   
+ 
   },
   // load: () =>
   //   loadCount({})(dispatch),

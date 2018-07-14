@@ -1,41 +1,8 @@
-// export namespace Store {
-
-//     export type Counter = { value: number }
-  
-//     export type All = {
-//       counter: Counter
-//     }
-//   }
-
-
-//   import { Action } from '../actions'
-
-// const initialState: Store.Counter = {
-//   value: 0,
-// }
-
-// function counter (state: Store.Counter = initialState, action: Action): Store.Counter {
-//   const { value } = state
-//   switch (action.type) {
-//     case 'INCREMENT_COUNTER':
-//       const newValue = value + action.delta
-//       return { value: newValue }
-//     case 'RESET_COUNTER':
-//       return { value: 0 }
-//   }
-
-//   return state
-// }
-
-
-
-
-
-
 import { combineReducers } from 'redux'
-
 import { Action, CountdownAction } from '../actions'
-import { EAGAIN } from 'constants';
+import reduceReducers from 'reduce-reducers';
+import { PomodoroState } from './Pomodoro';
+import { reducePomodoroState } from '../reducers/Pomodoro'
 
 export type Counter = { value: number }
 export type TimerState = { count: number, isPaused: boolean }
@@ -44,6 +11,7 @@ export type All = {
   counter: Counter,
   timerState: TimerState,
   isSaving: boolean,
+  pomodoro: PomodoroState,
   // isLoading: boolean,
   // error: string, 
 }
@@ -133,12 +101,21 @@ export const initialState = {
   error: '',
 }
 
-export const reducers = combineReducers<All>({
+
+
+function doid (state: any, action: any): any {
+  const t = action.type
+  return state
+}
+
+
+export const reducers = reduceReducers(doid, combineReducers<All>({
   counter,
   timerState:timerCount,
   isSaving,
+  pomodoro:reducePomodoroState,
   // isLoading,
   // error,
-});
+}));
 
 //export reducers;

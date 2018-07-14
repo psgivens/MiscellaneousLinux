@@ -1,5 +1,6 @@
-import * as React from "react";
-import { Counter } from "./counter";
+import * as React from "react"
+import { Counter } from "./Counter"
+import { Pomodoro } from "./Pomodoro"
 
 export interface HelloProps { compiler: string; framework: string; }
 
@@ -7,7 +8,9 @@ export class Hello extends React.Component<HelloProps, {}> {
     render() {
         return <div>
             <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>
-            <Counter />
+            {/* <Counter /> */}
+            <h3>Pomodoro</h3>
+            <Pomodoro />
         </div>;
     }
 }
