@@ -8,9 +8,9 @@
             "type": "node",
             "request": "launch",
             "name": "Electron: Main",
-            "preLaunchTask": "webpack",
+            "preLaunchTask": "build",
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
-            "program": "${workspaceFolder}/main.js",
+            "program": "${workspaceFolder}/dist/main.js",
             "runtimeArgs": [
                 ".",
                 "--enable-logging",

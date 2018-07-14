@@ -13,11 +13,27 @@
             "tsconfig": "tsconfig.json",
             "problemMatcher": [
                 "$tsc"
+            ]
+        },
+        {
+            "label": "build",
+            "command": "npm",
+            "args": [
+                "run",
+                "build"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$tsc"
+            ]
+        },
+        {
+            "type": "npm",
+            "script": "clean",
+            "problemMatcher": []
         }
     ]
 }

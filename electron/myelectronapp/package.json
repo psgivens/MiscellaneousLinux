@@ -2,9 +2,15 @@
   "name": "electron-quick-start",
   "version": "1.0.0",
   "description": "A minimal Electron application",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "copy":"cp ./src/*.html dist",
+    "clean":"rm -rf ./dist/",
+    "debug":"electron . --enable-logging --remote-debugging-port=9223",
+    "webpack":"webpack",
+    "typescript":"tsc",
+    "build":"webpack && tsc && npm run copy"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -30,6 +36,7 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
+    "@types/electron": "^1.6.10",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",

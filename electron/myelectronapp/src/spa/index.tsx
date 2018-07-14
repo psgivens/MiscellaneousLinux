@@ -33,7 +33,7 @@ ReactDOM.render(
 );
 
 // Requires script name as input
-const myWorker = new Worker("./workers/worker1.ts");
+const myWorker = new Worker("./workers/worker1.js");
 
 setInterval(() => {
     store.dispatch(incrementCounter(1)) 
