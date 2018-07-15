@@ -7,10 +7,10 @@
     "start": "electron .",
     "copy": "cp ./src/*.html dist",
     "clean": "rm -rf ./dist/",
-    "debug": "electron . --enable-logging --remote-debugging-port=9223",
     "webpack": "webpack",
     "typescript": "tsc",
-    "build": "webpack && tsc && npm run copy"
+    "build": "webpack && npm run copy",
+    "full-build": "webpack && tsc && npm run copy"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [

@@ -1,44 +1,10 @@
 import * as React from 'react';
 import * as redux from 'redux';
 import { connect } from 'react-redux';
-import { incrementCounter, Action, saveCounter, CountdownAction, tick, resetCounter } from '../actions'
 import * as state from '../reducers'
-import { PomodoroState } from '../reducers/Pomodoro'
+import { PomodoroState, PomodoroRunningState } from '../reducers/Pomodoro'
 import { compose } from '../utils'
-
 import { PomodoroCommands } from '../actions/PomodoroActions'
-
-
-
-
-const mapStateToProps = (state: state.All, ownProps: OwnProps): ConnectedState => ({
-  counter: state.counter,
-  timerState: state.timerState,
-  isSaving: state.isSaving,
-  pomodoro: state.pomodoro
-  // isLoading: state.isLoading,
-  // error: state.error,
-})
-
-const mapDispatchToProps = (dispatch: redux.Dispatch<state.All>): ConnectedDispatch => ({
-  increment: (n: number) => dispatch(PomodoroCommands.start()),
-  // load: () =>
-  //   loadCount({})(dispatch),
-  saveCount: (value: number) =>
-    dispatch(saveCounter(value))
-//    saveCount({ value })(dispatch),
-})
-
-
-// const mapStateToProps = (state: state.All, ownProps: OwnProps): ConnectedState => ({
-//   counter: state.counter,
-// })
-
-// const mapDispatchToProps = (dispatch: redux.Dispatch<state.All>): ConnectedDispatch => ({
-//   increment: (n: number) => {
-//     dispatch(incrementCounter(n))
-//   },
-// })
 
 interface OwnProps {
   label: string
@@ -49,47 +15,72 @@ type LoadingState = {
 //  isLoading: boolean,
 }
 
-type ConnectedState = LoadingState & {
-  counter: { value: number },
-  timerState: state.TimerState,
+type ConnectedState = {
   pomodoro: PomodoroState,
+  isRunning: boolean,
+  minutes: string,
+  seconds: string
 }
+
+
+const pad = (i:number):string => {
+  return i < 10
+    ? "0" + i
+    : "" + i
+}
+
+const mapStateToProps = (state: state.All, ownProps: OwnProps): ConnectedState => ({
+  pomodoro: state.pomodoro,
+  isRunning: state.pomodoro.runningState === PomodoroRunningState.Running,
+  minutes: pad(Math.floor(state.pomodoro.count / 60)),
+  seconds: pad(state.pomodoro.count % 60)
+})
+
 
 interface ConnectedDispatch {
-  increment: (n: number) => void
-  saveCount: (n: number) => void
+  startTimer: () => void
+  stopTimer: () => void
+  resetTimer: () => void
 }
 
-interface OwnState {}
+const mapDispatchToProps = (dispatch: redux.Dispatch<state.All>): ConnectedDispatch => ({
+  startTimer: () => dispatch(PomodoroCommands.start()),
+  stopTimer: () => dispatch(PomodoroCommands.stop()),
+  resetTimer: () => dispatch(PomodoroCommands.reset())
+})
 
+
+interface OwnState {}
 class PureCounter extends React.Component<ConnectedState & ConnectedDispatch & OwnProps, OwnState> {
 
-  _onClickIncrement = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+  _onClickStart = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    this.props.increment(1)
+    this.props.startTimer()
   }
 
-  _onClickSave = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+  _onClickStop = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    if (!this.props.isSaving) {
-      this.props.saveCount(this.props.counter.value)
-    }
+    this.props.stopTimer()
+  }
+
+
+  _onClickReset = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    this.props.resetTimer()
   }
 
   render () {
-    const { counter, timerState, isSaving, label, pomodoro } = this.props
+    const { label, pomodoro, isRunning, minutes, seconds } = this.props
     return <div>
       <label>{label}</label>
-      <pre>counter = {counter.value}</pre>
-      <button ref='increment' onClick={this._onClickIncrement}>click me!</button>
-      <button ref='save' disabled={isSaving} onClick={this._onClickSave}>{isSaving ? 'saving...' : 'save'}</button>
+      timer: {minutes}:{seconds}
+      <br />
+      <button ref='startTimer' disabled={isRunning} onClick={this._onClickStart}>Start Timer</button><br />
+      <button ref='stopTimer' disabled={!isRunning} onClick={this._onClickStop}>Stop Timer</button><br />
+      <button ref='resetTimer' onClick={this._onClickReset}>Reset Timer</button><br />
       <pre>
           {JSON.stringify({
-            counter,
-            timerState,
-            isSaving,
             pomodoro,
-            // isLoading,
           }, null, 2)}
         </pre>
     </div>

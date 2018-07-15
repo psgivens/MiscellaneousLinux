@@ -22,6 +22,17 @@
                 "run",
                 "build"
             ],
+            "problemMatcher": [
+                "$tsc"
+            ]
+        },
+        {
+            "label": "full-build",
+            "command": "npm",
+            "args": [
+                "run",
+                "full-build"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
