@@ -31,7 +31,7 @@ namespace WeightTrack
             services.AddMvc();
 
             var connectionString = Configuration["DbContextSettings:ConnectionString"];
-            services.AddDbContext<WeightTrackContext>(
+            services.AddDbContext<TrackerDbContext>(
                 opts => opts.UseNpgsql(connectionString)
             );
         }

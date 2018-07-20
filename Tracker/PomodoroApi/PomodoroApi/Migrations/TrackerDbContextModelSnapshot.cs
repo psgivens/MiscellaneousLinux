@@ -5,13 +5,14 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
+using PomodoroApi.Models;
 using System;
 using WeightTrack.Models;
 
-namespace WeightTrack.Migrations
+namespace PomodoroApi.Migrations
 {
-    [DbContext(typeof(WeightTrackContext))]
-    partial class WeightTrackContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TrackerDbContext))]
+    partial class TrackerDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +20,32 @@ namespace WeightTrack.Migrations
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026");
+
+            modelBuilder.Entity("PomodoroApi.Models.PomodoroEntryModel", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Actual");
+
+                    b.Property<int>("Elapsed");
+
+                    b.Property<DateTime>("Modified");
+
+                    b.Property<string>("Planned");
+
+                    b.Property<DateTime>("StartTime");
+
+                    b.Property<int>("State");
+
+                    b.Property<string>("Tags");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PomodoroEntries");
+                });
 
             modelBuilder.Entity("WeightTrack.Models.WeightEntryModel", b =>
                 {
@@ -33,7 +60,7 @@ namespace WeightTrack.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Entries");
+                    b.ToTable("WeightEntries");
                 });
 #pragma warning restore 612, 618
         }

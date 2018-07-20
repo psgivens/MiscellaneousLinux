@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace WeightTrack.Models {
     public class WeightEntryModel {
-        public long Id {get;set;}
-        public string UserId { get; set; }
-        public System.DateTime Date { get; set; }        
-        public float Weight { get; set; }
+        [Key]                
+        public virtual long Id {get;set;}
+        public virtual string UserId { get; set; }
+        public virtual System.DateTime Date { get; set; }        
+        public virtual float Weight { get; set; }
     }
 }

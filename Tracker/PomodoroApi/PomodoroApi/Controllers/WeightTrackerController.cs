@@ -8,15 +8,15 @@ namespace WeightTrack.Controllers
     [Route("api/[controller]")]
     public class WeightTrackerController : ControllerBase
     {
-        private readonly WeightTrackContext _context;
+        private readonly TrackerDbContext _context;
 
-        public WeightTrackerController(WeightTrackContext context)
+        public WeightTrackerController(TrackerDbContext context)
         {
             _context = context;
 
-            if (_context.Entries.Count() == 0)
+            if (_context.WeightEntries.Count() == 0)
             {
-                _context.Entries.Add(new WeightEntryModel{
+                _context.WeightEntries.Add(new WeightEntryModel{
                     Date = System.DateTime.Now,
                     Weight = 215.2F,
                     UserId = System.Guid.NewGuid().ToString()});
@@ -27,13 +27,13 @@ namespace WeightTrack.Controllers
         [HttpGet]
         public List<WeightEntryModel> GetAll()
         {
-            return _context.Entries.ToList();
+            return _context.WeightEntries.ToList();
         }
 
         [HttpGet("{id}", Name = "GetWeight")]
         public IActionResult GetById(long id)
         {
-            var item = _context.Entries.Find(id);
+            var item = _context.WeightEntries.Find(id);
             if (item == null)
             {
                 return NotFound();

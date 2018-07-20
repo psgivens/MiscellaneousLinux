@@ -38,8 +38,8 @@ PS1="#> "
     sudo docker container stop pomodoro-wapi
     sudo docker container rm pomodoro-wapi
 
-    sudo docker container stop pgadmin_dock
-    sudo docker container rm pgadmin_dock
+    sudo docker container stop pgadmin_tracker
+    sudo docker container rm pgadmin_tracker
 
 ### Replace the volume
     sudo docker volume rm pomodoro_pgsql
@@ -85,7 +85,7 @@ PS1="#> "
     sudo docker run \
       -it -p 5002:80 \
       --rm \
-      --name pgadmin_dock \
+      --name pgadmin_tracker \
       --network tracker-net \
       -e "PGADMIN_DEFAULT_EMAIL=user@domain.com" \
       -e "PGADMIN_DEFAULT_PASSWORD=Password1" \
