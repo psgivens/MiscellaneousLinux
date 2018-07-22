@@ -32,4 +32,7 @@
             "react": "React",
             "react-dom": "ReactDOM"
         },
+        node: {
+            fs: 'empty',
+        }
     };

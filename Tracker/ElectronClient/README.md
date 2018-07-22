@@ -33,6 +33,7 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 
 ## Resources for Learning Electron
 
+- [ShoppingList main.js](https://github.com/psgivens/MiscellaneousLinux/blob/master/electron/shoppinglist/main.js)
 - [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
 - [electronjs.org/community#boilerplates](https://electronjs.org/community#boilerplates) - sample starter apps created by the community
 - [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
@@ -41,7 +42,15 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 - [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
 - [TypeScrypt and Redux: rj zaworski](https://rjzaworski.com/2016/08/getting-started-with-redux-and-typescript)
 
+## Storage
+
+- [StackOverflow: Where to store in electron](https://stackoverflow.com/questions/30465034/where-to-store-user-settings-in-electron-atom-shell-application)
+- Somewhat helpful [How to store user data in Electron](https://medium.com/cameron-nokes/how-to-store-user-data-in-electron-3ba6bf66bc1e)
+- [Electron json storage](https://github.com/electron-userland/electron-json-storage)
+- [MDN: localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+
 ## Notes
+
 - Some notes use the old ts-loader, and typings.. The new system is awesome-typescript-loader and @types/*
 
 ## License

@@ -19,7 +19,8 @@ type ConnectedState = {
   pomodoro: PomodoroState,
   isRunning: boolean,
   minutes: string,
-  seconds: string
+  seconds: string,
+  ip: string,
 }
 
 
@@ -29,7 +30,8 @@ const mapStateToProps = (state: state.All, ownProps: OwnProps): ConnectedState =
   pomodoro: state.pomodoro,
   isRunning: state.pomodoro.runningState === PomodoroRunningState.Running,
   minutes: pad(Math.floor(state.pomodoro.count / 60)),
-  seconds: pad(state.pomodoro.count % 60)
+  seconds: pad(state.pomodoro.count % 60),
+  ip: state.pomodoro.myIp,
 })
 
 
@@ -37,12 +39,14 @@ interface ConnectedDispatch {
   startTimer: () => void
   stopTimer: () => void
   resetTimer: () => void
+  getIp: () => void
 }
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<state.All>): ConnectedDispatch => ({
   startTimer: () => dispatch(PomodoroCommands.start()),
   stopTimer: () => dispatch(PomodoroCommands.stop()),
-  resetTimer: () => dispatch(PomodoroCommands.reset())
+  resetTimer: () => dispatch(PomodoroCommands.reset()),
+  getIp: () => dispatch(PomodoroCommands.getIp()),
 })
 
 
@@ -59,6 +63,11 @@ class PureCounter extends React.Component<ConnectedState & ConnectedDispatch & O
     this.props.stopTimer()
   }
 
+  _onClickGetIp = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    this.props.getIp()
+  }
+
 
   _onClickReset = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -66,7 +75,7 @@ class PureCounter extends React.Component<ConnectedState & ConnectedDispatch & O
   }
 
   render () {
-    const { label, pomodoro, isRunning, minutes, seconds } = this.props
+    const { label, pomodoro, isRunning, minutes, seconds, ip } = this.props
     return <div>
       <label>{label}</label>
       timer: {minutes}:{seconds}
@@ -74,6 +83,10 @@ class PureCounter extends React.Component<ConnectedState & ConnectedDispatch & O
       <button ref='startTimer' disabled={isRunning} onClick={this._onClickStart}>Start Timer</button><br />
       <button ref='stopTimer' disabled={!isRunning} onClick={this._onClickStop}>Stop Timer</button><br />
       <button ref='resetTimer' onClick={this._onClickReset}>Reset Timer</button><br />
+      <button ref='getIp' onClick={this._onClickGetIp}>getIp</button><br />
+      My IP: {ip}
+      <br />
+
       <pre>
           {JSON.stringify({
             pomodoro,
