@@ -48,6 +48,7 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 - Somewhat helpful [How to store user data in Electron](https://medium.com/cameron-nokes/how-to-store-user-data-in-electron-3ba6bf66bc1e)
 - [Electron json storage](https://github.com/electron-userland/electron-json-storage)
 - [MDN: localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+- [Web Workers with Indexeddb](https://www.javascripttuts.com/outsource-indexeddb-transactions-web-workers/)
 
 ## Notes
 
