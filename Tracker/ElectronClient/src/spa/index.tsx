@@ -96,9 +96,10 @@ ReactDOM.render(
 );
 
 // Requires script name as input
-const myWorker = new Worker("./workers/worker1.js");
-     myWorker.postMessage([0, 1]); // Sending message as an array to the worker
- 	console.log('Message posted to worker');
+
+// const myWorker = new Worker("./workers/worker1.js");
+//      myWorker.postMessage([0, 1]); // Sending message as an array to the worker
+//  	console.log('Message posted to worker');
 
 // setInterval(() => {
 //     store.dispatch(incrementCounter(1)) 

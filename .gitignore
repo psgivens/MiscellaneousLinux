@@ -10,3 +10,5 @@
 electron/**/dist/*
 **/*.log
 Tracker/**/dist/*
+**/yarn.lock
+

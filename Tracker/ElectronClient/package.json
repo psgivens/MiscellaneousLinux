@@ -38,13 +38,17 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
+    "@types/d3": "^5.0.0",
     "@types/d3-array": "^1.2.1",
+    "@types/d3-format": "^1.3.0",
     "@types/d3-scale": "^2.0.1",
     "@types/d3-selection": "^1.3.1",
     "@types/electron": "^1.6.10",
     "@types/reduce-reducers": "^0.1.3",
     "@types/redux-saga": "^0.10.5",
+    "d3": "^5.5.0",
     "d3-array": "^1.2.1",
+    "d3-format": "^1.3.0",
     "d3-scale": "^2.1.0",
     "d3-selection": "^1.3.0",
     "react": "^16.4.1",
