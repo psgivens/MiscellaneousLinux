@@ -1,22 +1,13 @@
-// import * as d3 from 'd3'
-// import { DefaultArcObject } from 'd3';
-
+import * as d3 from 'd3'
 import * as React from 'react';
 import { connect } from 'react-redux';
-// import './App.css'
-
 import * as redux from 'redux';
 import * as state from './reducers'
 import { compose } from './utils'
 
-// import { select } from 'd3-selection'                                
-// import { format } from 'd3-format'
-// import { scaleLinear } from 'd3-scale'                               
-// import { max } from 'd3-array'                                       
-
 interface IOwnProps {
-    label: string
-  }
+  label: string
+}
   
 interface IConnectedState {
     counter: number
@@ -25,6 +16,7 @@ interface IConnectedState {
 interface IConnectedDispatch {
   fake: any
 }
+
 interface IOwnState {
   fake: any
 }
@@ -64,11 +56,10 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<GuageAction>): IConnectedDi
 		transitionMs				: number,
 
 		majorTicks					: number,
-		// labelFormat					: (d:{valueOf():number}) => string,
+		labelFormat					: (d:{valueOf():number}) => string,
 		labelInset					: number,
 
     arcColorFn          : (d:any,i:number) => string
-		// arcColorFn					: (d,i) => d3.interpolateHsl(d3.rgb('#F9E79F'), d3.rgb('#641E16'))(d*i)
 	};
 
 
@@ -88,14 +79,14 @@ class BarChart extends React.Component<ThisProps, IOwnState> {
   // private pointer:any
   // // private value:number
   
-  private colors = ["#16A085", "#76D7C4", "#F7DC6F", "#F1C40F", "#A93226"];
+  // private colors = ["#16A085", "#76D7C4", "#F7DC6F", "#F1C40F", "#A93226"];
 
   private config: ID3Config = {          
-    arcColorFn          : (d:any,i:number) => this.colors[i], // #F9EBEA
-    // arcColorFn					: (d,i) => d3.interpolateHsl(d3.rgb('#F9E79F'), d3.rgb('#641E16'))(d*i)
+    // arcColorFn          : (d:any,i:number) => this.colors[i], // #F9EBEA
+    arcColorFn					: (d,i) => d3.interpolateHsl(d3.rgb('#F9E79F'), d3.rgb('#641E16'))(d*i),
     clipHeight					: 110,
     clipWidth					: 200,
-    // labelFormat					: d3.format('d'),
+    labelFormat					: d3.format('d'),
     labelInset					: 10,
     majorTicks					: 5,    
     maxAngle					: 90,
@@ -127,6 +118,91 @@ class BarChart extends React.Component<ThisProps, IOwnState> {
   }
 
   public createBarChart() {
+    // Parameters
+    const r:number = 90
+
+    // Calculation algorithms
+    const centerTx = ():any => 'translate('+r +','+ r +')'    
+    const deg2rad = (deg:number):number => deg * Math.PI / 180
+
+    // Calculated factors
+    const range:number = this.config.maxAngle - this.config.minAngle;
+    const pointerHeadLength = Math.round(r * this.config.pointerHeadLengthPercent);
+    const tickData = d3.range(this.config.majorTicks).map(() => 1/this.config.majorTicks);
+
+    const scale = d3.scaleLinear()
+      .domain([this.config.minValue, this.config.maxValue])
+      .range([0,1]);
+
+    const ticks = scale.ticks(this.config.majorTicks);
+
+    const svg = d3.select(this.node)
+      .append('svg:svg')
+      .attr('class', 'guage')
+      .attr('width', this.config.clipWidth)
+      .attr('height',this.config.clipHeight)
+
+    const arcs = svg.append('g')
+      .attr('class', 'arc')
+      .attr('transform', centerTx)
+
+    const arc:any = d3.arc()
+      .innerRadius(r - this.config.ringWidth - this.config.ringInset)
+      .outerRadius(r - this.config.ringInset)
+      .startAngle((d:any, i: number) => {
+        const ratio = d * i;
+        return deg2rad(this.config.minAngle + (ratio * range));
+      })
+      .endAngle((d:any, i:number) => {
+        const ratio = d * (i+1);
+        return deg2rad(this.config.minAngle + (ratio * range));
+      });
+
+    arcs.selectAll('path')
+      .data(tickData)
+      .enter()
+      .append('path')
+      .attr('fill', (d:any, i:number) => this.config.arcColorFn(d,i))
+      .attr('d', arc);
+
+    const lg = svg.append('g')
+      .attr('class', 'label')
+      .attr('transform', centerTx)
+
+    lg.selectAll('text')
+      .data(ticks)
+      .enter()
+      .append('text')
+      .attr('transform', (d:any) => {
+        const ratio = scale(d);
+        const newAngle = this.config.minAngle + (ratio * range);
+        return 'rotate(' +newAngle +') translate(0,' +(this.config.labelInset - r) +')';
+      })
+      .text(d3.format('d'))
+
+      const lineData = [ [this.config.pointerWidth / 2, 0],
+              [0, - pointerHeadLength],
+              [-(this.config.pointerWidth / 2), 0],
+              [0, this.config.pointerTailLength],
+              [this.config.pointerWidth / 2, 0] ];
+      const pointerLine = d3.line().curve(d3.curveLinear)
+
+      const pg = svg.append('g').data([lineData])
+          .attr('class', 'pointer')
+          .attr('transform', centerTx);
+
+      const pointer = pg.append('path')
+        .attr('d', pointerLine)
+        .attr('transform', 'rotate(' +this.config.minAngle +')');
+
+      // Update the pointer
+      const ratio1 = scale(6);
+      const newAngle1 = this.config.minAngle + (ratio1 * range);
+      pointer.transition()
+          .duration(this.config.transitionMs)
+          .ease(d3.easeElastic)
+          .attr('transform', 'rotate(' + newAngle1 +')');
+
     return 1
   }
 
