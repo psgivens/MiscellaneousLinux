@@ -8,11 +8,14 @@ exit
 ### Utils
 ```
 
-sudo apt install -y docker.io
-sudo apt install -y docker
-sudo apt install -y jq
+sudo apt install -y docker.io docker jq
 sudo apt install -y python-pip
-sudo apt install -y npm
+
+sudo apt-get install -y p7zip-full
+
+# https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 ```
 #sudo apt install -y flashplugin-installer
@@ -32,7 +35,9 @@ sudo curl -L https://raw.githubusercontent.com/docker/compose/1.21.2/contrib/com
 
 # install java
 sudo apt install -y default-jdk
-echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' | sudo tee -a /etc/environment
+
+echo 'JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"' | sudo tee -a /etc/environment
+#echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' | sudo tee -a /etc/environment
 
 
 
@@ -41,6 +46,8 @@ echo 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' | sudo tee -a /etc/environ
 
 # create .vimrc file from git repo
 
+
+# Visual Studio Code
 
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
@@ -51,8 +58,11 @@ sudo apt update
 sudo apt install -y code
 
 
+# Atom
+
 curl -L https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+
 sudo apt-get update
 
 sudo apt install -y atom
@@ -95,9 +105,8 @@ sudo apt-get install -y powershell
 
 
 
-#################################
 # install aws cli
-##################################
+
 sudo pip install -U awscli
 
 
@@ -118,10 +127,10 @@ Install-Module -Name DockerMsftProvider -Scope CurrentUser
 ##########################################
 # Install Apache/PHP
 ##########################################
-sudo ufw allow in "Apache Full"
-sudo apt install libapache2-mod-php7.1 php-mcrypt php-pgsql
+#sudo ufw allow in "Apache Full"
+#sudo apt install libapache2-mod-php7.1 php-mcrypt php-pgsql
 #https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04
-sudo apache2ctl configtest
+#sudo apache2ctl configtest
 
 
 sudo apt install -y go 
@@ -130,5 +139,15 @@ sudo apt install -y go
 go get -u github.com/govend/govend
 
 
+#https://www.dropbox.com/install-linux
 
+# Install through 'Ubuntu Software'
+# * Password Safe (Bruce Schneier)
+
+sudo apt install -y meld
+git config --global diff.tool meld
+git config --global difftool.prompt false
+
+sudo snap install slack
+sudo snap install postman
 
