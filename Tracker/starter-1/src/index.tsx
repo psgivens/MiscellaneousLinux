@@ -9,7 +9,7 @@ import { reducers } from './reducers'
 
 import registerServiceWorker from './registerServiceWorker';
 
-const store: ReduxStore<state.IAll> = createStore(reducers, {} as state.IAll)
+const store: ReduxStore<state.IAll> = createStore(reducers, { counter: 2 } as state.IAll)
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,

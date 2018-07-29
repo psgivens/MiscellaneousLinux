@@ -6,7 +6,8 @@ import * as state from './reducers'
 import { compose } from './utils'
 
 interface IOwnProps {
-  label: string
+  label: string,
+  counter: number
 }
   
 interface IConnectedState {
@@ -17,8 +18,8 @@ interface IConnectedDispatch {
   fake: any
 }
 
-interface IOwnState {
-  fake: any
+type OwnState = {} & {
+  counter: number
 }
 
 type GuageAction = {
@@ -28,8 +29,8 @@ type GuageAction = {
 }
 
 const mapStateToProps = (state1: state.IAll, ownProps: IOwnProps): IConnectedState => ({
-    counter: state1.counter
-  })
+  counter: state1.counter
+})
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<GuageAction>): IConnectedDispatch => ({
   fake: 4
@@ -65,7 +66,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<GuageAction>): IConnectedDi
 
 
 type ThisProps = IConnectedState & IConnectedDispatch & IOwnProps
-class BarChart extends React.Component<ThisProps, IOwnState> {
+class BarChart extends React.Component<ThisProps, OwnState> {
 
   private node : SVGSVGElement
   // private range:number
@@ -110,14 +111,17 @@ class BarChart extends React.Component<ThisProps, IOwnState> {
   }
 
   public componentDidMount() {                                              
-    this.createBarChart()
+    const { counter }  = this.props
+    this.createBarChart(3, counter)
   }
 
-  public componentDidUpdate() {                                             
-    this.createBarChart()
+  public componentDidUpdate() { 
+    const { counter }  = this.props
+    this.createBarChart(3, counter)
   }
 
-  public createBarChart() {
+  public createBarChart(oldCounter: number, newValue: number) {
+
     // Parameters
     const r:number = 90
 
@@ -187,21 +191,36 @@ class BarChart extends React.Component<ThisProps, IOwnState> {
               [this.config.pointerWidth / 2, 0] ];
       const pointerLine = d3.line().curve(d3.curveLinear)
 
+
+      const oldpointer = d3.select('g.pointer')
+      // experimenting with getting the old value
+      // better solution is to make it a field
+      // const oldValue = oldpointer.attr('old-value')
+
+      // remove the old pointer
+      oldpointer.remove()
+
       const pg = svg.append('g').data([lineData])
           .attr('class', 'pointer')
-          .attr('transform', centerTx);
+          .attr('transform', centerTx);    
 
-      const pointer = pg.append('path')
+      const ratio2 = scale(oldCounter)
+      const newAngle2 = this.config.minAngle + (ratio2 * range)
+
+      const pointer = pg
+        .append('path')
         .attr('d', pointerLine)
-        .attr('transform', 'rotate(' +this.config.minAngle +')');
+        .attr('transform', 'rotate(' + newAngle2 +')')
+        .attr('id', 'pointer-x')
 
       // Update the pointer
-      const ratio1 = scale(6);
+      const ratio1 = scale(newValue);
       const newAngle1 = this.config.minAngle + (ratio1 * range);
       pointer.transition()
           .duration(this.config.transitionMs)
-          .ease(d3.easeElastic)
-          .attr('transform', 'rotate(' + newAngle1 +')');
+          // .ease(d3.easeElastic)
+          .attr('transform', 'rotate(' + newAngle1 +')')
+          .attr('old-value', newValue)
 
     return 1
   }
