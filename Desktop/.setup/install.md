@@ -151,3 +151,4 @@ git config --global difftool.prompt false
 sudo snap install slack
 sudo snap install postman
 
+sudo apt install -y gnome-shell-pomodoro
