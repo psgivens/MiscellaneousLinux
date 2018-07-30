@@ -5,16 +5,16 @@ import * as redux from 'redux';
 import * as state from './reducers'
 import { compose } from './utils'
 
-interface IOwnProps {
+type OwnProps = {} & {
   label: string,
   counter: number
 }
   
-interface IConnectedState {
+type ConnectedState = {} & {
     counter: number
 }
 
-interface IConnectedDispatch {
+type ConnectedDispatch = {} & {
   fake: any
 }
 
@@ -28,15 +28,15 @@ type GuageAction = {
   type: 'OTHER_ACTION'
 }
 
-const mapStateToProps = (state1: state.IAll, ownProps: IOwnProps): IConnectedState => ({
+const mapStateToProps = (state1: state.IAll, ownProps: OwnProps): ConnectedState => ({
   counter: state1.counter
 })
 
-const mapDispatchToProps = (dispatch: redux.Dispatch<GuageAction>): IConnectedDispatch => ({
+const mapDispatchToProps = (dispatch: redux.Dispatch<GuageAction>): ConnectedDispatch => ({
   fake: 4
   })  
 
-	interface ID3Config {
+	type D3Config = {} & {
     [field:string]: any,
 		size						: number,
 		clipWidth					: number,
@@ -65,25 +65,15 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<GuageAction>): IConnectedDi
 
 
 
-type ThisProps = IConnectedState & IConnectedDispatch & IOwnProps
+type ThisProps = ConnectedState & ConnectedDispatch & OwnProps
 class BarChart extends React.Component<ThisProps, OwnState> {
 
   private node : SVGSVGElement
-  // private range:number
-  // private r:number
-  // private pointerHeadLength:number
-  // private svg:any
-  // private arc:d3.Arc<any, DefaultArcObject>
-  // private scale:d3.ScaleLinear<number,number>
-  // private ticks:number[] = []
-  // private tickData:any
-  // private pointer:any
-  // // private value:number
-  
-  // private colors = ["#16A085", "#76D7C4", "#F7DC6F", "#F1C40F", "#A93226"];
+  private range:number
+  private scale:d3.ScaleLinear<number,number>
+  private counter:number = 0
 
-  private config: ID3Config = {          
-    // arcColorFn          : (d:any,i:number) => this.colors[i], // #F9EBEA
+  private config: D3Config = {          
     arcColorFn					: (d,i) => d3.interpolateHsl(d3.rgb('#F9E79F'), d3.rgb('#641E16'))(d*i),
     clipHeight					: 110,
     clipWidth					: 200,
@@ -103,24 +93,30 @@ class BarChart extends React.Component<ThisProps, OwnState> {
     transitionMs				: 750,
   };
 
-
   constructor(props: ThisProps){
     super(props)
     this.createBarChart = this.createBarChart.bind(this)   
     this.config = this.config
+    this.state = { counter: 0 }
   }
 
   public componentDidMount() {                                              
+    this.createBarChart()
     const { counter }  = this.props
-    this.createBarChart(3, counter)
+    this.updateBarChart(counter)
   }
 
   public componentDidUpdate() { 
     const { counter }  = this.props
-    this.createBarChart(3, counter)
+    // this.createBarChart()
+    this.updateBarChart(counter)
   }
 
-  public createBarChart(oldCounter: number, newValue: number) {
+  public render() {                                                        
+    return <svg ref={node => this.node = node!} width={500} height={500} />
+  }
+
+  private createBarChart() {
 
     // Parameters
     const r:number = 90
@@ -130,15 +126,15 @@ class BarChart extends React.Component<ThisProps, OwnState> {
     const deg2rad = (deg:number):number => deg * Math.PI / 180
 
     // Calculated factors
-    const range:number = this.config.maxAngle - this.config.minAngle;
+    this.range = this.config.maxAngle - this.config.minAngle;
     const pointerHeadLength = Math.round(r * this.config.pointerHeadLengthPercent);
     const tickData = d3.range(this.config.majorTicks).map(() => 1/this.config.majorTicks);
 
-    const scale = d3.scaleLinear()
+    this.scale = d3.scaleLinear()
       .domain([this.config.minValue, this.config.maxValue])
       .range([0,1]);
 
-    const ticks = scale.ticks(this.config.majorTicks);
+    const ticks = this.scale.ticks(this.config.majorTicks);
 
     const svg = d3.select(this.node)
       .append('svg:svg')
@@ -155,11 +151,11 @@ class BarChart extends React.Component<ThisProps, OwnState> {
       .outerRadius(r - this.config.ringInset)
       .startAngle((d:any, i: number) => {
         const ratio = d * i;
-        return deg2rad(this.config.minAngle + (ratio * range));
+        return deg2rad(this.config.minAngle + (ratio * this.range));
       })
       .endAngle((d:any, i:number) => {
         const ratio = d * (i+1);
-        return deg2rad(this.config.minAngle + (ratio * range));
+        return deg2rad(this.config.minAngle + (ratio * this.range));
       });
 
     arcs.selectAll('path')
@@ -178,8 +174,8 @@ class BarChart extends React.Component<ThisProps, OwnState> {
       .enter()
       .append('text')
       .attr('transform', (d:any) => {
-        const ratio = scale(d);
-        const newAngle = this.config.minAngle + (ratio * range);
+        const ratio = this.scale(d);
+        const newAngle = this.config.minAngle + (ratio * this.range);
         return 'rotate(' +newAngle +') translate(0,' +(this.config.labelInset - r) +')';
       })
       .text(d3.format('d'))
@@ -191,44 +187,34 @@ class BarChart extends React.Component<ThisProps, OwnState> {
               [this.config.pointerWidth / 2, 0] ];
       const pointerLine = d3.line().curve(d3.curveLinear)
 
-
-      const oldpointer = d3.select('g.pointer')
-      // experimenting with getting the old value
-      // better solution is to make it a field
-      // const oldValue = oldpointer.attr('old-value')
-
-      // remove the old pointer
-      oldpointer.remove()
-
       const pg = svg.append('g').data([lineData])
           .attr('class', 'pointer')
           .attr('transform', centerTx);    
 
-      const ratio2 = scale(oldCounter)
-      const newAngle2 = this.config.minAngle + (ratio2 * range)
+      const ratio2 = this.scale(this.counter)
+      const newAngle2 = this.config.minAngle + (ratio2 * this.range)
 
-      const pointer = pg
-        .append('path')
+      pg.append('path')
         .attr('d', pointerLine)
         .attr('transform', 'rotate(' + newAngle2 +')')
         .attr('id', 'pointer-x')
+    }
 
+     private updateBarChart(newValue:number){
+      const pointer = d3.select('#pointer-x')
       // Update the pointer
-      const ratio1 = scale(newValue);
-      const newAngle1 = this.config.minAngle + (ratio1 * range);
+      const ratio1 = this.scale(newValue);
+      const newAngle1 = this.config.minAngle + (ratio1 * this.range);
       pointer.transition()
           .duration(this.config.transitionMs)
           // .ease(d3.easeElastic)
           .attr('transform', 'rotate(' + newAngle1 +')')
           .attr('old-value', newValue)
 
+      this.counter = newValue
+
     return 1
   }
-
-  public render() {                                                        
-    return <svg ref={node => this.node = node!} width={500} height={500} />
-  }
-
 }
 
 export const PomodoroGuage = compose(
