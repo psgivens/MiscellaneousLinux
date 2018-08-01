@@ -1,8 +1,7 @@
 import * as React from 'react'
 import './App.css'
+import { PomodoroGuage } from './containers/PomodoroGuage'
 import { Counter } from './Counter'
-import { PomodoroGuage } from './PomodoroGuage'
-
 
 import logo from './logo.svg'
 
@@ -20,7 +19,8 @@ class App extends React.Component {
         <Counter />
         <p>... and so it begins. </p>
         <p>This is it! </p>
-        <PomodoroGuage />
+        <PomodoroGuage guageId="first_pomodoro" />
+        <PomodoroGuage guageId="second_pomodoro" />
       </div>
     );
   }
