@@ -4,6 +4,7 @@ import * as redux from 'redux';
 import { ConnectedDispatch, ConnectedState, OwnProps, PomodoroGuageComponent } from '../components/PomodoroGuage'
 import * as state from '../reducers'
 
+// import { compose } from '../utils'
 
 type GuageAction = {
   type: 'NEW_COUNT'
@@ -11,13 +12,21 @@ type GuageAction = {
   type: 'OTHER_ACTION'
 }
 
-const mapStateToProps = (state1: state.IAll, ownProps: OwnProps): ConnectedState => ({
-  counter: state1.counter
-})
+const mapStateToProps = (state1: state.IAll, ownProps: OwnProps): ConnectedState => {
+  const value = state1.counters[ownProps.guageId] ? state1.counters[ownProps.guageId] : 3
+  return {
+    counter: value
+  }
+}
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<GuageAction>): ConnectedDispatch => ({
     fake: 3
   })  
+
+// export const PomodoroGuage = compose (
+//   PomodoroGuageComponent,
+//   connect<{}, {}, OwnProps>(mapStateToProps, mapDispatchToProps) 
+// )
 
 export const PomodoroGuage = 
   connect<{}, {}, OwnProps>(mapStateToProps, mapDispatchToProps) (PomodoroGuageComponent)

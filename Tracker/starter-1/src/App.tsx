@@ -1,8 +1,7 @@
 import * as React from 'react'
 import './App.css'
+import { Counter } from './components/Counter'
 import { PomodoroGuage } from './containers/PomodoroGuage'
-import { Counter } from './Counter'
-
 import logo from './logo.svg'
 
 class App extends React.Component {
@@ -16,7 +15,7 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Counter />
+        <Counter name="first_pomodoro" />
         <p>... and so it begins. </p>
         <p>This is it! </p>
         <PomodoroGuage guageId="first_pomodoro" />

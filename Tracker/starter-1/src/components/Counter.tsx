@@ -2,19 +2,16 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as redux from 'redux';
 // import { incrementCounter, Action, saveCounter, CountdownAction, tick, resetCounter } from '../actions'
-import * as state from './reducers'
-import { compose } from './utils'
-
-
-
+import * as state from '../reducers'
+// import { compose } from './utils'
 
 const mapStateToProps = (state1: state.IAll, ownProps: OwnProps): ConnectedState => ({
-  counter: state1.counter,
+  counter: state1.counters[ownProps.name],
 })
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<state.SampleAction>): ConnectedDispatch => ({
-  increment: () => {
-    dispatch({type: 'COUNTER_INCREMENT'}) 
+  increment: (name:string) => {
+    dispatch({type: 'COUNTER_INCREMENT', name}) 
   }
 })
 
@@ -30,15 +27,15 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<state.SampleAction>): Conne
 // })
 
 type OwnProps = {} & {
-  label: string
+  name: string
 }
 
 type ConnectedState = {} & {
-  counter: number
+  counter?: number
 }
 
 type ConnectedDispatch = {} & {
-  increment: () => void
+  increment?: (name:string) => void
 }
 
 type OwnState = {} & {}
@@ -59,11 +56,18 @@ class PureCounter extends React.Component<ConnectedState & ConnectedDispatch & O
 
   private onClickIncrement = (e: React.SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    this.props.increment()
+    const { name } = this.props
+    this.props.increment!(name)
   }
 }
 
-export const Counter = compose(
-  PureCounter,
-  connect(mapStateToProps, mapDispatchToProps),
-)
+// export const Counter = compose(
+//   PureCounter,
+//   connect(mapStateToProps, mapDispatchToProps),
+// )
+
+export const Counter = 
+  connect<{}, {}, OwnProps>(mapStateToProps, mapDispatchToProps) (PureCounter)
+
+
+
