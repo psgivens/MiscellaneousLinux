@@ -1,7 +1,7 @@
     module.exports = {
         entry: "./src/spa/index.tsx",
         output: {
-            filename: "./spa.js",
+            filename: "./spa.bundle.js",
             path: __dirname + "/dist"        
         },
         mode: "production" ,
