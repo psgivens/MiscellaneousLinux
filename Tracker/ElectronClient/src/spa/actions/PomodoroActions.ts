@@ -62,7 +62,7 @@ function createRequests(timer:iTimer) {
     const _put = (event:PomodoroEvent): PutEffect<PomodoroEvent> => put(event)
     const getPomodoroState = (state:state.All): PomodoroState => state.pomodoro ? state.pomodoro : initialState
 
-    function *requestStartTimer(action: PomodoroEvent) {
+    function *requestStartTimer(action: PomdodoroCommand) {
         try {
             const state:PomodoroState = yield select(getPomodoroState)
             if (state.runningState === PomodoroRunningState.NotRunning){
@@ -77,7 +77,7 @@ function createRequests(timer:iTimer) {
         }
     }
 
-    function *requestStopTimer(action: PomodoroEvent) {
+    function *requestStopTimer(action: PomdodoroCommand) {
         try {
             const state:PomodoroState = yield select(getPomodoroState)
             if (state.runningState === PomodoroRunningState.Running){
@@ -91,7 +91,7 @@ function createRequests(timer:iTimer) {
         }
     }
 
-    function *requestResetTimer(action: PomodoroEvent) {
+    function *requestResetTimer(action: PomdodoroCommand) {
         try {        
             const state:PomodoroState = yield select(getPomodoroState)
             if (state.runningState === PomodoroRunningState.Running){
@@ -103,7 +103,7 @@ function createRequests(timer:iTimer) {
         }
     }
 
-    function *postAction(action: PomodoroEvent){
+    function *postAction(action: PomdodoroCommand){
         const state:PomodoroState = yield select(getPomodoroState)
         const version = ++state.version.remote
         yield put({ type: 'POMODORO_REMOTE_SAVING', version })
@@ -116,7 +116,7 @@ function createRequests(timer:iTimer) {
         // else: save was called multiple times. 
     }
 
-    function *loadRemoteAction(action: PomodoroEvent){
+    function *loadRemoteAction(action: PomdodoroCommand){
         const state:PomodoroState = yield select(getPomodoroState)
         const version = ++state.version.remote
         yield put({ type: 'POMODORO_REMOTE_LOADING', version })
@@ -137,7 +137,7 @@ function createRequests(timer:iTimer) {
 
     }
 
-    function *saveAction(action: PomodoroEvent){
+    function *saveAction(action: PomdodoroCommand){
         const state:PomodoroState = yield select(getPomodoroState)
         const version = ++state.version.remote
         yield put({ type: 'POMODORO_LOCAL_SAVING', version })
@@ -151,7 +151,7 @@ function createRequests(timer:iTimer) {
     }
 
     const createKey = (id:string):string => ["pomodoro", id].join('/')
-    function *requestSaveMeta(action: PomodoroEvent) {
+    function *requestSaveMeta(action: PomdodoroCommand) {
         try {        
             yield all([
                 call(saveAction, action),

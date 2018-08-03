@@ -4,9 +4,9 @@ import reduceReducers from 'reduce-reducers';
 interface ICounters {
   [name:string]: number
 }
-export interface IAll {
-  counter: number,
-  counters: ICounters
+export class IAll {
+  public counter: number
+  public counters: ICounters
 }
 
 export type SampleAction = {
