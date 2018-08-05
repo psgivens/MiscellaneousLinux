@@ -1,39 +1,32 @@
 // import { combineReducers } from 'redux'
 import reduceReducers from 'reduce-reducers';
 
-import { FetchEvent } from '../sagas/CounterActions'
+import { CounterEvent } from '../sagas/CounterSaga'
+import { FetchEvent } from '../sagas/ValuesSaga'
 
-interface ICounters {
+type Counters = {} & {
   [name:string]: number
 }
-export class IAll {
+export class All {
   public counter: number
-  public counters: ICounters
+  public counters: Counters
   public values: string[]
 }
 
-export type SampleAction = {
-  type: "COUNTER_INCREMENT",
-  name: string
-} | { 
-  type: "COUNTER_DECREMENT",
-  name: string
-}
-
-function myReducer(state:IAll, action: SampleAction): IAll {
+function myReducer(state:All, action: CounterEvent): All {
   const counters = state.counters
   switch(action.type) {
-    case "COUNTER_INCREMENT":    
+    case "COUNTER_INCREMENTED":    
       counters[action.name] += 1
       return { ...state, counter: state.counter + 1, counters }
-    case "COUNTER_DECREMENT":
+    case "COUNTER_DECREMENTED":
       counters[action.name] -= 1
       return { ...state, counter: state.counter - 1, counters }
   }
   return state
 }
 
-function valuesReducers(state:IAll, action: FetchEvent): IAll {
+function valuesReducers(state:All, action: FetchEvent): All {
   switch(action.type) {
     case "FETCH_CONTENTFETCHED":
       return { ...state, values: action.values}

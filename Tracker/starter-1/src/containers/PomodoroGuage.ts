@@ -1,32 +1,27 @@
-
-import { connect } from 'react-redux';
 import * as redux from 'redux';
-import { ConnectedDispatch, ConnectedState, OwnProps, PomodoroGuageComponent } from '../components/PomodoroGuage'
 import * as state from '../reducers'
 
-// import { compose } from '../utils'
+import { CounterCommand } from '../sagas/CounterSaga'
 
-type GuageAction = {
-  type: 'NEW_COUNT'
-} | {
-  type: 'OTHER_ACTION'
+export type AttributeProps = {} & {
+  guageId: string 
+}
+  
+export type StateProps = {} & {
+  counter?: number
 }
 
-const mapStateToProps = (state1: state.IAll, ownProps: OwnProps): ConnectedState => {
+export type ConnectedDispatch = {} & {
+  triggerThing?: () => void
+}
+
+export const mapStateToProps = (state1: state.All, ownProps: AttributeProps): StateProps => {
   const value = state1.counters[ownProps.guageId] ? state1.counters[ownProps.guageId] : 3
   return {
     counter: value
   }
 }
 
-const mapDispatchToProps = (dispatch: redux.Dispatch<GuageAction>): ConnectedDispatch => ({
+export const mapDispatchToProps = (dispatch: redux.Dispatch<CounterCommand>): ConnectedDispatch => ({
     
-  })  
-
-// export const PomodoroGuage = compose (
-//   PomodoroGuageComponent,
-//   connect<{}, {}, OwnProps>(mapStateToProps, mapDispatchToProps) 
-// )
-
-export const PomodoroGuage = 
-  connect<{}, {}, OwnProps>(mapStateToProps, mapDispatchToProps) (PomodoroGuageComponent)
+})  

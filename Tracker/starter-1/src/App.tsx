@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './App.css'
 import { Counter } from './components/Counter'
-import { PomodoroGuage } from './containers/PomodoroGuage'
+import { PomodoroGuage } from './components/PomodoroGuage'
 import logo from './logo.svg'
 
 class App extends React.Component {

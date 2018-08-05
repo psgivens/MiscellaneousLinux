@@ -1,53 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as redux from 'redux';
-// import { incrementCounter, Action, saveCounter, CountdownAction, tick, resetCounter } from '../actions'
-import * as state from '../reducers'
-// import { compose } from './utils'
 
-import { FetchCommands } from '../sagas/CounterActions'
+import * as container from '../containers/Counter'
 
-const mapStateToProps = (state1: state.IAll, ownProps: OwnProps): ConnectedState => ({
-  counter: state1.counters[ownProps.name],
-  values: state1.values
-})
+type ComponentState = {} & {}
 
-// const mapDispatchToProps = (dispatch: redux.Dispatch<state.SampleAction>): ConnectedDispatch => ({
-const mapDispatchToProps = (dispatch: redux.Dispatch<any>): ConnectedDispatch => ({
-  increment: (name:string) => {
-    dispatch({type: 'COUNTER_INCREMENT', name}) 
-  },
-  triggerThing: () => dispatch( FetchCommands.getContent() )
-})
-
-
-// const mapStateToProps = (state: state.All, ownProps: OwnProps): ConnectedState => ({
-//   counter: state.counter,
-// })
-
-// const mapDispatchToProps = (dispatch: redux.Dispatch<state.All>): ConnectedDispatch => ({
-//   increment: (n: number) => {
-//     dispatch(incrementCounter(n))
-//   },
-// })
-
-type OwnProps = {} & {
-  name: string
-}
-
-type ConnectedState = {} & {
-  counter?: number,
-  values?: string[]
-}
-
-type ConnectedDispatch = {} & {
-  increment?: (name:string) => void
-  triggerThing?: () => void
-}
-
-type OwnState = {} & {}
-
-class PureCounter extends React.Component<ConnectedState & ConnectedDispatch & OwnProps, OwnState> {
+class PureCounter extends React.Component<container.StateProps & container.ConnectedDispatch & container.AttributeProps, ComponentState> {
   public render () {
     const { counter, values } = this.props
     return <div>
@@ -70,13 +28,8 @@ class PureCounter extends React.Component<ConnectedState & ConnectedDispatch & O
     }
 }
 
-// export const Counter = compose(
-//   PureCounter,
-//   connect(mapStateToProps, mapDispatchToProps),
-// )
-
 export const Counter = 
-  connect<{}, {}, OwnProps>(mapStateToProps, mapDispatchToProps) (PureCounter)
+  connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (PureCounter)
 
 
 

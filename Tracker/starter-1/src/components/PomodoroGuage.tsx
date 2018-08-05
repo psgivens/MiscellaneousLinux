@@ -1,32 +1,24 @@
+
 import * as d3 from 'd3'
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-export type OwnProps = {} & {
-  guageId: string // Likely don't need the guageId
-}
-  
-export type ConnectedState = {} & {
-  counter?: number
-}
+import * as container from '../containers/PomodoroGuage'
 
-export type ConnectedDispatch = {} & {
-  triggerThing?: () => void
-}
-
-type OwnState = {} & {
+type ComponentState = {} & {
   counter: number
 }
 
 type D3Config = {} & {
-  [field:string]: any,
-  size						: number,
+  [field:string]    : any,
+  size						  : number,
   clipWidth					: number,
-  clipHeight					: number,
+  clipHeight				: number,
   ringInset					: number,
   ringWidth					: number,
 
-  pointerWidth				: number,
-  pointerTailLength			: number,
+  pointerWidth			: number,
+  pointerTailLength	: number,
   pointerHeadLengthPercent	: number,
 
   minValue					: number,
@@ -35,19 +27,19 @@ type D3Config = {} & {
   minAngle					: number,
   maxAngle					: number,
 
-  transitionMs				: number,
+  transitionMs			: number,
 
-  majorTicks					: number,
-  labelFormat					: (d:{valueOf():number}) => string,
-  labelInset					: number,
+  majorTicks				: number,
+  labelFormat				: (d:{valueOf():number}) => string,
+  labelInset				: number,
 
-  arcColorFn          : (d:any,i:number) => string
+  arcColorFn        : (d:any,i:number) => string
 };
 
 
 
-type ThisProps = ConnectedState & OwnProps & ConnectedDispatch
-export class PomodoroGuageComponent extends React.Component<ThisProps, OwnState> {
+type ThisProps = container.StateProps & container.AttributeProps & container.ConnectedDispatch
+class PomodoroGuageComponent extends React.Component<ThisProps, ComponentState> {
 
   private node : SVGSVGElement
   private range:number
@@ -213,3 +205,6 @@ export class PomodoroGuageComponent extends React.Component<ThisProps, OwnState>
     return 1
   }
 }
+
+export const PomodoroGuage = 
+  connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (PomodoroGuageComponent)
