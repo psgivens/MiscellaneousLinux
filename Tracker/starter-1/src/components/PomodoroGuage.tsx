@@ -6,11 +6,11 @@ export type OwnProps = {} & {
 }
   
 export type ConnectedState = {} & {
-    counter?: number
+  counter?: number
 }
 
 export type ConnectedDispatch = {} & {
-
+  triggerThing?: () => void
 }
 
 type OwnState = {} & {

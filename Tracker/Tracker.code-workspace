@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "PomodoroApi/PomodoroApi"
+		},
+		{
+			"path": "starter-1"
+		},
+		{
+			"path": "ElectronClient"
+		}
+	],
+	"settings": {}
+}

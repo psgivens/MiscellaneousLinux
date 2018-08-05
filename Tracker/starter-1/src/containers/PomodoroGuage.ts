@@ -20,7 +20,7 @@ const mapStateToProps = (state1: state.IAll, ownProps: OwnProps): ConnectedState
 }
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<GuageAction>): ConnectedDispatch => ({
-    fake: 3
+    
   })  
 
 // export const PomodoroGuage = compose (

@@ -1,11 +1,12 @@
 import { Dispatch } from 'redux'
 import { takeEvery } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 // import { all, call, put, takeEvery, takeLatest, select, PutEffect } from 'redux-saga/effects'
-import * as state from '../reducers'
+// import * as state from '../reducers'
 // import { PomodoroState, PomodoroRunningState, initialState } from '../reducers/Pomodoro'
 // import sagaMiddlewareFactory from 'redux-saga';
 // import { local } from 'd3-selection';
-// import { api, GetIpResult } from '../apis'
+import { api } from '../apis'
 
 export type FetchCommand = {
     type: "FETCH_GETCONTENT"
@@ -16,11 +17,12 @@ export type FetchCommand = {
 }
 
 export class FetchCommands {
-    public getContent = ():FetchCommand => ({ type: "FETCH_GETCONTENT" })
+    public static getContent = ():FetchCommand => ({ type: "FETCH_GETCONTENT" })
 } 
 
 export type FetchEvent = {
     type: "FETCH_CONTENTFETCHED"
+    values: string[]
 } | {
     type: "FETCH_FAILED"
 }
@@ -28,7 +30,13 @@ export type FetchEvent = {
 function createRequests() {
 
     function *fetchCommand(action: FetchCommand){
-        return 0
+
+        const responseValues: string[] = yield call(api.fetchValues)
+
+        yield put( { 
+            type: "FETCH_CONTENTFETCHED",
+            values: responseValues
+        })
         // const state:PomodoroState = yield select(getPomodoroState)
         // const version = ++state.version.remote
         // yield put({ type: 'POMODORO_LOCAL_SAVING', version })

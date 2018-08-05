@@ -28,6 +28,8 @@ namespace WeightTrack
             //   services.AddDbContext<WeightTrackContext>(opt => 
             //     opt.UseInMemoryDatabase("WeightEntryList"));
 
+            services.AddCors();
+
             services.AddMvc();
 
             var connectionString = Configuration["DbContextSettings:ConnectionString"];
@@ -44,8 +46,15 @@ namespace WeightTrack
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder =>
+                builder
+                    .WithOrigins("http://localhost:3000")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader() );
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
 
             app.UseMvc();
         }

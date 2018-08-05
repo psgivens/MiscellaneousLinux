@@ -1,17 +1,61 @@
 #!/bin/bash
 
+command=$1
+target=$2
+
+function launch () {
+  case "$target" in
+  "pgsql")
+    echo "Launching database"
+
+    # run the database container
+    # https://hub.docker.com/_/postgres/
+    sudo docker run \
+      --name pomodoro-pgsql \
+      --mount source=pgs_tracker,target=/var/lib/postgresql/data/pgdata \
+      --network tracker-net \
+      --rm \
+      -p 5432:5432 \
+      -e POSTGRES_PASSWORD=Password1 \
+      -e POSTGRES_USER=samplesam \
+      -e POSTGRES_DB=defaultdb \
+      -e PGDATA=/var/lib/postgresql/data/pgdata \
+      -d \
+      pomodoro-pgsql
+
+    ;;
+  *)
+    echo "Launching invalid target: $target"
+    ;;
+  esac
+}
+
+function build () {
+  case "$target" in 
+  "network")
+
+    ### Create the network
+    sudo docker network create --driver bridge tracker-net
+
+    ;;
+  *)
+    echo "Building invalid target: $target"
+    ;;
+  esac
+}
+
 function setCommand () {
-  case "$1" in
+  case "$command" in
   "describe")
     echo describe something
     command=describe
+    ;;
   "build")
     echo build something
     command=build
     ;;
   "launch")
-    echo launch something
-    command=launch
+    launch $target
     ;;
   *) 
     echo "$1 is not a supported command"
@@ -21,7 +65,8 @@ function setCommand () {
   esac
 }
 
-setCommand $1
+setCommand $command
+
 
 case "$1" in
 "describe")
@@ -29,6 +74,9 @@ case "$1" in
     sudo docker volume list | grep pomodoro
     sudo docker container list -a | grep -E "NAMES|pomodoro|pgadmin|tracker|dbg"
     sudo docker image list
+  ;;
+"build")
+    echo "Build not implemented"
   ;;
 *)
   echo "command not implemented"

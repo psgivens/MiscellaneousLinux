@@ -14,11 +14,14 @@ import { reducers } from './reducers'
 
 import registerServiceWorker from './registerServiceWorker';
 
+import mySaga from './sagas/CounterActions'
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
 
-const store: ReduxStore<state.IAll> = createStore(reducers, { counter: 2, counters: { first_pomodoro: 1} } as state.IAll, applyMiddleware(sagaMiddleware))
+const store: ReduxStore<state.IAll> = createStore(reducers, { counter: 2, counters: { first_pomodoro: 1}, values:[] } as state.IAll, applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run(mySaga(store.dispatch))
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,
