@@ -3,6 +3,18 @@
 command=$1
 target=$2
 
+function printUsage() {
+  echo "usage: run.sh <command> <target>"
+}
+
+function describe () {
+    sudo docker network list | grep tracker
+    sudo docker volume list | grep pomodoro
+    sudo docker container list -a | grep -E "NAMES|pomodoro|pgadmin|tracker|dbg"
+
+    sudo docker image list
+}
+
 function launch () {
   case "$target" in
   "pgsql")
@@ -24,48 +36,68 @@ function launch () {
       pomodoro-pgsql
 
     ;;
+
+  "tracker")
+    echo "'tracker' not yet implemented"
+    ;;
+
+  "pgadmin")
+    sudo docker run \
+      -it -p 5002:80 \
+      --rm \
+      --name pgadmin_tracker \
+      --network tracker-net \
+      -e "PGADMIN_DEFAULT_EMAIL=user@domain.com" \
+      -e "PGADMIN_DEFAULT_PASSWORD=Password1" \
+      dpage/pgadmin4
+    ;;
+
   *)
     echo "Launching invalid target: $target"
+    echo "valid targets: pgsql, tracker, pgadmin"
     ;;
+
   esac
 }
 
 function build () {
   case "$target" in 
   "network")
-
     ### Create the network
     sudo docker network create --driver bridge tracker-net
-
     ;;
+
   *)
     echo "Building invalid target: $target"
     ;;
+
   esac
 }
 
-function setCommand () {
+function runCommand () {
   case "$command" in
   "describe")
-    echo describe something
-    command=describe
+    describe 
     ;;
+
   "build")
     echo build something
-    command=build
     ;;
+
   "launch")
     launch $target
     ;;
+
   *) 
-    echo "$1 is not a supported command"
-    echo "supported: build, launch"
+    printUsage
+    echo "commands: build, launch"
     exit
     ;;
+
   esac
 }
 
-setCommand $command
+runCommand $command
 
 
 case "$1" in
