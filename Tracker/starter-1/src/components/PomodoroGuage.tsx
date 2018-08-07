@@ -86,10 +86,8 @@ class PomodoroGuageComponent extends React.Component<ThisProps, ComponentState> 
   }
 
   public render() {                                                        
-    const { guageId } = this.props
     return <div>
-      <svg ref={node => this.node = node!} width={500} height={500} />
-      Label: {guageId}
+      <svg ref={node => this.node = node!} width={200} height={100} />
       </div>
   }
 

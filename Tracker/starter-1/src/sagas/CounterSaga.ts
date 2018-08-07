@@ -33,7 +33,7 @@ function createRequests() {
 
     /*************** Register listeners ********************/
     function *saga(): Iterator<any> {
-        yield takeEvery('COUNTER_INCREMENTED', handleIncrementCounter)
+        yield takeEvery('COUNTER_INCREMENT', handleIncrementCounter)
     }
 
     return saga

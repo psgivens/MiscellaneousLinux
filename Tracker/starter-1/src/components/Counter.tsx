@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import * as container from '../containers/Counter'
 
+import Button from '../common/Button'
+
 type ComponentState = {} & {}
 
 class PureCounter extends React.Component<container.StateProps & container.ConnectedDispatch & container.AttributeProps, ComponentState> {
@@ -10,7 +12,7 @@ class PureCounter extends React.Component<container.StateProps & container.Conne
     const { counter, values } = this.props
     return <div>
       <pre>counter = {counter}</pre>
-      <button onClick={this.onClickIncrement}>click me!</button>
+      <Button onClick={this.onClickIncrement} text="Click Me!" />
       <pre>
           {JSON.stringify({
             counter, 

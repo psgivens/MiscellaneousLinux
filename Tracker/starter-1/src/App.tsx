@@ -17,6 +17,7 @@ class App extends React.Component {
         </p>
         <Counter name="first_pomodoro" />
         <p>... and so it begins. </p>
+        <Counter name="second_pomodoro" />
         <p>This is it! </p>
         <PomodoroGuage guageId="first_pomodoro" />
         <PomodoroGuage guageId="second_pomodoro" />
