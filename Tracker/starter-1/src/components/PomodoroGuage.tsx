@@ -45,6 +45,7 @@ class PomodoroGuageComponent extends React.Component<ThisProps, ComponentState> 
   private range:number
   private scale:d3.ScaleLinear<number,number>
   private counter:number = 0
+  private seed:number
 
   private config: D3Config = {          
     arcColorFn					: (d,i) => d3.interpolateHsl(d3.rgb('#F9E79F'), d3.rgb('#641E16'))(d*i),
@@ -71,6 +72,7 @@ class PomodoroGuageComponent extends React.Component<ThisProps, ComponentState> 
     this.createBarChart = this.createBarChart.bind(this)   
     this.config = this.config
     this.state = { counter: 0 }
+    this.seed = Math.floor(Math.random() * 1000)
   }
 
   public componentDidMount() {                                              
@@ -177,14 +179,14 @@ class PomodoroGuageComponent extends React.Component<ThisProps, ComponentState> 
       pointerGraphic.append('path')
         .attr('d', pointerLine)
         .attr('transform', 'rotate(' + newAngle +')')
-        .attr('id', 'pomodoro-guage-' + guageId)
+        .attr('id', 'pomodoro-guage-' + guageId + '' + this.seed)
     }
   }
 
   private updateBarChart(guageId:string, newValue:number){
 
     // Select the pointer created during chart creation.
-    const pointer = d3.select('#pomodoro-guage-' + guageId)
+    const pointer = d3.select('#pomodoro-guage-' + guageId + '' + this.seed)
 
     // Calculate the new angles
     const ratio = this.scale(newValue);
