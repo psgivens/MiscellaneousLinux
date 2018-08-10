@@ -5,7 +5,7 @@ import './css/sample.css'
 
 import Shell from './components/Shell';
 
-import { BrowserRouter as Router, Link, Route   } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch   } from "react-router-dom";
 
 import SandBox from './components/SandBox'
 
@@ -29,46 +29,19 @@ const App: React.SFC<BasicProps> = () =>
             <div className="navbar-menu" id="my-important-menu">
               <div className="navbar-end">
               <a className="navbar-item">
-                  Home
-                  </a>
-                  <a className="navbar-item">
-                  Other
-                  </a>
+                <Link to="/">Home</Link>
+              </a>
+              <a className="navbar-item">
+                <Link to="/Sandbox">Other</Link>
+              </a>
               </div>
             </div>
           </nav>
 
-          <section className="hero is-primary">
-            <div className="hero-body">
-              <p className="title">
-                Documentation
-              </p>
-              <p className="subtitle">
-                Everything you need to <strong>create a website</strong> with Bulma
-              </p>
-            </div>
-          </section>
-          <Route path="/" component={ SandBox } />
-          <section className="section">
-            <div className="container">
-            <h1 className="title">
-                Hello World
-            </h1>
-            <p className="subtitle">
-                My first website with <strong>Bulma</strong>!
-            </p>
-            </div>
-        </section>
-          Hello World
-          <ul >
-              <li><Link to="/">Home</Link> </li>
-          </ul>
-          
-          <Shell >
-              <div>
-                  Hello Shell
-              </div>
-          </Shell>
+          <Switch>
+            <Route path="/Sandbox" component={ SandBox } />
+            <Route path="/" component={ Shell } />          
+          </Switch>
         </>
     </Router>)
 

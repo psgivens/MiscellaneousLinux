@@ -4,8 +4,8 @@ import '../App.css'
 
 import logo from '../logo.svg'
 
-import { Counter } from './Counter'
-import { PomodoroGuage } from './PomodoroGuage'
+import { Counter } from './sandBox/Counter'
+import { PomodoroGuage } from './sandBox/PomodoroGuage'
 
 class SandBox extends React.Component {
   public render() {

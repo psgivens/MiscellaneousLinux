@@ -3,7 +3,7 @@ import * as d3 from 'd3'
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as container from '../containers/PomodoroGuage'
+import * as container from '../../containers/PomodoroGuage'
 
 type ComponentState = {} & {
   counter: number

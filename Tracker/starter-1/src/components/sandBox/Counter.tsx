@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as container from '../containers/Counter'
+import * as container from '../../containers/Counter'
 
-import Button from '../common/Button'
+import Button from '../../common/Button'
 
 type ComponentState = {} & {}
 
