@@ -20,7 +20,9 @@ import valuesSaga from './sagas/ValuesSaga'
 
 // import { createWorker, ITypedWorker } from 'typed-web-workers'
 
-import { databaseWorker } from './workers/DatabaseWorker'
+// import { databaseWorker } from './workers/DatabaseWorker'
+
+import { DatabaseWorkerEvent, postToDb } from './workers/DatabaseWorker'
 
 // import * as workerPath from "file-loader?name=[name].js!./workers/DatabaseWorker";
 
@@ -37,7 +39,22 @@ const store: ReduxStore<state.All> = createStore(reducers, {
 sagaMiddleware.run(mySaga(store.dispatch))
 sagaMiddleware.run(valuesSaga(store.dispatch))
 
-databaseWorker.postMessage({ type: "INSERT_ITEM" })
+postToDb({ 
+  item: {
+    actual: "Actually did the thing",
+    id: Math.floor(Math.random() * 1000000000),
+    name: "Phillip",
+    planned: "Doing the thing",
+    startTime: Date.now(),
+    userId: "psgivens",
+    version: 0
+  },
+    type: "INSERT_ITEM",
+  })
+  .then((event:DatabaseWorkerEvent) =>{
+    // tslint:disable-next-line:no-console
+    console.log("index.tsx call to postToDb: " + JSON.stringify(event))
+  })
 
 
 ReactDOM.render(

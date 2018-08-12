@@ -1,9 +1,27 @@
 import { createWorker, ITypedWorker } from 'typed-web-workers'
 
+import { execOnDatabase, PomodoroIdb } from './DatabaseProcessor'
+
+export type DatabaseCommandEnvelope = {} & {
+  correlationId: number
+  command: DatabaseWorkerCommand
+}
+
+export type DatabaseResponseEnvelope = {
+  type:"ERROR"
+  correlationId: number
+  error: any
+} | {
+  type: "EVENT"
+  correlationId: number
+  event: DatabaseWorkerEvent
+}
+
 export type DatabaseWorkerCommand = {
   type: "LOAD_DATA"
 } | {
   type: "INSERT_ITEM"
+  item: PomodoroIdb
 } | {
   type: "ADD",
   arg1: number,
@@ -15,98 +33,44 @@ export type DatabaseWorkerEvent = {
   data: any
 } | {
   type: "ITEM_INSERTED"
+} | {
+  type: "DATABASE_ERROR"
+  error: any
 }
 
-const execOnUI = (event:DatabaseWorkerEvent):void => {
+type PromiseBack = {} & {
+  resolve: (event:DatabaseWorkerEvent) => void
+  reject: (error:any) => void
+}
+const promiseBacks: { [index:number]: PromiseBack } = {}
+
+const execOnUI = (evtenv:DatabaseResponseEnvelope):void => {
+  const promiseBack = promiseBacks[evtenv.correlationId]
+  delete promiseBacks[evtenv.correlationId]
+  switch(evtenv.type){
+    case "ERROR":
+      promiseBack.reject(evtenv.error)
+      break
+    default:
+      promiseBack.resolve(evtenv.event)
+      break
+  }
   // tslint:disable-next-line:no-console
-  console.log(event.type)
+  console.log("execOnUI: " + JSON.stringify(evtenv))
 }
 
-const execOnDatabase = (command:DatabaseWorkerCommand,callback:(result:DatabaseWorkerEvent)=>void): void => {
-  let len = command.type.length
-  len = len * Math.random()
-
-  
-  const DBOpenRequest = indexedDB.open("Pomodoro", 2)
-
-  let objectStore: IDBObjectStore
-  DBOpenRequest.onupgradeneeded = (event: IDBVersionChangeEvent) => {
-    const database: IDBDatabase = DBOpenRequest.result;
-
-    if (event.oldVersion < 1){
-      objectStore = database.createObjectStore("Pomodoros", { keyPath: "id", autoIncrement: true });
-      objectStore.createIndex("idIdx", "id", { unique: true })
-      objectStore.createIndex("startIdx", "startTime", { unique: false })
-      objectStore.createIndex("userIdIdx", "userId", { unique: false })
-    } else if (event.oldVersion < 2) {
-      objectStore = DBOpenRequest.transaction.objectStore("Pomodoros")
-      objectStore.createIndex("other", "other")
-    }
-  };
-
-
-  DBOpenRequest.onerror = (event: Event) => {
-  //   console.log("**DB** DBRequest.onerror")
-  //   console.log(JSON.stringify(event))
-  };
-
-  let db:IDBDatabase
-  DBOpenRequest.onsuccess = (dbOpenEvent: Event) => {
-  //   console.log("**DB** DBRequest.onsuccess")
-  //   console.log(JSON.stringify(event))
-
-    // store the result of opening the database in the db variable. This is used a lot below
-    db = DBOpenRequest.result;
-
-    // Run the displayData() function to populate the task list with all the to-do list data already in the IDB
-    const transaction: IDBTransaction = db.transaction(["Pomodoros"], "readwrite");
-    transaction.oncomplete = () => {
-      // console.log("**DB** transaction.oncomplete")
-    };
-
-    objectStore = transaction.objectStore("Pomodoros");
-  //   console.log(JSON.stringify(objectStore.indexNames))
-  //   console.log(JSON.stringify(objectStore.keyPath))
-  //   console.log(JSON.stringify(objectStore.name))
-  //   console.log(JSON.stringify(objectStore.transaction))
-  //   console.log(JSON.stringify(objectStore.autoIncrement))
-
-    const objectStoreRequest: IDBRequest = objectStore.add({name: "rob", userId: "bsmith", startTime: new Date("2015-03-25T12:00:00Z"), version: 3 });
-    objectStoreRequest.onsuccess = () => {
-      //   console.log("**DB** OSRequest.onsucces")
-    };      
-    const index: IDBIndex = db.transaction("Pomodoros").objectStore("Pomodoros").index("startIdx")
-    const boundKeyRange: IDBKeyRange = IDBKeyRange.bound(new Date("2010-03-25T12:00:00Z"), new Date("2018-03-25T12:00:00Z"), false, true);
-
-    index.openCursor(boundKeyRange).onsuccess = (event: any) => {
-      const cursor = event.target.result;
-      if (cursor) {
-      //   console.log(JSON.stringify(cursor.value))
-        cursor.continue();
-      }
-      else {
-      //   console.log("Got all records ");
-      }
-    };
-
-    // const index2: IDBIndex = db.transaction("Pomodoros").objectStore("Pomodoros").index("userIdIdx")
-    // const boundKeyRange2: IDBKeyRange = IDBKeyRange.bound("andy", "zed", false, true);
-
-    index.openCursor(boundKeyRange).onsuccess = (event:any) => {
-      const cursor = event.target.result;
-      if (cursor) {
-      //   console.log(JSON.stringify(cursor.value))
-        cursor.continue();
-      }
-      else {
-      //   console.log("Got all records ");
-      }
-    };
-
-  };
-
-  callback({type: "DATA_LOADED", data: len})
-}
-
-export const databaseWorker: ITypedWorker<DatabaseWorkerCommand, DatabaseWorkerEvent> = createWorker(
+const databaseWorker: ITypedWorker<DatabaseCommandEnvelope, DatabaseResponseEnvelope> = createWorker(
   execOnDatabase, execOnUI)
+
+export const postToDb = (command:DatabaseWorkerCommand): Promise<DatabaseWorkerEvent> => {
+  const correlationId = Math.floor(Math.random() * 1000000000000000)
+  const cmdenv:DatabaseCommandEnvelope = { command, correlationId }
+  const promise = new Promise<DatabaseWorkerEvent>((resolve,reject) => {
+    promiseBacks[cmdenv.correlationId] = { reject, resolve }
+    databaseWorker.postMessage(cmdenv)
+  })
+  return promise
+}
+
+
+
