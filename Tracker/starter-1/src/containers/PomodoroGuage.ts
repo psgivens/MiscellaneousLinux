@@ -16,7 +16,7 @@ export type ConnectedDispatch = {} & {
 }
 
 export const mapStateToProps = (state1: state.All, ownProps: AttributeProps): StateProps => {
-  const value = state1.counters[ownProps.guageId] ? state1.counters[ownProps.guageId] : 3
+  const value = state1.counters[ownProps.guageId] ? state1.counters[ownProps.guageId] : 0
   return {
     counter: value
   }

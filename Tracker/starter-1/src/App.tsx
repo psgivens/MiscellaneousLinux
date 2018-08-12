@@ -5,41 +5,26 @@ import './css/sample.css'
 
 import Shell from './components/Shell';
 
-import { BrowserRouter as Router, Link, Route, Switch   } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch   } from "react-router-dom";
 
-import SandBox from './components/SandBox'
+import FirstDemo from './components/FirstDemo'
+
+import SecondDemo from './components/SecondDemo'
+
+import ThirdDemo from './components/ThirdDemo'
+
+import MainMenu from './components/MainMenu'
 
 type BasicProps = {} & {}
 
 const App: React.SFC<BasicProps> = () => 
     (<Router>
         <>
-          <nav className="navbar" role="navigation" aria-label="main navigation">
-            <div className="navbar-brand">
-              <a className="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28" />
-              </a>
-
-              <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="my-important-menu" >
-                <span aria-hidden="true" />
-                <span aria-hidden="true" />
-                <span aria-hidden="true" />
-              </a>
-            </div>
-            <div className="navbar-menu" id="my-important-menu">
-              <div className="navbar-end">
-              <a className="navbar-item">
-                <Link to="/">Home</Link>
-              </a>
-              <a className="navbar-item">
-                <Link to="/Sandbox">Other</Link>
-              </a>
-              </div>
-            </div>
-          </nav>
-
+          <MainMenu />
           <Switch>
-            <Route path="/Sandbox" component={ SandBox } />
+            <Route path="/FirstDemo" component={ FirstDemo } />
+            <Route path="/SecondDemo" component={ SecondDemo } />
+            <Route path="/ThirdDemo" component={ ThirdDemo } />
             <Route path="/" component={ Shell } />          
           </Switch>
         </>

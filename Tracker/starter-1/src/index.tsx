@@ -16,6 +16,14 @@ import registerServiceWorker from './registerServiceWorker';
 
 import mySaga from './sagas/CounterSaga'
 
+import valuesSaga from './sagas/ValuesSaga'
+
+// import { createWorker, ITypedWorker } from 'typed-web-workers'
+
+import { databaseWorker } from './workers/DatabaseWorker'
+
+// import * as workerPath from "file-loader?name=[name].js!./workers/DatabaseWorker";
+
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
 
@@ -27,6 +35,10 @@ const store: ReduxStore<state.All> = createStore(reducers, {
   values:[] } as state.All, applyMiddleware(sagaMiddleware))
 
 sagaMiddleware.run(mySaga(store.dispatch))
+sagaMiddleware.run(valuesSaga(store.dispatch))
+
+databaseWorker.postMessage({ type: "INSERT_ITEM" })
+
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,

@@ -43,6 +43,6 @@ function createRequests() {
 }
 
 // So this is ugly. It defines DI and the generator as a return before creating the generator. 
-const mySaga = (dispatch: Dispatch<FetchCommand>): (() => Iterator<any>) => createRequests()
+const valuesSaga = (dispatch: Dispatch<FetchCommand>): (() => Iterator<any>) => createRequests()
 
-export default mySaga
+export default valuesSaga

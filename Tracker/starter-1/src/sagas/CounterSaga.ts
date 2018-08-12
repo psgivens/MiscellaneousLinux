@@ -12,6 +12,7 @@ export type CounterCommand = {
 
 export class CounterCommands {
     public static incrementCounter = (name: string):CounterCommand => ({type: 'COUNTER_INCREMENT', name})
+    public static decrementCounter = (name: string):CounterCommand => ({type: 'COUNTER_DECREMENT', name})
 } 
 
 export type CounterEvent = {
@@ -31,9 +32,17 @@ function createRequests() {
         })
     }
 
+    function *handleDecrementCounter(action: CounterCommand){
+        yield put( { 
+            name: action.name,
+            type: "COUNTER_DECREMENTED"
+        })
+    }
+
     /*************** Register listeners ********************/
     function *saga(): Iterator<any> {
         yield takeEvery('COUNTER_INCREMENT', handleIncrementCounter)
+        yield takeEvery('COUNTER_DECREMENT', handleDecrementCounter)
     }
 
     return saga

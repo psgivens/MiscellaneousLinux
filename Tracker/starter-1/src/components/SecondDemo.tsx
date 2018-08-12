@@ -3,7 +3,7 @@ import * as React from 'react';
 
 type ShellProps = {} & {}
 
-const Shell: React.SFC<ShellProps> = ( ) => 
+const SecondDemo: React.SFC<ShellProps> = ( ) => 
   (<div className="container-fluid" >
     <section className="hero is-primary">
       <div className="hero-body">
@@ -27,4 +27,4 @@ const Shell: React.SFC<ShellProps> = ( ) =>
     </section>
   </div>)
 
-export default Shell
+export default SecondDemo
