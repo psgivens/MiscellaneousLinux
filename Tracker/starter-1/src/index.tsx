@@ -18,11 +18,13 @@ import mySaga from './sagas/CounterSaga'
 
 import valuesSaga from './sagas/ValuesSaga'
 
+import { PomodoroSaga } from './sagas/PomodoroSaga'
+
 // import { createWorker, ITypedWorker } from 'typed-web-workers'
 
 // import { databaseWorker } from './workers/DatabaseWorker'
 
-import { DatabaseWorkerEvent, postToDb } from './workers/DatabaseWorker'
+import { DatabaseWorker, DatabaseWorkerEvent } from './workers/DatabaseWorker'
 
 // import * as workerPath from "file-loader?name=[name].js!./workers/DatabaseWorker";
 
@@ -30,16 +32,24 @@ import { DatabaseWorkerEvent, postToDb } from './workers/DatabaseWorker'
 const sagaMiddleware = createSagaMiddleware()
 
 const store: ReduxStore<state.All> = createStore(reducers, { 
+  connection: {
+    isConnected: false,
+    isLoadingPomodoro: false,
+    lastConnection: 0,
+  },
   counter: 2, 
   counters: { 
     first_pomodoro: 1, 
     second_pomodoro: 6}, 
-  values:[] } as state.All, applyMiddleware(sagaMiddleware))
+  pomodoros: [],
+  values: [],
+ } as state.All, applyMiddleware(sagaMiddleware))
 
 sagaMiddleware.run(mySaga(store.dispatch))
 sagaMiddleware.run(valuesSaga(store.dispatch))
 
-postToDb({ 
+const databaseWorker = new DatabaseWorker(store.dispatch)
+databaseWorker.post({ 
   item: {
     actual: "Actually did the thing",
     id: Math.floor(Math.random() * 1000000000),
@@ -56,6 +66,9 @@ postToDb({
     console.log("index.tsx call to postToDb: " + JSON.stringify(event))
   })
 
+
+const pomodoroSaga = new PomodoroSaga(databaseWorker)
+sagaMiddleware.run(() => pomodoroSaga.saga())
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,

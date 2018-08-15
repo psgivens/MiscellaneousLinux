@@ -3,13 +3,13 @@ import './App.css'
 
 import './css/sample.css'
 
-import Shell from './components/Shell';
+// import Shell from './components/Shell';
 
 import { BrowserRouter as Router, Route, Switch   } from "react-router-dom";
 
 import FirstDemo from './components/FirstDemo'
 
-import SecondDemo from './components/SecondDemo'
+import { SecondDemo } from './components/SecondDemo'
 
 import ThirdDemo from './components/ThirdDemo'
 
@@ -25,7 +25,7 @@ const App: React.SFC<BasicProps> = () =>
             <Route path="/FirstDemo" component={ FirstDemo } />
             <Route path="/SecondDemo" component={ SecondDemo } />
             <Route path="/ThirdDemo" component={ ThirdDemo } />
-            <Route path="/" component={ Shell } />          
+            <Route path="/" component={ SecondDemo } />          
           </Switch>
         </>
     </Router>)

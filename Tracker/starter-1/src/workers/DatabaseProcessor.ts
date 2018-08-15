@@ -35,7 +35,7 @@ export const execOnDatabase = (cmdenv:DatabaseCommandEnvelope,callback:(result:D
                 objectStore.createIndex("startIdx", "startTime", { unique: false })
                 objectStore.createIndex("userIdIdx", "userId", { unique: false })
             } else if (event.oldVersion < 2) {
-                objectStore = DBOpenRequest.transaction.objectStore("Pomodoros")
+                objectStore = DBOpenRequest.transaction!.objectStore("Pomodoros")
                 objectStore.createIndex("other", "other")
             }
         };

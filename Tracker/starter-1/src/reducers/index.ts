@@ -4,13 +4,21 @@ import reduceReducers from 'reduce-reducers';
 import { CounterEvent } from '../sagas/CounterSaga'
 import { FetchEvent } from '../sagas/ValuesSaga'
 
+import { PomodoroIdb } from '../workers/DatabaseProcessor'
+
 type Counters = {} & {
   [name:string]: number
 }
-export class All {
-  public counter: number
-  public counters: Counters
-  public values: string[]
+export type All = {} & {
+  counter: number
+  counters: Counters
+  values: string[]
+  connection: {
+    isConnected: boolean
+    lastConnection: number
+    isLoadingPomodoro: boolean
+  }, 
+  pomodoros: PomodoroIdb[]
 }
 
 function myReducer(state:All, action: CounterEvent): All {

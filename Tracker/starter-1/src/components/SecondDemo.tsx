@@ -1,10 +1,27 @@
 // This component handles the App template used on every page.
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-type ShellProps = {} & {}
+import Button from '../common/Button'
 
-const SecondDemo: React.SFC<ShellProps> = ( ) => 
-  (<div className="container-fluid" >
+import * as container from '../containers/SecondDemo'
+
+type ThisProps = container.StateProps & container.ConnectedDispatch & container.AttributeProps
+
+const PureSecondDemo: React.SFC<ThisProps> = (props:ThisProps) => {
+  const onClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    props.addItem!({
+      actual: "Actually posted from UI",
+      id: Math.floor(Math.random() * 1000000000),
+      name: "Phillip",
+      planned: "Posting the thing from the UI",
+      startTime: Date.now(),
+      userId: "psgivens",
+      version: 0
+    })
+  }
+  return (<div className="container-fluid" >
     <section className="hero is-primary">
       <div className="hero-body">
         <p className="title">
@@ -23,8 +40,13 @@ const SecondDemo: React.SFC<ShellProps> = ( ) =>
         <p className="subtitle">
             My first website with <strong>Bulma</strong>!
         </p>
+        <p>
+          <Button onClick={onClick} text="Add Item" />
+        </p>
       </div>
     </section>
   </div>)
+}
 
-export default SecondDemo
+export const SecondDemo =
+  connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (PureSecondDemo)

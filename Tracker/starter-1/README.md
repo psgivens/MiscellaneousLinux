@@ -1,3 +1,27 @@
+# My Notes
+
+This article helped
+http://reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-component-classes/
+
+### Method Invocation Pattern
+If there are dots in your function call, your function context will be the right-most element of your dots chain.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Original README
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
