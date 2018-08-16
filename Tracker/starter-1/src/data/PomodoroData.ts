@@ -1,14 +1,24 @@
-import { DatabaseCommandEnvelope, DatabaseResponseEnvelope } from './DatabaseWorker'
+import { DatabaseCommandEnvelope, DatabaseResponseEnvelope } from '../workers/DatabaseWorker'
+
+import { PomodoroIdb } from '../data/PomodoroData'
 
 export type PomodoroIdb = {} & {
     id: number
-    name: string
     userId: string
     planned: string
     actual: string
     startTime: number
     version: number
 }
+
+export const createPomodoro = (userId:string, planned:string, actual:string="", startTime:number=Date.now()):PomodoroIdb => ({    
+        actual,
+        id: Math.floor(Math.random() * 1000000000),
+        planned,
+        startTime,
+        userId,
+        version: 0
+})
 
 export const execOnDatabase = (cmdenv:DatabaseCommandEnvelope,callback:(result:DatabaseResponseEnvelope)=>void): void => {
 

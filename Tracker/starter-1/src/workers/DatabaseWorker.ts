@@ -1,6 +1,6 @@
 import { createWorker, ITypedWorker } from 'typed-web-workers'
 
-import { execOnDatabase, PomodoroIdb } from './DatabaseProcessor'
+import { execOnDatabase, PomodoroIdb } from '../data/PomodoroData'
 
 import { Dispatch } from 'redux'
 

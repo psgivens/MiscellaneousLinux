@@ -53,7 +53,6 @@ databaseWorker.post({
   item: {
     actual: "Actually did the thing",
     id: Math.floor(Math.random() * 1000000000),
-    name: "Phillip",
     planned: "Doing the thing",
     startTime: Date.now(),
     userId: "psgivens",

@@ -4,7 +4,7 @@ import * as state from '../reducers'
 
 import { PomodoroCommand, PomodoroCommands } from "../sagas/PomodoroSaga";
 
-import { PomodoroIdb } from '../workers/DatabaseProcessor'
+import { PomodoroIdb } from '../data/PomodoroData'
 
 // import { CounterCommand, CounterCommands } from '../sagas/CounterSaga'
 // import { FetchCommand } from '../sagas/ValuesSaga'

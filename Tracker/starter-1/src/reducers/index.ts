@@ -4,7 +4,7 @@ import reduceReducers from 'reduce-reducers';
 import { CounterEvent } from '../sagas/CounterSaga'
 import { FetchEvent } from '../sagas/ValuesSaga'
 
-import { PomodoroIdb } from '../workers/DatabaseProcessor'
+import { PomodoroIdb } from '../data/PomodoroData'
 
 type Counters = {} & {
   [name:string]: number

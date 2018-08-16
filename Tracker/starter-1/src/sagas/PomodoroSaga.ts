@@ -5,7 +5,7 @@ import { api } from '../apis'
 
 import { DatabaseWorker, DatabaseWorkerCommand, DatabaseWorkerEvent } from '../workers/DatabaseWorker'
 
-import { PomodoroIdb } from '../workers/DatabaseProcessor'
+import { PomodoroIdb } from '../data/PomodoroData'
 
 export type PomodoroCommand = {
     type: "POMODORO_LOADITEMS"
