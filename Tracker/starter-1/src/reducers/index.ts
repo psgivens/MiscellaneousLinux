@@ -5,6 +5,7 @@ import { CounterEvent } from '../sagas/CounterSaga'
 import { FetchEvent } from '../sagas/ValuesSaga'
 
 import { PomodoroIdb } from '../data/PomodoroData'
+import { PomodoroEvent } from '../sagas/PomodoroSaga';
 
 type Counters = {} & {
   [name:string]: number
@@ -19,6 +20,15 @@ export type All = {} & {
     isLoadingPomodoro: boolean
   }, 
   pomodoros: PomodoroIdb[]
+}
+
+function pomodoroReducers(state:All, action: PomodoroEvent): All {
+  switch(action.type) {
+    case "POMODORO_ITEMSLOADED":
+      return { ...state, pomodoros: action.items }
+    default:
+      return state
+  }
 }
 
 function myReducer(state:All, action: CounterEvent): All {
@@ -42,4 +52,4 @@ function valuesReducers(state:All, action: FetchEvent): All {
   return state
 }
 
-export const reducers = reduceReducers(myReducer, valuesReducers)
+export const reducers = reduceReducers(myReducer, valuesReducers, pomodoroReducers)

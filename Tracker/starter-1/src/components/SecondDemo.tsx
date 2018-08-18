@@ -14,6 +14,7 @@ type ThisProps = container.StateProps & container.ConnectedDispatch & container.
 
 type ComponentState = {} & {
   actual: string
+  planned: string
 }
 
 class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
@@ -22,9 +23,13 @@ class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
     super (props)
     this.state = {
       actual: "b: Actually posted from UI",
+      planned: "b: Planned posted from UI"
     }
-    this.onChange = this.onChange.bind(this)
+    this.onActualChange = this.onActualChange.bind(this)
+    this.onPlannedChange = this.onPlannedChange.bind(this)
     this.onClick = this.onClick.bind(this)
+
+    this.props.loadItems!()
   }
 
   public render () {
@@ -55,10 +60,18 @@ class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
             inputType="text"
             label="Actual Value"            
             name="actual"
-            placeholder="Enter a value to see it's length"
+            placeholder="Enter what actually was worked on"
             value={this.state.actual}
-            onChange={this.onChange} />
+            onChange={this.onActualChange} />
             <br />
+            <TextInput
+            inputType="text"
+            label="Planned Value"            
+            name="planned"
+            placeholder="Enter what you planned to work on"
+            value={this.state.planned}
+            onChange={this.onPlannedChange} />
+
 
           </p>
         </div>
@@ -69,17 +82,22 @@ class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
   private onClick (event: React.SyntheticEvent<HTMLButtonElement>) {
     event.preventDefault()
     
-    const { actual } = this.state
+    const { actual, planned } = this.state
     this.props.addItem!(createPomodoro(
       "psgivens",        
-      "a: Posting the thing from the UI",
+      planned,
       actual,
     ))
   }
 
-  private onChange (event: React.SyntheticEvent<HTMLInputElement>) {
+  private onActualChange (event: React.SyntheticEvent<HTMLInputElement>) {
     event.preventDefault()
     this.setState({ ...this.state, actual: event.currentTarget.value})    
+  }
+
+  private onPlannedChange (event: React.SyntheticEvent<HTMLInputElement>) {
+    event.preventDefault()
+    this.setState({ ...this.state, planned: event.currentTarget.value})    
   }
 
 }

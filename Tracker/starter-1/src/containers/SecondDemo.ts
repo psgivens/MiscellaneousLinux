@@ -19,6 +19,7 @@ export type StateProps = {} & {
   
 export type ConnectedDispatch = {} & {
     addItem?: (item: PomodoroIdb) => void
+    loadItems?: () => void
 }
 
 export const mapStateToProps = (state1: state.All, ownProps: AttributeProps): StateProps => ({
@@ -27,4 +28,5 @@ export const mapStateToProps = (state1: state.All, ownProps: AttributeProps): St
 
 export const mapDispatchToProps = (dispatch: redux.Dispatch<PomodoroCommand>): ConnectedDispatch => ({
   addItem: (item:PomodoroIdb) => dispatch(PomodoroCommands.addItem(item)),
+  loadItems: () => dispatch(PomodoroCommands.loadItems())
 })

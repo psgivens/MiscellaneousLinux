@@ -70,44 +70,54 @@ export const execOnDatabase = (cmdenv:DatabaseCommandEnvelope,callback:(result:D
                 const objectStoreRequest: IDBRequest = objectStore.add(command.item)
                 objectStoreRequest.onerror = handleException
                 objectStoreRequest.onsuccess = () => {
-                    //   console.log("**DB** OSRequest.onsucces")
-                };          
+
+                callback({
+                    correlationId: cmdenv.correlationId,
+                    event:{type: "ITEM_INSERTED", item: command.item},
+                    type: "EVENT"})
+                    };          
+
                 break;
+
+            case "LOAD_DATA":
+
+                const index: IDBIndex = db.transaction("Pomodoros").objectStore("Pomodoros").index("userIdIdx")
+                const boundKeyRange: IDBKeyRange = IDBKeyRange.bound("andy", "zed", false, true);
+
+                // const index: IDBIndex = db.transaction("Pomodoros").objectStore("Pomodoros").index("startIdx")
+                // const boundKeyRange: IDBKeyRange = IDBKeyRange.bound(new Date("2010-03-25T12:00:00Z"), new Date("2020-03-25T12:00:00Z"), false, true);
+
+                const items:PomodoroIdb[] = []
+                index.openCursor(boundKeyRange).onsuccess = (event: any) => {
+                    const cursor = event.target.result;
+                    if (cursor) {
+                        items.push(cursor.value)
+                        cursor.continue();
+                    }
+                    else {
+                        callback({
+                            correlationId: cmdenv.correlationId,
+                            event:{ type: "DATA_LOADED", data: items },
+                            type: "EVENT"})
+                    }
+                };
+                break
+
+                // // const index2: IDBIndex = db.transaction("Pomodoros").objectStore("Pomodoros").index("userIdIdx")
+                // // const boundKeyRange2: IDBKeyRange = IDBKeyRange.bound("andy", "zed", false, true);
+
+                // index.openCursor(boundKeyRange).onsuccess = (event:any) => {
+                //     const cursor = event.target.result;
+                //     if (cursor) {
+                //         //   console.log(JSON.stringify(cursor.value))
+                //     cursor.continue();
+                //     }
+                //     else {
+                //         //   console.log("Got all records ");
+                //     }
+                // };
+            };
         }
-
-        const index: IDBIndex = db.transaction("Pomodoros").objectStore("Pomodoros").index("startIdx")
-        const boundKeyRange: IDBKeyRange = IDBKeyRange.bound(new Date("2010-03-25T12:00:00Z"), new Date("2018-03-25T12:00:00Z"), false, true);
-
-        index.openCursor(boundKeyRange).onsuccess = (event: any) => {
-            const cursor = event.target.result;
-            if (cursor) {
-            //   console.log(JSON.stringify(cursor.value))
-            cursor.continue();
-            }
-            else {
-            //   console.log("Got all records ");
-            }
-        };
-
-        // const index2: IDBIndex = db.transaction("Pomodoros").objectStore("Pomodoros").index("userIdIdx")
-        // const boundKeyRange2: IDBKeyRange = IDBKeyRange.bound("andy", "zed", false, true);
-
-        index.openCursor(boundKeyRange).onsuccess = (event:any) => {
-            const cursor = event.target.result;
-            if (cursor) {
-                //   console.log(JSON.stringify(cursor.value))
-            cursor.continue();
-            }
-            else {
-                //   console.log("Got all records ");
-            }
-        };
-        };
-
-        callback({
-            correlationId: cmdenv.correlationId,
-            event:{type: "DATA_LOADED", data: "sample"},
-            type: "EVENT"})
     }
     catch (e) {
         handleException(e)
