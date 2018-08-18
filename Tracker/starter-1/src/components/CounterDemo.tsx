@@ -3,6 +3,7 @@ import * as React from 'react'
 import '../App.css'
 import logo from '../logo.svg'
 import { Counter } from './counterDemo/Counter'
+import { PomodoroArc } from './counterDemo/PomodoroArc'
 import { PomodoroGuage } from './counterDemo/PomodoroGuage'
 import { ValuesButton } from './counterDemo/ValuesButton'
 
@@ -35,6 +36,9 @@ class CounterDemo extends React.Component {
           </div>
           <div className="column">
             <PomodoroGuage guageId="second_pomodoro" />
+          </div>
+          <div className="column">
+            <PomodoroArc guageId="first_pomodoro" />
           </div>
         </div>
 
