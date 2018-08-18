@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Button from '../common/Button'
 
-import * as container from '../containers/SecondDemo'
+import * as container from './ListDemoConnect'
 
 import { createPomodoro } from '../data/PomodoroData'
 
@@ -19,7 +19,7 @@ type ComponentState = {} & {
   planned: string
 }
 
-class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
+class PureListDemo extends React.Component<ThisProps, ComponentState> {
 
   constructor (props:ThisProps) {
     super (props)
@@ -36,26 +36,14 @@ class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
 
   public render () {
     return (<div className="container-fluid" >
-      <section className="hero is-primary">
-        <div className="hero-body">
-          <p className="title">
-            Documentation
-          </p>
-          <p className="subtitle">
-            Everything you need to <strong>create a website</strong> with Bulma
-          </p>
-        </div>
-      </section>    
+      
       <section className="section">
         <div className="container">
           <h1 className="title"> 
-              Hello World!
+              Pomodoro List Example
           </h1>
           <p className="subtitle">
-              My first website with <strong>Bulma</strong>!
-          </p>
-          <p>
-            <Button onClick={this.onClick} text="Add Item" />
+              This is an example of adding and listing items!
           </p>
           <p>
           <TextInput
@@ -65,14 +53,14 @@ class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
             placeholder="Enter what actually was worked on"
             value={this.state.actual}
             onChange={this.onActualChange} />
-            <br />
-            <TextInput
+          <TextInput
             inputType="text"
             label="Planned Value"            
             name="planned"
             placeholder="Enter what you planned to work on"
             value={this.state.planned}
             onChange={this.onPlannedChange} />
+            <Button onClick={this.onClick} text="Add Item" />
 
             <br />
             <hr />
@@ -88,20 +76,11 @@ class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
                 <tr key={pomodoro.id}>
                   <td>{pomodoro.planned}</td>
                   <td>{pomodoro.actual}</td>
-                  <td>{pomodoro.startTime}</td>
+                  <td>{(new Date(pomodoro.startTime)).toLocaleString()}</td>
                 </tr>)}
 
               </tbody>
             </table>
-
-
-
-
-            <ul>
-              {this.props.pomodoros.map((pomodoro:PomodoroIdb)=>
-                <li key={pomodoro.id}>{pomodoro.planned}</li>)}
-            </ul>
-
           </p>
         </div>
       </section>
@@ -131,5 +110,5 @@ class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
 
 }
 
-export const SecondDemo =
-  connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (PureSecondDemo)
+export const ListDemo =
+  connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (PureListDemo)

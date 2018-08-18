@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as container from '../../containers/Counter'
+import * as container from './CounterConnect'
 
 import Button from '../../common/Button'
 

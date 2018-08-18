@@ -7,9 +7,9 @@ import './css/sample.css'
 
 import { BrowserRouter as Router, Route, Switch   } from "react-router-dom";
 
-import FirstDemo from './components/FirstDemo'
+import CounterDemo from './components/CounterDemo'
 
-import { SecondDemo } from './components/SecondDemo'
+import { ListDemo } from './components/ListDemo'
 
 import ThirdDemo from './components/ThirdDemo'
 
@@ -22,10 +22,10 @@ const App: React.SFC<BasicProps> = () =>
         <>
           <MainMenu />
           <Switch>
-            <Route path="/FirstDemo" component={ FirstDemo } />
-            <Route path="/SecondDemo" component={ SecondDemo } />
+            <Route path="/CounterDemo" component={ CounterDemo } />
+            <Route path="/ListDemo" component={ ListDemo } />
             <Route path="/ThirdDemo" component={ ThirdDemo } />
-            <Route path="/" component={ SecondDemo } />          
+            <Route path="/" component={ ListDemo } />          
           </Switch>
         </>
     </Router>)

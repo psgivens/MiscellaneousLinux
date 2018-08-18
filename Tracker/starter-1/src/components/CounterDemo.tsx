@@ -1,15 +1,12 @@
+
 import * as React from 'react'
-
 import '../App.css'
-
 import logo from '../logo.svg'
+import { Counter } from './counterDemo/Counter'
+import { PomodoroGuage } from './counterDemo/PomodoroGuage'
+import { ValuesButton } from './counterDemo/ValuesButton'
 
-import { Counter } from './firstDemo/Counter'
-import { PomodoroGuage } from './firstDemo/PomodoroGuage'
-
-import { ValuesButton } from './firstDemo/ValuesButton'
-
-class FirstDemo extends React.Component {
+class CounterDemo extends React.Component {
   public render() {
     return (
       <div className="App">
@@ -46,4 +43,4 @@ class FirstDemo extends React.Component {
   }
 }
 
-export default FirstDemo
+export default CounterDemo

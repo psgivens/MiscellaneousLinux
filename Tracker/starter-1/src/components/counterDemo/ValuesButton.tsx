@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as container from '../../containers/ValuesButton'
+import * as container from './ValuesButtonConnect'
 
 import Button from '../../common/Button'
 

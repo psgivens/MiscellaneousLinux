@@ -1,9 +1,9 @@
 
 import * as redux from 'redux';
-import * as state from '../reducers'
+import * as state from '../../reducers'
 
-import { CounterCommand, CounterCommands } from '../sagas/CounterSaga'
-import { FetchCommand } from '../sagas/ValuesSaga'
+import { CounterCommand, CounterCommands } from '../../sagas/CounterSaga'
+import { FetchCommand } from '../../sagas/ValuesSaga'
 
 export type AttributeProps = {} & {
     name: string
