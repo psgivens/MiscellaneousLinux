@@ -15,6 +15,7 @@ export type AttributeProps = {} & {
   
 export type StateProps = {} & {
     counter?: number
+    pomodoros: PomodoroIdb[]
 }
   
 export type ConnectedDispatch = {} & {
@@ -23,7 +24,8 @@ export type ConnectedDispatch = {} & {
 }
 
 export const mapStateToProps = (state1: state.All, ownProps: AttributeProps): StateProps => ({
-  counter: state1.counters[ownProps.name]
+  counter: state1.counters[ownProps.name],
+  pomodoros: state1.pomodoros
 })
 
 export const mapDispatchToProps = (dispatch: redux.Dispatch<PomodoroCommand>): ConnectedDispatch => ({

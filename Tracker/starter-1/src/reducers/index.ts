@@ -26,6 +26,8 @@ function pomodoroReducers(state:All, action: PomodoroEvent): All {
   switch(action.type) {
     case "POMODORO_ITEMSLOADED":
       return { ...state, pomodoros: action.items }
+    case "POMODORO_ITEMADDED":
+      return { ...state, pomodoros:[...state.pomodoros, action.item]}
     default:
       return state
   }

@@ -10,6 +10,8 @@ import { createPomodoro } from '../data/PomodoroData'
 
 import TextInput from '../common/TextInput'
 
+import { PomodoroIdb } from '../data/PomodoroData'
+
 type ThisProps = container.StateProps & container.ConnectedDispatch & container.AttributeProps
 
 type ComponentState = {} & {
@@ -72,6 +74,33 @@ class PureSecondDemo extends React.Component<ThisProps, ComponentState> {
             value={this.state.planned}
             onChange={this.onPlannedChange} />
 
+            <br />
+            <hr />
+            <br />
+            <table className="table">
+              <tr>
+                <th>Planned</th>
+                <th>Actual</th>
+                <th>Start</th>
+              </tr>
+              <tbody>
+              {this.props.pomodoros.map((pomodoro:PomodoroIdb)=>
+                <tr key={pomodoro.id}>
+                  <td>{pomodoro.planned}</td>
+                  <td>{pomodoro.actual}</td>
+                  <td>{pomodoro.startTime}</td>
+                </tr>)}
+
+              </tbody>
+            </table>
+
+
+
+
+            <ul>
+              {this.props.pomodoros.map((pomodoro:PomodoroIdb)=>
+                <li key={pomodoro.id}>{pomodoro.planned}</li>)}
+            </ul>
 
           </p>
         </div>
