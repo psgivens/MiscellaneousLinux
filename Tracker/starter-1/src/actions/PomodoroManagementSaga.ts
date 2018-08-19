@@ -7,7 +7,7 @@ import { DatabaseWorker, DatabaseWorkerCommand, DatabaseWorkerEvent } from '../w
 
 import { PomodoroIdb } from '../data/PomodoroData'
 
-export type PomodoroCommand = {
+export type PomodoroManagementCommand = {
     type: "POMODORO_LOADITEMS"
 } | {
     type: "POMODORO_ADDITEM"
@@ -18,12 +18,12 @@ export type PomodoroCommand = {
     type: "FETCH_CONTENT_FAILED"
 }
 
-export const PomodoroCommands = {
-    addItem: (item: PomodoroIdb):PomodoroCommand => ({ type: "POMODORO_ADDITEM", item }),
-    loadItems: ():PomodoroCommand => ({ type: "POMODORO_LOADITEMS" })
+export const PomodoroManagementCommands = {
+    addItem: (item: PomodoroIdb):PomodoroManagementCommand => ({ type: "POMODORO_ADDITEM", item }),
+    loadItems: ():PomodoroManagementCommand => ({ type: "POMODORO_LOADITEMS" })
 } 
 
-export type PomodoroEvent = {
+export type PomodoroManagementEvent = {
     type: "POMODORO_ITEMSLOADED"
     items: PomodoroIdb []
 } | {
@@ -33,7 +33,7 @@ export type PomodoroEvent = {
     type: "FETCH_FAILED"
 }
 
-export class PomodoroSaga {
+export class PomodoroManagementSaga {
     private databaseWorker:DatabaseWorker
     constructor (databaseWorker:DatabaseWorker) {
         this.databaseWorker = databaseWorker
@@ -44,11 +44,11 @@ export class PomodoroSaga {
 
     /*************** Register listeners ********************/
     public *saga(): Iterator<any> {
-        yield takeEvery('POMODORO_ADDITEM', (command:PomodoroCommand) => this.addItem(command))
-        yield takeEvery('POMODORO_LOADITEMS', (command:PomodoroCommand) => this.loadItems(command))
+        yield takeEvery('POMODORO_ADDITEM', (command:PomodoroManagementCommand) => this.addItem(command))
+        yield takeEvery('POMODORO_LOADITEMS', (command:PomodoroManagementCommand) => this.loadItems(command))
     }
 
-    private *addItem(action: PomodoroCommand){
+    private *addItem(action: PomodoroManagementCommand){
 
         // an 'if' block casts the action. 
         if (action.type === "POMODORO_ADDITEM") {
@@ -66,7 +66,7 @@ export class PomodoroSaga {
         }  
     }
 
-    private *loadItems(action: PomodoroCommand){
+    private *loadItems(action: PomodoroManagementCommand){
         
         if (action.type === "POMODORO_LOADITEMS") {
             const event: DatabaseWorkerEvent = yield call((command: DatabaseWorkerCommand) => this.databaseWorker.post(command), { 
@@ -75,7 +75,7 @@ export class PomodoroSaga {
 
             if (event.type === "DATA_LOADED") {
                 yield put( {
-                    items: event.data,
+                    items: event.items,
                     type: "POMODORO_ITEMSLOADED"
 
                 })

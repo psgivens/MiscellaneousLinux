@@ -1,7 +1,7 @@
 import * as redux from 'redux';
 import * as state from '../../reducers'
 
-import { CounterCommand } from '../../sagas/CounterSaga'
+import { CounterCommand } from '../../actions/CounterSaga'
 
 export type AttributeProps = {} & {
   guageId: string 

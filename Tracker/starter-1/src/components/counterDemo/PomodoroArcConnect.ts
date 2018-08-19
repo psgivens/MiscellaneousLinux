@@ -1,14 +1,14 @@
 import * as redux from 'redux';
 import * as state from '../../reducers'
 
-import { CounterCommand } from '../../sagas/CounterSaga'
+import { CounterCommand } from '../../actions/CounterSaga'
 
 export type AttributeProps = {} & {
   guageId: string 
 }
   
 export type StateProps = {} & {
-  counter?: number
+  timerState?: state.PomodoroTimerState
 }
 
 export type ConnectedDispatch = {} & {
@@ -16,9 +16,12 @@ export type ConnectedDispatch = {} & {
 }
 
 export const mapStateToProps = (state1: state.All, ownProps: AttributeProps): StateProps => {
-  const value = state1.counters[ownProps.guageId] ? state1.counters[ownProps.guageId] : 0
+  const pomodoroTimerState:state.PomodoroTimerState = 
+    state1.pomodoroTimers[ownProps.guageId] 
+      ? state1.pomodoroTimers[ownProps.guageId] 
+      : { type: "NOT_RUNNING"}
   return {
-    counter: value
+    timerState: pomodoroTimerState    
   }
 }
 

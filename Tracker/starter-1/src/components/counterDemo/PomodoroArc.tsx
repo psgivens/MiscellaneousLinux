@@ -3,10 +3,10 @@ import * as d3 from 'd3'
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import { PomodoroTimerState } from '../../reducers';
 import * as container from './PomodoroArcConnect'
 
 type ComponentState = {} & {
-  counter: number
 }
 
 type D3Config = {} & {
@@ -15,10 +15,7 @@ type D3Config = {} & {
   clipWidth         : number
   clipHeight        : number
   transitionMs			: number
-
 };
-
-
 
 type ThisProps = container.StateProps & container.AttributeProps & container.ConnectedDispatch
 class PomodoroArcComponent extends React.Component<ThisProps, ComponentState> {
@@ -42,15 +39,15 @@ class PomodoroArcComponent extends React.Component<ThisProps, ComponentState> {
   }
 
   public componentDidMount() {                                              
-    const { counter, guageId }  = this.props
+    const { timerState, guageId }  = this.props
     this.createChart(guageId)
-    this.updateChart(guageId, counter!)
+    this.updateChart(guageId, timerState!)
   }
 
   public componentDidUpdate() { 
-    const { counter, guageId }  = this.props
+    const { timerState, guageId }  = this.props
 
-    this.updateChart(guageId, counter!)
+    this.updateChart(guageId, timerState!)
   }
 
   public render() {                                                        
@@ -80,19 +77,55 @@ class PomodoroArcComponent extends React.Component<ThisProps, ComponentState> {
       .attr("d", arc1);                  
   }
 
-  private updateChart(guageId:string, newValue:number){
+  private updateChart(guageId:string, newValue:PomodoroTimerState){
 
     const g2 = d3.select("#pomodoro-arc-" + guageId + '' + this.seed)
-    const value = newValue / 5
-    const arc2 = d3.arc()
-      .innerRadius(50)
-      .outerRadius(70)
-      .startAngle(0)
-      .endAngle(value * Math.PI);
+    switch(newValue.type){
+      case "NOT_RUNNING":
+        {
+          const arc2 = d3.arc()
+            .innerRadius(50)
+            .outerRadius(70)
+            .startAngle(0)
+            .endAngle(2 * Math.PI);
+        
+          g2.transition()
+            .duration(this.config.transitionMs)
+            .attr("d", arc2);
+        }
+        break;
+
+      case "BREAK":
+        {
+          const value = newValue.remaining / (5*6) / 5
+          const arc2 = d3.arc()
+            .innerRadius(50)
+            .outerRadius(70)
+            .startAngle(0)
+            .endAngle(value * Math.PI);
+        
+          g2.transition()
+            .duration(this.config.transitionMs)
+            .attr("d", arc2);
+        }
+        break;
       
-    g2.transition()
-        .duration(this.config.transitionMs)
-        .attr("d", arc2);
+      case "RUNNING":
+        {
+          const value = newValue.remaining / (25*6) / 5
+          const arc2 = d3.arc()
+            .innerRadius(50)
+            .outerRadius(70)
+            .startAngle(0)
+            .endAngle(value * Math.PI);
+            
+          g2.transition()
+              .duration(this.config.transitionMs)
+              .attr("d", arc2);
+        }
+        break;
+    }
+
 
     return 1
   }

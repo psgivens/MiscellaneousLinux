@@ -14,11 +14,13 @@ import { reducers } from './reducers'
 
 import registerServiceWorker from './registerServiceWorker';
 
-import mySaga from './sagas/CounterSaga'
+import mySaga from './actions/CounterSaga'
 
-import valuesSaga from './sagas/ValuesSaga'
+import valuesSaga from './actions/ValuesSaga'
 
-import { PomodoroSaga } from './sagas/PomodoroSaga'
+import { PomodoroManagementSaga } from './actions/PomodoroManagementSaga'
+
+import createPomodoroSaga from './actions/PomodoroSaga'
 
 // import { createWorker, ITypedWorker } from 'typed-web-workers'
 
@@ -41,8 +43,12 @@ const store: ReduxStore<state.All> = createStore(reducers, {
   counters: { 
     first_pomodoro: 1, 
     second_pomodoro: 6}, 
+  pomodoro: { type: "NOT_RUNNING" },    
+  pomodoroTimers: { "first_pomodoro": {
+      length: "Short", remaining: 2.5*60, timerId:0, type: "BREAK" 
+    }},
   pomodoros: [],
-  values: [],
+  values: [],  
  } as state.All, applyMiddleware(sagaMiddleware))
 
 sagaMiddleware.run(mySaga(store.dispatch))
@@ -66,8 +72,9 @@ databaseWorker.post({
   })
 
 
-const pomodoroSaga = new PomodoroSaga(databaseWorker)
-sagaMiddleware.run(() => pomodoroSaga.saga())
+const pomodoroManagementSaga = new PomodoroManagementSaga(databaseWorker)
+sagaMiddleware.run(() => pomodoroManagementSaga.saga())
+sagaMiddleware.run(createPomodoroSaga(store.dispatch))
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,

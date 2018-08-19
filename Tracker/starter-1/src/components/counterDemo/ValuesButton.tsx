@@ -5,25 +5,21 @@ import * as container from './ValuesButtonConnect'
 
 import Button from '../../common/Button'
 
-type ComponentState = {} & {}
-
-class PureValuesButton extends React.Component<container.StateProps & container.ConnectedDispatch & container.AttributeProps, ComponentState> {
-  public render () {
-    const { values } = this.props
-    return <div>      
-      <Button onClick={this.onClick} text="Get Values!" />
-      <pre>Values = {JSON.stringify(values)}</pre>
-    </div>
+type CombinedProps = container.StateProps & container.ConnectedDispatch & container.AttributeProps
+const renderValuesButton:React.SFC<CombinedProps> = ({triggerThing, values}:CombinedProps) => {
+  const onClick = (e: React.SyntheticEvent<HTMLButtonElement>):void => {
+    e.preventDefault()
+    triggerThing!()
   }
 
-  private onClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    this.props.triggerThing!()
-    }
+  return <div>      
+    <Button onClick={onClick} text="Get Values!" />
+    <pre>Values = {JSON.stringify(values)}</pre>
+  </div>
 }
 
 export const ValuesButton = 
-  connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (PureValuesButton)
+  connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (renderValuesButton)
 
 
 

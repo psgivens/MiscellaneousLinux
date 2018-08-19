@@ -10,38 +10,36 @@ type AttributeProps = {} & {
     label:string
 }
 
-type ComponentState = {} & {
+const TextInput:React.SFC<AttributeProps> = ({
+    inputType,
+    label,
+    name,
+    onChange,
+    placeholder,
+    value
+}:AttributeProps) => {
 
-}
-
-export default class TextInput extends React.Component<AttributeProps, ComponentState> {
-
-    constructor (props: AttributeProps) {
-        super(props)
-        this.onChange = this.onChange.bind(this)
-    }
-
-    public render () {
-        const input = <div><input 
-            name={this.props.name}
-            className="form-control"
-            placeholder={this.props.placeholder}
-            ref={this.props.name}
-            value={this.props.value}
-            onChange={this.onChange}
-            type={this.props.inputType ? this.props.inputType : "text"}
-            size={60} /></div>;
-        return this.props.label ? <div className="form-group">
-                        <label htmlFor={this.props.name}>{this.props.label}</label>
-                        {input}
-                    </div> : input;
-    }
-
-    private onChange(event: React.SyntheticEvent<HTMLInputElement>) {
+    const onChanged = (event: React.SyntheticEvent<HTMLInputElement>):void => {
         event.preventDefault()
-        const { onChange } = this.props        
         onChange(event)
     }
+    const input = 
+        <div><input 
+            name={name}
+            className="form-control"
+            placeholder={placeholder}
+            value={value}
+            onChange={onChanged}
+            type={inputType ? inputType : "text"}
+            size={60} /></div>;
+    return label 
+        ? <div className="form-group">
+            <label htmlFor={name}>{label}</label>
+            {input}
+          </div> 
+        : input;
+
+
 }
 
-// type={this.props.inputType || "text"}
+export default TextInput 

@@ -1,39 +1,32 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-
+import Button from '../../common/Button'
 import * as container from './CounterConnect'
 
-import Button from '../../common/Button'
+type CombinedProps = container.StateProps & container.ConnectedDispatch & container.AttributeProps
 
-type ComponentState = {} & {}
-
-class PureCounter extends React.Component<container.StateProps & container.ConnectedDispatch & container.AttributeProps, ComponentState> {
-  public render () {
-    const { counter } = this.props
-    return <div>
-      <Button onClick={this.onClickIncrement} text="Increment" />
-      <Button onClick={this.onClickDecrement} text="Decrement" />
-      <pre>
-          counter = {counter}
-        </pre>
-    </div>
+const renderCounter:React.SFC<CombinedProps> = ({counter, decrement, increment, name}:CombinedProps) => {  
+  const onClickIncrement = (e: React.SyntheticEvent<HTMLButtonElement>):void => {
+    e.preventDefault()
+    increment!(name)
   }
 
-  private onClickIncrement = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+  const onClickDecrement = (e: React.SyntheticEvent<HTMLButtonElement>):void => {
     e.preventDefault()
-    const { name } = this.props
-    this.props.increment!(name)
-    }
+    decrement!(name)
+  }    
 
-  private onClickDecrement = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    const { name } = this.props
-    this.props.decrement!(name)
-    }    
+  return <div>
+    <Button onClick={onClickIncrement} text="Increment" />
+    <Button onClick={onClickDecrement} text="Decrement" />
+    <pre>
+        counter = {counter}
+      </pre>
+  </div>
 }
-
+  
 export const Counter = 
-  connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (PureCounter)
+  connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (renderCounter)
 
 
 

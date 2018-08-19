@@ -1,15 +1,15 @@
 import { createWorker, ITypedWorker } from 'typed-web-workers'
 
-import { execOnDatabase, PomodoroIdb } from '../data/PomodoroData'
+import { handleDatabaseCommand, PomodoroIdb } from '../data/PomodoroData'
 
 import { Dispatch } from 'redux'
 
-export type DatabaseCommandEnvelope = {} & {
+type DatabaseCommandEnvelope = {} & {
   correlationId: number
   command: DatabaseWorkerCommand
 }
 
-export type DatabaseResponseEnvelope = {
+type DatabaseResponseEnvelope = {
   type:"ERROR"
   correlationId: number
   error: any
@@ -32,7 +32,7 @@ export type DatabaseWorkerCommand = {
 
 export type DatabaseWorkerEvent = {
   type: "DATA_LOADED"
-  data: any
+  items: any
 } | {
   type: "ITEM_INSERTED"
   item: PomodoroIdb
@@ -46,6 +46,30 @@ type PromiseBack = {} & {
   reject: (error:any) => void
 }
 const promiseBacks: { [index:number]: PromiseBack } = {}
+
+const execOnDatabase = (cmdenv:DatabaseCommandEnvelope,callback:(result:DatabaseResponseEnvelope)=>void): void => {
+  const handleException = (error:any):void => {
+      callback({
+          correlationId: cmdenv.correlationId,
+          error,
+          type: "ERROR",
+          })
+  }
+
+  const raiseEvent = (event:DatabaseWorkerEvent) => {
+      callback({
+      correlationId: cmdenv.correlationId,
+      event,
+      type: "EVENT"})
+  }
+  
+  try{
+      handleDatabaseCommand(cmdenv.command, raiseEvent, handleException)
+  }
+  catch (e) {
+      handleException(e)
+  }
+}
 
 export class DatabaseWorker {
   private dispatch : Dispatch<any>

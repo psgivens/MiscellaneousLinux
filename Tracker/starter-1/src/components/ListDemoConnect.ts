@@ -2,12 +2,12 @@
 import * as redux from 'redux';
 import * as state from '../reducers'
 
-import { PomodoroCommand, PomodoroCommands } from "../sagas/PomodoroSaga";
+import { PomodoroManagementCommand, PomodoroManagementCommands } from "../actions/PomodoroManagementSaga";
 
 import { PomodoroIdb } from '../data/PomodoroData'
 
-// import { CounterCommand, CounterCommands } from '../sagas/CounterSaga'
-// import { FetchCommand } from '../sagas/ValuesSaga'
+// import { CounterCommand, CounterCommands } from '../actions/CounterSaga'
+// import { FetchCommand } from '../actions/ValuesSaga'
 
 export type AttributeProps = {} & {
     name: string
@@ -28,7 +28,7 @@ export const mapStateToProps = (state1: state.All, ownProps: AttributeProps): St
   pomodoros: state1.pomodoros
 })
 
-export const mapDispatchToProps = (dispatch: redux.Dispatch<PomodoroCommand>): ConnectedDispatch => ({
-  addItem: (item:PomodoroIdb) => dispatch(PomodoroCommands.addItem(item)),
-  loadItems: () => dispatch(PomodoroCommands.loadItems())
+export const mapDispatchToProps = (dispatch: redux.Dispatch<PomodoroManagementCommand>): ConnectedDispatch => ({
+  addItem: (item:PomodoroIdb) => dispatch(PomodoroManagementCommands.addItem(item)),
+  loadItems: () => dispatch(PomodoroManagementCommands.loadItems())
 })
