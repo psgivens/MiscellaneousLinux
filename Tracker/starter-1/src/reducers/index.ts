@@ -5,6 +5,7 @@ import { CounterEvent } from '../actions/CounterSaga'
 import { FetchEvent } from '../actions/ValuesSaga'
 
 import { PomodoroManagementEvent } from '../actions/PomodoroManagementSaga'
+import { PomodoroEvent } from '../actions/PomodoroSaga'
 import { PomodoroIdb } from '../data/PomodoroData'
 
 
@@ -47,7 +48,33 @@ export type All = {} & {
   pomodoro: PomodoroTimerState
 }
 
-function pomodoroReducers(state:All, action: PomodoroManagementEvent): All {
+
+function pomodoroReducers(state:All, action: PomodoroEvent): All {
+  switch(action.type) {
+    case "POMODORO_TIMER_STARTED":
+      return { ...state, pomodoro: {
+        remaining: 25 * 60,               
+        timerId: action.timerId,
+        type: "RUNNING"      
+      } }
+    case "POMODORO_TIMER_STOPPED":
+      return { ...state, pomodoro: {
+        type: "NOT_RUNNING"      
+      } }
+    case "POMODORO_TICKED":
+      const prev = state.pomodoro
+      if (prev.type === "RUNNING") {
+        return { ...state, pomodoro: {
+          ...prev, remaining: prev.remaining-1 }}
+      }
+      else { return state }
+    default:
+      return state
+  }
+}
+
+
+function pomodoroManagmentReducers(state:All, action: PomodoroManagementEvent): All {
   switch(action.type) {
     case "POMODORO_ITEMSLOADED":
       return { ...state, pomodoros: action.items }
@@ -91,4 +118,4 @@ function valuesReducers(state:All, action: FetchEvent): All {
   return state
 }
 
-export const reducers = reduceReducers(myReducer, valuesReducers, pomodoroReducers)
+export const reducers = reduceReducers(myReducer, valuesReducers, pomodoroManagmentReducers, pomodoroReducers)

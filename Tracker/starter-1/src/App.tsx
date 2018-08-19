@@ -15,6 +15,8 @@ import ThirdDemo from './components/ThirdDemo'
 
 import MainMenu from './components/MainMenu'
 
+import PomodoroDemo from './components/PomodoroDemo'
+
 type BasicProps = {} & {}
 
 const App: React.SFC<BasicProps> = () => 
@@ -24,6 +26,7 @@ const App: React.SFC<BasicProps> = () =>
           <Switch>
             <Route path="/CounterDemo" component={ CounterDemo } />
             <Route path="/ListDemo" component={ ListDemo } />
+            <Route path="/PomodoroDemo" component={ PomodoroDemo } />            
             <Route path="/ThirdDemo" component={ ThirdDemo } />
             <Route path="/" component={ ListDemo } />          
           </Switch>
