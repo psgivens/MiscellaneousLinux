@@ -22,6 +22,30 @@
     
     # https://github.com/PowerShell/PowerShell/blob/master/docs/learning-powershell/using-vscode.md#editing-with-vs-code
     pwsh -c "Update-Help"
+
+
+### Powershell Ubuntu 18.04
+
+    # Import the public repository GPG keys
+    curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+    
+    # Register the Microsoft Ubuntu repository
+    sudo curl -o /etc/apt/sources.list.d/microsoft.list https://packages.microsoft.com/config/ubuntu/18.04/prod.list
+    
+    # Update the list of products
+    sudo apt-get update
+    
+    # Install PowerShell
+    sudo apt-get install -y powershell-preview
+    
+    # Start PowerShell
+    pwsh-preview
+
+### Powershell Azure
+
+    sudo pwsh-preview 
+
+    Install-Module AzureRM.NetCore
    
 ### Powershell and cloud environments
 
@@ -86,14 +110,14 @@
 
 
 ### Azure CLI 
-AZ_REPO=$(lsb_release -cs)
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
-    sudo tee /etc/apt/sources.list.d/azure-cli.list
-
-curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-
-sudo apt-get install apt-transport-https
-sudo apt-get update && sudo apt-get install azure-cli
+    AZ_REPO=$(lsb_release -cs)
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+        sudo tee /etc/apt/sources.list.d/azure-cli.list
+    
+    curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+    
+    sudo apt-get install apt-transport-https
+    sudo apt-get update && sudo apt-get install azure-cli
     
 ### Atom
 

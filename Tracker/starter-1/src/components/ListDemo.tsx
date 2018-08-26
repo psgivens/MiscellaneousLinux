@@ -10,7 +10,7 @@ import { createPomodoro } from '../data/PomodoroData'
 
 import TextInput from '../common/TextInput'
 
-import { PomodoroIdb } from '../data/PomodoroData'
+// import { PomodoroIdb } from '../data/PomodoroData'
 
 type ThisProps = container.StateProps & container.ConnectedDispatch & container.AttributeProps
 
@@ -45,7 +45,7 @@ class PureListDemo extends React.Component<ThisProps, ComponentState> {
           <p className="subtitle">
               This is an example of adding and listing items!
           </p>
-          <p>
+          <div>
           <TextInput
             inputType="text"
             label="Actual Value"            
@@ -66,22 +66,24 @@ class PureListDemo extends React.Component<ThisProps, ComponentState> {
             <hr />
             <br />
             <table className="table">
-              <tr>
-                <th>Planned</th>
-                <th>Actual</th>
-                <th>Start</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Planned</th>
+                  <th>Actual</th>
+                  <th>Start</th>
+                </tr>
+              </thead>
               <tbody>
-              {this.props.pomodoros.map((pomodoro:PomodoroIdb)=>
+              {/* {this.props.pomodoros.map((pomodoro:PomodoroIdb)=>
                 <tr key={pomodoro.id}>
                   <td>{pomodoro.planned}</td>
                   <td>{pomodoro.actual}</td>
                   <td>{(new Date(pomodoro.startTime)).toLocaleString()}</td>
-                </tr>)}
+                </tr>)} */}
 
               </tbody>
             </table>
-          </p>
+          </div>
         </div>
       </section>
     </div>)
