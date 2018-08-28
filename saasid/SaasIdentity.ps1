@@ -32,6 +32,8 @@ $pair.KeyFingerPrint >> SaasIdentities.finger
 
 $cfn_template = "https://aws-quickstart.s3.amazonaws.com/saas-identity-cognito/templates/saas-identity-cognito-master.template"
 
+Test-CFNTemplate -TemplateURL $cfn_template 
+
 # Let's take a look at the template
 Test-CFNTemplate -TemplateURL $cfn_template `
   | %{ $_.Parameters } `
@@ -44,6 +46,7 @@ $params
 #
 $cfnarn = New-CFNStack `
   -TemplateUrl $cfn_template `
+  -Capability 'CAPABILITY_NAMED_IAM' `
   -Stackname 'SaaS-identity-with-Cognito' `
   -Parameter $params
 $cfnarn | Tee-Object -FilePath 'cfn.arn'
