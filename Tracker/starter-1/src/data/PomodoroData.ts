@@ -1,4 +1,4 @@
-import { PomodoroIdb } from '../data/PomodoroData'
+// import { PomodoroIdb } from '../data/PomodoroData'
 // import { DatabaseWorkerCommand, DatabaseWorkerEvent } from '../workers/DatabaseWorker'
 
 export type PomodoroIdb = {} & {
@@ -18,4 +18,15 @@ export const createPomodoro = (userId:string, planned:string, actual:string="", 
     userId,
     version: 0
 })
+
+
+
+
+
+// *************************************************************************
+// handleDatabaseCommand is defined in "../workers/DatabaseWorker" due to 
+// inadequacies in JavaScript. I want so badly to move it here!
+// *************************************************************************
+
+
 
