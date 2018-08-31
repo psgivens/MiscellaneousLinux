@@ -3,7 +3,9 @@ import { takeEvery } from 'redux-saga/effects'
 import { call, put } from 'redux-saga/effects'
 // import { api } from '../apis'
 
-import { DatabaseWorker, DatabaseWorkerCommand, DatabaseWorkerEvent } from '../workers/DatabaseWorker'
+import { DatabaseWorker } from '../workers/DatabaseWorker'
+
+import { DatabaseWorkerCommand, DatabaseWorkerEvent } from '../data/PomodoroData'
 
 import { PomodoroIdb } from '../data/PomodoroData'
 
