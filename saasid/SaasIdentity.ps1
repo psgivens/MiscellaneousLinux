@@ -1,6 +1,24 @@
 
+
+# Install AWS Modules
+sudo pwsh-preview -c 'Install-Module AWSPowerShell.NetCore'
+
+
 # Import the AWS modules
 Import-Module AWSPowerShell.NetCore
+
+# Useful AWS discovery cmdlet 
+Get-AWSCmdletName -Service Cognito -MatchWithRegex "describe"
+
+Get-AWSCmdletName -Service IAM  -MatchWithRegex "policy"
+
+Get-AWSCmdletName -Service IAM  -MatchWithRegex "policies"
+
+Get-AWSCmdletName -Service IAM
+
+Get-AWSCmdletName -Service Cognito -MatchWithRegex "policies"
+
+
 
 # Set the credentials from your account
 Set-AWSCredentials 
@@ -35,6 +53,11 @@ $cfn_template = "https://aws-quickstart.s3.amazonaws.com/saas-identity-cognito/t
 Test-CFNTemplate -TemplateURL $cfn_template 
 
 # Let's take a look at the template
+Test-CFNTemplate -TemplateURL $cfn_template `
+  | %{ $_.Parameters } `
+  | Select -Property ParameterKey, DefaultValue, Description
+
+# Let's look at the parameters with "name" in them.
 Test-CFNTemplate -TemplateURL $cfn_template `
   | %{ $_.Parameters } `
   | Select -Property ParameterKey, DefaultValue, Description
