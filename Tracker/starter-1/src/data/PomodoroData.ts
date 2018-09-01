@@ -1,5 +1,3 @@
-// import { PomodoroIdb } from '../data/PomodoroData'
-// import { DatabaseWorkerCommand, DatabaseWorkerEvent } from '../workers/DatabaseWorker'
 
 export type PomodoroIdb = {} & {
     id: number
@@ -32,77 +30,53 @@ export type DatabaseWorkerCommand = {
     arg2: number
   }
   
-  export type DatabaseWorkerEvent = {
+export type DatabaseWorkerEvent = {
     type: "DATA_LOADED"
     items: any
-  } | {
+} | {
     type: "ITEM_INSERTED"
     item: PomodoroIdb
-  } | {
+} | {
     type: "DATABASE_ERROR"
     error: any
-  }
+}
   
-  export type DatabaseCommandEnvelope = {} & {
+export type DatabaseCommandEnvelope = {} & {
     correlationId: number
     command: DatabaseWorkerCommand
-  }
+}
   
-  export type DatabaseResponseEnvelope = {
+export type DatabaseResponseEnvelope = {
     type:"ERROR"
     correlationId: number
     error: any
-  } | {
+} | {
     type: "EVENT"
     correlationId: number
     event: DatabaseWorkerEvent
-  }
+}
   
-  
-
-
-
-// *************************************************************************
-// handleDatabaseCommand is defined in "../workers/DatabaseWorker" due to 
-// inadequacies in JavaScript. I want so badly to move it here!
-// *************************************************************************
-
-
-
-
-
 export const execOnDatabase = (cmdenv:DatabaseCommandEnvelope,callback:(result:DatabaseResponseEnvelope)=>void): void  => {
     const handleException1 = (msg:string) => (error:any):void => {
-      // tslint:disable-next-line:no-console
-      console.log("handleException (" + msg + ":")
-      // tslint:disable-next-line:no-console
-      console.log(error)
-      // tslint:disable-next-line:no-console
-      console.log(JSON.stringify(error))
-      callback({
-          correlationId: cmdenv.correlationId,
-          error: msg + JSON.stringify(error),
-          type: "ERROR",
-          })
-    }
+        //   // tslint:disable-next-line:no-console
+        //   console.log("handleException (" + msg + ":")
+        //   // tslint:disable-next-line:no-console
+        //   console.log(error)
+        //   // tslint:disable-next-line:no-console
+        //   console.log(JSON.stringify(error))
+        callback({
+            correlationId: cmdenv.correlationId,
+            error: msg + JSON.stringify(error),
+            type: "ERROR",
+            })
+        }
 
     const raiseEvent1 = (event:DatabaseWorkerEvent) => {
         callback({
         correlationId: cmdenv.correlationId,
         event,
         type: "EVENT"})
-    }
-
-
-
-
-
-
-
-
-
-
-
+        }
 
 
     // **************************************************************
@@ -116,22 +90,22 @@ export const execOnDatabase = (cmdenv:DatabaseCommandEnvelope,callback:(result:D
         raiseEvent:((event:DatabaseWorkerEvent)=>void),
         handleException:( (msg:string) =>((error:any)=>void) ) 
       ) => {
-      const DBOpenRequest = indexedDB.open("Pomodoro", 2)
-      DBOpenRequest.onerror = handleException("DBOpenRequest")
+        const DBOpenRequest = indexedDB.open("Pomodoro", 2)
+        DBOpenRequest.onerror = handleException("DBOpenRequest")
 
-      let objectStore: IDBObjectStore
-      DBOpenRequest.onupgradeneeded = (event: IDBVersionChangeEvent) => {
-          const database: IDBDatabase = DBOpenRequest.result;
+        let objectStore: IDBObjectStore
+        DBOpenRequest.onupgradeneeded = (event: IDBVersionChangeEvent) => {
+        const database: IDBDatabase = DBOpenRequest.result;
 
-          if (event.oldVersion < 1){
-              objectStore = database.createObjectStore("Pomodoros", { keyPath: "id", autoIncrement: true });
-              objectStore.createIndex("idIdx", "id", { unique: true })
-              objectStore.createIndex("startIdx", "startTime", { unique: false })
-              objectStore.createIndex("userIdIdx", "userId", { unique: false })
-          } else if (event.oldVersion < 2) {
-              objectStore = DBOpenRequest.transaction!.objectStore("Pomodoros")
-              objectStore.createIndex("other", "other")
-          }
+        if (event.oldVersion < 1){
+            objectStore = database.createObjectStore("Pomodoros", { keyPath: "id", autoIncrement: true });
+            objectStore.createIndex("idIdx", "id", { unique: true })
+            objectStore.createIndex("startIdx", "startTime", { unique: false })
+            objectStore.createIndex("userIdIdx", "userId", { unique: false })
+        } else if (event.oldVersion < 2) {
+            objectStore = DBOpenRequest.transaction!.objectStore("Pomodoros")
+            objectStore.createIndex("other", "other")
+        }
       };
 
       let db:IDBDatabase
@@ -184,16 +158,6 @@ export const execOnDatabase = (cmdenv:DatabaseCommandEnvelope,callback:(result:D
     // **************************************************************
     // End of custom code.
     // **************************************************************
-
-
-
-
-
-
-
-
-    
-
 
     try {
       handleDatabaseCommand(cmdenv.command, raiseEvent1, handleException1)

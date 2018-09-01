@@ -133,7 +133,7 @@ Install-Module -Name DockerMsftProvider -Scope CurrentUser
 #sudo apache2ctl configtest
 
 
-sudo apt install -y go 
+sudo apt install -y golang
 # Add GOPATH to .profile
 
 go get -u github.com/govend/govend

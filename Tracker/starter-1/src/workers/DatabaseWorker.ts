@@ -12,7 +12,8 @@ type PromiseBack = {} & {
 }
 const promiseBacks: { [index:number]: PromiseBack } = {}
 
-// type HandleDatabaseCommand = (
+export type HandleDatabaseCommand = {} & {}
+// export type HandleDatabaseCommand = (
 //   command:DatabaseWorkerCommand, 
 //   raiseEvent:((event:DatabaseWorkerEvent)=>void),
 //   handleException:( (msg:string) =>((error:any)=>void) ) 
