@@ -1,0 +1,50 @@
+[
+  {
+    "IdentityPoolId": "us-east-2:02e8170a-46c4-4c39-b234-6c728cff12c5",
+    "RoleMappings": {
+      "cognito-idp.us-east-2.amazonaws.com/us-east-2_0bLlXvaCF:5d8vf6efjf4iic1ot6jaqca841": "Amazon.CognitoIdentity.Model.RoleMapping"
+    },
+    "Roles": {
+      "authenticated": "arn:aws:iam::741646411745:role/SYSADMINf6d3e5dfb3764a4aa1d13c9dc7f31470-Trust"
+    },
+    "ResponseMetadata": {
+      "RequestId": "ba08f973-b710-11e8-9529-0b4be486f793",
+      "Metadata": "System.Collections.Generic.Dictionary`2[System.String,System.String]"
+    },
+    "ContentLength": 682,
+    "HttpStatusCode": 200,
+    "LoggedAt": "2018-09-12T21:51:50.3960921-07:00"
+  },
+  {
+    "IdentityPoolId": "us-east-2:2de5b0f1-30e4-46ad-a978-1a4f7b31ef40",
+    "RoleMappings": {
+      "cognito-idp.us-east-2.amazonaws.com/us-east-2_7fG5FOzHz:40an5jg9t4c0ojcrnlngt5d5v0": "Amazon.CognitoIdentity.Model.RoleMapping"
+    },
+    "Roles": {
+      "authenticated": "arn:aws:iam::741646411745:role/TENANTbbdc52911d514748a5a64948dde024c2-Trust"
+    },
+    "ResponseMetadata": {
+      "RequestId": "ba2c3866-b710-11e8-ad12-4121cdc72254",
+      "Metadata": "System.Collections.Generic.Dictionary`2[System.String,System.String]"
+    },
+    "ContentLength": 676,
+    "HttpStatusCode": 200,
+    "LoggedAt": "2018-09-12T21:51:50.6257863-07:00"
+  },
+  {
+    "IdentityPoolId": "us-east-2:e1e96b3e-a303-48b8-8907-b687062cb209",
+    "RoleMappings": {
+      "cognito-idp.us-east-2.amazonaws.com/us-east-2_xtLCepf31:15v1kf9h3hvngso8mulm8h24da": "Amazon.CognitoIdentity.Model.RoleMapping"
+    },
+    "Roles": {
+      "authenticated": "arn:aws:iam::741646411745:role/TENANTa809ef5e301b45e2ae04e57b2c60937b-Trust"
+    },
+    "ResponseMetadata": {
+      "RequestId": "ba532171-b710-11e8-be33-43262c0d8ef2",
+      "Metadata": "System.Collections.Generic.Dictionary`2[System.String,System.String]"
+    },
+    "ContentLength": 676,
+    "HttpStatusCode": 200,
+    "LoggedAt": "2018-09-12T21:51:50.8648696-07:00"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "sub": "e0d7553e-e2a2-4dab-85db-4a2221272cb6",
+  "event_id": "b1327197-b706-11e8-bb85-7fa7039d3eeb",
+  "token_use": "access",
+  "scope": "aws.cognito.signin.user.admin",
+  "auth_time": 1536810000,
+  "iss": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_0bLlXvaCF",
+  "exp": 1536813600,
+  "iat": 1536810000,
+  "jti": "1bbac2b6-6a79-4f18-9159-a27ab10a9c9a",
+  "client_id": "5d8vf6efjf4iic1ot6jaqca841",
+  "username": "Phillip.Givens@PatientPop.com"
+}

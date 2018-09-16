@@ -21,7 +21,7 @@
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">sub</S>
-              <S N="Value">fd62c45f-83d9-4129-b280-b40a24e409d2</S>
+              <S N="Value">e0d7553e-e2a2-4dab-85db-4a2221272cb6</S>
             </Props>
           </Obj>
           <Obj RefId="3">
@@ -37,7 +37,7 @@
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">custom:tenant_id</S>
-              <S N="Value">SYSADMIN05f41ade28b84c27bcbf9ea8fff58a3d</S>
+              <S N="Value">SYSADMINf6d3e5dfb3764a4aa1d13c9dc7f31470</S>
             </Props>
           </Obj>
           <Obj RefId="5">
@@ -82,8 +82,8 @@
         </TN>
         <LST />
       </Obj>
-      <DT N="UserCreateDate">2018-09-16T16:41:12.961Z</DT>
-      <DT N="UserLastModifiedDate">2018-09-16T16:53:13.686Z</DT>
+      <DT N="UserCreateDate">2018-09-13T02:25:15.48Z</DT>
+      <DT N="UserLastModifiedDate">2018-09-13T02:44:30.481Z</DT>
       <S N="Username">Phillip.Givens@PatientPop.com</S>
       <Obj N="UserStatus" RefId="10">
         <TN RefId="4">
@@ -110,7 +110,7 @@
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">sub</S>
-              <S N="Value">4129ab33-5959-4f05-a33b-1b1112ac2f8a</S>
+              <S N="Value">6c42cfcf-467a-4dc1-8961-5784c50bd065</S>
             </Props>
           </Obj>
           <Obj RefId="14">
@@ -126,7 +126,7 @@
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">custom:tenant_id</S>
-              <S N="Value">SYSADMIN05f41ade28b84c27bcbf9ea8fff58a3d</S>
+              <S N="Value">SYSADMINf6d3e5dfb3764a4aa1d13c9dc7f31470</S>
             </Props>
           </Obj>
           <Obj RefId="16">
@@ -134,7 +134,7 @@
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">given_name</S>
-              <S N="Value">sysuser1</S>
+              <S N="Value">systemu</S>
             </Props>
           </Obj>
           <Obj RefId="17">
@@ -142,7 +142,7 @@
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">family_name</S>
-              <S N="Value">sysuser1</S>
+              <S N="Value">systemu</S>
             </Props>
           </Obj>
           <Obj RefId="18">
@@ -158,7 +158,7 @@
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">email</S>
-              <S N="Value">sysuser1@mailinator.cofm</S>
+              <S N="Value">systemu@mailinator.com</S>
             </Props>
           </Obj>
         </LST>
@@ -168,110 +168,28 @@
         <TNRef RefId="3" />
         <LST />
       </Obj>
-      <DT N="UserCreateDate">2018-09-16T16:55:07.779Z</DT>
-      <DT N="UserLastModifiedDate">2018-09-16T16:55:07.779Z</DT>
-      <S N="Username">sysuser1@mailinator.cofm</S>
-      <Obj N="UserStatus" RefId="21">
-        <TNRef RefId="4" />
-        <ToString>FORCE_CHANGE_PASSWORD</ToString>
-        <Props>
-          <S N="Value">FORCE_CHANGE_PASSWORD</S>
-        </Props>
-      </Obj>
+      <DT N="UserCreateDate">2018-09-13T02:45:12.592Z</DT>
+      <DT N="UserLastModifiedDate">2018-09-13T02:46:09.627Z</DT>
+      <S N="Username">systemu@mailinator.com</S>
+      <Ref N="UserStatus" RefId="10" />
     </Props>
   </Obj>
-  <Obj RefId="22">
+  <Obj RefId="21">
     <TNRef RefId="0" />
     <ToString>Amazon.CognitoIdentityProvider.Model.UserType</ToString>
     <Props>
-      <Obj N="Attributes" RefId="23">
+      <Obj N="Attributes" RefId="22">
         <TNRef RefId="1" />
         <LST>
+          <Obj RefId="23">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">sub</S>
+              <S N="Value">8b768b5b-28af-4197-86d2-ca08bd0d1b41</S>
+            </Props>
+          </Obj>
           <Obj RefId="24">
-            <TNRef RefId="2" />
-            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
-            <Props>
-              <S N="Name">sub</S>
-              <S N="Value">3434bb14-200c-4ad7-8ed7-f1c0e1fcf121</S>
-            </Props>
-          </Obj>
-          <Obj RefId="25">
-            <TNRef RefId="2" />
-            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
-            <Props>
-              <S N="Name">custom:tier</S>
-              <S N="Value">System Tier</S>
-            </Props>
-          </Obj>
-          <Obj RefId="26">
-            <TNRef RefId="2" />
-            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
-            <Props>
-              <S N="Name">custom:tenant_id</S>
-              <S N="Value">SYSADMIN05f41ade28b84c27bcbf9ea8fff58a3d</S>
-            </Props>
-          </Obj>
-          <Obj RefId="27">
-            <TNRef RefId="2" />
-            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
-            <Props>
-              <S N="Name">given_name</S>
-              <S N="Value">sysuser</S>
-            </Props>
-          </Obj>
-          <Obj RefId="28">
-            <TNRef RefId="2" />
-            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
-            <Props>
-              <S N="Name">family_name</S>
-              <S N="Value">sysuser</S>
-            </Props>
-          </Obj>
-          <Obj RefId="29">
-            <TNRef RefId="2" />
-            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
-            <Props>
-              <S N="Name">custom:role</S>
-              <S N="Value">SystemUser</S>
-            </Props>
-          </Obj>
-          <Obj RefId="30">
-            <TNRef RefId="2" />
-            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
-            <Props>
-              <S N="Name">email</S>
-              <S N="Value">sysuser@mailinator.com</S>
-            </Props>
-          </Obj>
-        </LST>
-      </Obj>
-      <B N="Enabled">true</B>
-      <Obj N="MFAOptions" RefId="31">
-        <TNRef RefId="3" />
-        <LST />
-      </Obj>
-      <DT N="UserCreateDate">2018-09-16T16:53:56.1Z</DT>
-      <DT N="UserLastModifiedDate">2018-09-16T16:53:56.1Z</DT>
-      <S N="Username">sysuser@mailinator.com</S>
-      <Ref N="UserStatus" RefId="21" />
-    </Props>
-  </Obj>
-  <Obj RefId="32">
-    <TNRef RefId="0" />
-    <ToString>Amazon.CognitoIdentityProvider.Model.UserType</ToString>
-    <Props>
-      <Obj N="Attributes" RefId="33">
-        <TNRef RefId="1" />
-        <LST>
-          <Obj RefId="34">
-            <TNRef RefId="2" />
-            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
-            <Props>
-              <S N="Name">sub</S>
-              <S N="Value">8f5bd6f6-d365-4b92-b795-bc7bbfc79e92</S>
-            </Props>
-          </Obj>
-          <Obj RefId="35">
             <TNRef RefId="2" />
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
@@ -279,31 +197,31 @@
               <S N="Value">Free Tier</S>
             </Props>
           </Obj>
-          <Obj RefId="36">
+          <Obj RefId="25">
             <TNRef RefId="2" />
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">custom:tenant_id</S>
-              <S N="Value">TENANTa809ef5e301b45e2ae04e57b2c60937b</S>
+              <S N="Value">TENANTbbdc52911d514748a5a64948dde024c2</S>
             </Props>
           </Obj>
-          <Obj RefId="37">
+          <Obj RefId="26">
             <TNRef RefId="2" />
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">given_name</S>
-              <S N="Value">tenant1admin</S>
+              <S N="Value">tenant1a</S>
             </Props>
           </Obj>
-          <Obj RefId="38">
+          <Obj RefId="27">
             <TNRef RefId="2" />
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
               <S N="Name">family_name</S>
-              <S N="Value">tenant1admin</S>
+              <S N="Value">tenant1a</S>
             </Props>
           </Obj>
-          <Obj RefId="39">
+          <Obj RefId="28">
             <TNRef RefId="2" />
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
@@ -311,7 +229,159 @@
               <S N="Value">TenantAdmin</S>
             </Props>
           </Obj>
-          <Obj RefId="40">
+          <Obj RefId="29">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">email</S>
+              <S N="Value">tenant1a@mailinator.com</S>
+            </Props>
+          </Obj>
+        </LST>
+      </Obj>
+      <B N="Enabled">true</B>
+      <Obj N="MFAOptions" RefId="30">
+        <TNRef RefId="3" />
+        <LST />
+      </Obj>
+      <DT N="UserCreateDate">2018-09-13T02:46:49.591Z</DT>
+      <DT N="UserLastModifiedDate">2018-09-13T02:47:38.167Z</DT>
+      <S N="Username">tenant1a@mailinator.com</S>
+      <Ref N="UserStatus" RefId="10" />
+    </Props>
+  </Obj>
+  <Obj RefId="31">
+    <TNRef RefId="0" />
+    <ToString>Amazon.CognitoIdentityProvider.Model.UserType</ToString>
+    <Props>
+      <Obj N="Attributes" RefId="32">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="33">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">sub</S>
+              <S N="Value">97383527-1ff1-4625-bcdb-f7829f447a58</S>
+            </Props>
+          </Obj>
+          <Obj RefId="34">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:tier</S>
+              <S N="Value">Free Tier</S>
+            </Props>
+          </Obj>
+          <Obj RefId="35">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:tenant_id</S>
+              <S N="Value">TENANTbbdc52911d514748a5a64948dde024c2</S>
+            </Props>
+          </Obj>
+          <Obj RefId="36">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">given_name</S>
+              <S N="Value">tenant1u</S>
+            </Props>
+          </Obj>
+          <Obj RefId="37">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">family_name</S>
+              <S N="Value">tenant1u</S>
+            </Props>
+          </Obj>
+          <Obj RefId="38">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:role</S>
+              <S N="Value">TenantUser</S>
+            </Props>
+          </Obj>
+          <Obj RefId="39">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">email</S>
+              <S N="Value">tenant1u@mailinator.com</S>
+            </Props>
+          </Obj>
+        </LST>
+      </Obj>
+      <B N="Enabled">true</B>
+      <Obj N="MFAOptions" RefId="40">
+        <TNRef RefId="3" />
+        <LST />
+      </Obj>
+      <DT N="UserCreateDate">2018-09-13T02:48:06.803Z</DT>
+      <DT N="UserLastModifiedDate">2018-09-13T02:49:02.675Z</DT>
+      <S N="Username">tenant1u@mailinator.com</S>
+      <Ref N="UserStatus" RefId="10" />
+    </Props>
+  </Obj>
+  <Obj RefId="41">
+    <TNRef RefId="0" />
+    <ToString>Amazon.CognitoIdentityProvider.Model.UserType</ToString>
+    <Props>
+      <Obj N="Attributes" RefId="42">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="43">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">sub</S>
+              <S N="Value">8f5bd6f6-d365-4b92-b795-bc7bbfc79e92</S>
+            </Props>
+          </Obj>
+          <Obj RefId="44">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:tier</S>
+              <S N="Value">Free Tier</S>
+            </Props>
+          </Obj>
+          <Obj RefId="45">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:tenant_id</S>
+              <S N="Value">TENANTa809ef5e301b45e2ae04e57b2c60937b</S>
+            </Props>
+          </Obj>
+          <Obj RefId="46">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">given_name</S>
+              <S N="Value">tenant1admin</S>
+            </Props>
+          </Obj>
+          <Obj RefId="47">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">family_name</S>
+              <S N="Value">tenant1admin</S>
+            </Props>
+          </Obj>
+          <Obj RefId="48">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:role</S>
+              <S N="Value">TenantAdmin</S>
+            </Props>
+          </Obj>
+          <Obj RefId="49">
             <TNRef RefId="2" />
             <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
             <Props>
@@ -322,14 +392,20 @@
         </LST>
       </Obj>
       <B N="Enabled">true</B>
-      <Obj N="MFAOptions" RefId="41">
+      <Obj N="MFAOptions" RefId="50">
         <TNRef RefId="3" />
         <LST />
       </Obj>
       <DT N="UserCreateDate">2018-09-05T19:26:13.215Z</DT>
       <DT N="UserLastModifiedDate">2018-09-05T19:26:13.215Z</DT>
       <S N="Username">tenant1admin@mailinator.com</S>
-      <Ref N="UserStatus" RefId="21" />
+      <Obj N="UserStatus" RefId="51">
+        <TNRef RefId="4" />
+        <ToString>FORCE_CHANGE_PASSWORD</ToString>
+        <Props>
+          <S N="Value">FORCE_CHANGE_PASSWORD</S>
+        </Props>
+      </Obj>
     </Props>
   </Obj>
 </Objs>

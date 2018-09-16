@@ -61,8 +61,6 @@ $userpoolids = $userpools `
 
 $userpools | %{ $_.Name }
 
-$userpoolids = cat artifacts/userpoolids.json | ConvertFrom-Json
-$userpoolids
 
 #####################################
 # Not using Cognito User-Pool-Groups or User-Pool-Identity-Providers
@@ -81,8 +79,6 @@ $users = $userpoolids | Get-CGIPUserList
 $users | Write-Json -Name users
 $users | Export-Clixml -Path artifacts/users.xml
 
-$tenants | Write-Json -Name tenants
-
 $users = Import-Clixml artifacts/users.xml
 $users
 
@@ -92,15 +88,12 @@ $tenants = $users | %{
 }
 $tenants
 
-$tenants = cat artifacts/tenants.json | ConvertFrom-Json
-$tenants
-
 #####################################
 # Users from User Pools in my tenant
 ###############################
 
 # Pick a tenant
-$tenant_id = $tenants[2]
+$tenant_id = $tenants[3]
 $tenant_id
 
 $tenant_id > artifacts/tenant_id.txt
@@ -178,14 +171,23 @@ $tenantpoolid = cat artifacts/tenantpoolid.txt
 $identitypoolroles = $identitypoolids | Get-CGIIdentityPoolRole 
 $identitypoolroles
 
+$identitypoolroles.RoleMappings.Values.RulesConfiguration.Rules | Write-Json -Name identitypoolrolerules
+
+$identitypoolrolesrules = cat artifacts/identitypoolrolerules.json | ConvertFrom-Json
+
+$identitypoolrolerules = cat artifacts/identitypoolrolerules.json | ConvertFrom-Json
+$identitypoolrolerules 
+
+
+# AWS Rules do not serialize. It is a bug. 
 $identitypoolroles | Write-Json -Name identitypoolroles
-
-$identitypoolroles = cat artifacts/identitypoolroles.json | ConvertFrom-Json
-
 $identitypoolroles | Export-Clixml -Path artifacts/identitypoolroles.xml
 
+$identitypoolroles = cat artifacts/identitypoolroles.json | ConvertFrom-Json
 $identitypoolroles = Import-Clixml -Path artifacts/identitypoolroles.xml
 $identitypoolroles
+
+
 
 # Notice that the identity-pool-roles-identitypoolid 
 # matches the identity-pool-identitypoolnames 
@@ -195,8 +197,11 @@ $identitypoolroles | Format-List
 
 
 # There are two 'RoleArn's for each IdentityPoolRole
-$identitypoolroles | %{ 
-  $_.RoleMappings.Values.RulesConfiguration.Rules.RoleArn 
+$identitypoolrolerules 
+
+
+$identitypoolrolerules | %{ 
+  $_.RoleArn 
 }
 
 # Each identity pool has two 'rules' which match roles to IAM roles

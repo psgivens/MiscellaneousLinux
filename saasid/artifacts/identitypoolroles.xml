@@ -1,0 +1,242 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Deserialized.Amazon.CognitoIdentity.Model.GetIdentityPoolRolesResponse</T>
+      <T>Deserialized.Amazon.Runtime.AmazonWebServiceResponse</T>
+      <T>Deserialized.System.Object</T>
+    </TN>
+    <ToString>Amazon.CognitoIdentity.Model.GetIdentityPoolRolesResponse</ToString>
+    <Props>
+      <S N="IdentityPoolId">us-east-2:50586813-f681-49d5-be81-4f9e3ed29ee9</S>
+      <Obj N="RoleMappings" RefId="1">
+        <TN RefId="1">
+          <T>Deserialized.System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Amazon.CognitoIdentity.Model.RoleMapping, AWSSDK.CognitoIdentity, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604]]</T>
+          <T>Deserialized.System.Object</T>
+        </TN>
+        <DCT />
+      </Obj>
+      <Obj N="Roles" RefId="2">
+        <TN RefId="2">
+          <T>Deserialized.System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</T>
+          <T>Deserialized.System.Object</T>
+        </TN>
+        <DCT />
+      </Obj>
+      <Obj N="ResponseMetadata" RefId="3">
+        <TN RefId="3">
+          <T>Deserialized.Amazon.Runtime.ResponseMetadata</T>
+          <T>Deserialized.System.Object</T>
+        </TN>
+        <ToString>Amazon.Runtime.ResponseMetadata</ToString>
+        <Props>
+          <S N="RequestId">a280e9c4-b9d5-11e8-826e-75e68bd83602</S>
+          <Obj N="Metadata" RefId="4">
+            <TNRef RefId="2" />
+            <DCT />
+          </Obj>
+        </Props>
+      </Obj>
+      <I64 N="ContentLength">67</I64>
+      <Obj N="HttpStatusCode" RefId="5">
+        <TN RefId="4">
+          <T>Deserialized.System.Net.HttpStatusCode</T>
+          <T>Deserialized.System.Enum</T>
+          <T>Deserialized.System.ValueType</T>
+          <T>Deserialized.System.Object</T>
+        </TN>
+        <ToString>OK</ToString>
+        <I32>200</I32>
+      </Obj>
+    </Props>
+    <MS>
+      <DT N="LoggedAt">2018-09-16T10:26:24.0746384-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="6">
+    <TNRef RefId="0" />
+    <ToString>Amazon.CognitoIdentity.Model.GetIdentityPoolRolesResponse</ToString>
+    <Props>
+      <S N="IdentityPoolId">us-east-2:c42601ed-5c90-4ca5-9c5c-8069cac349ab</S>
+      <Obj N="RoleMappings" RefId="7">
+        <TN RefId="5">
+          <T>Deserialized.Amazon.Runtime.Internal.Util.AlwaysSendDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Amazon.CognitoIdentity.Model.RoleMapping, AWSSDK.CognitoIdentity, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604]]</T>
+          <T>Deserialized.System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Amazon.CognitoIdentity.Model.RoleMapping, AWSSDK.CognitoIdentity, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604]]</T>
+          <T>Deserialized.System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">cognito-idp.us-east-2.amazonaws.com/us-east-2_7aAInGO6z:3k6qdcael6ihv5ushte9iojsv2</S>
+            <Obj N="Value" RefId="8">
+              <TN RefId="6">
+                <T>Deserialized.Amazon.CognitoIdentity.Model.RoleMapping</T>
+                <T>Deserialized.System.Object</T>
+              </TN>
+              <ToString>Amazon.CognitoIdentity.Model.RoleMapping</ToString>
+              <Props>
+                <S N="AmbiguousRoleResolution">Deny</S>
+                <S N="RulesConfiguration">Amazon.CognitoIdentity.Model.RulesConfigurationType</S>
+                <S N="Type">Rules</S>
+              </Props>
+            </Obj>
+          </En>
+        </DCT>
+      </Obj>
+      <Obj N="Roles" RefId="9">
+        <TN RefId="7">
+          <T>Deserialized.Amazon.Runtime.Internal.Util.AlwaysSendDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</T>
+          <T>Deserialized.System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</T>
+          <T>Deserialized.System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">authenticated</S>
+            <S N="Value">arn:aws:iam::741646411745:role/SYSADMIN05f41ade28b84c27bcbf9ea8fff58a3d-Trust</S>
+          </En>
+        </DCT>
+      </Obj>
+      <Obj N="ResponseMetadata" RefId="10">
+        <TNRef RefId="3" />
+        <ToString>Amazon.Runtime.ResponseMetadata</ToString>
+        <Props>
+          <S N="RequestId">a2bb5aaa-b9d5-11e8-be33-43262c0d8ef2</S>
+          <Obj N="Metadata" RefId="11">
+            <TNRef RefId="2" />
+            <DCT />
+          </Obj>
+        </Props>
+      </Obj>
+      <I64 N="ContentLength">682</I64>
+      <Obj N="HttpStatusCode" RefId="12">
+        <TNRef RefId="4" />
+        <ToString>OK</ToString>
+        <I32>200</I32>
+      </Obj>
+    </Props>
+    <MS>
+      <DT N="LoggedAt">2018-09-16T10:26:24.4462577-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="13">
+    <TNRef RefId="0" />
+    <ToString>Amazon.CognitoIdentity.Model.GetIdentityPoolRolesResponse</ToString>
+    <Props>
+      <S N="IdentityPoolId">us-east-2:e1e96b3e-a303-48b8-8907-b687062cb209</S>
+      <Obj N="RoleMappings" RefId="14">
+        <TNRef RefId="5" />
+        <DCT>
+          <En>
+            <S N="Key">cognito-idp.us-east-2.amazonaws.com/us-east-2_x005F_xtLCepf31:15v1kf9h3hvngso8mulm8h24da</S>
+            <Obj N="Value" RefId="15">
+              <TNRef RefId="6" />
+              <ToString>Amazon.CognitoIdentity.Model.RoleMapping</ToString>
+              <Props>
+                <S N="AmbiguousRoleResolution">Deny</S>
+                <S N="RulesConfiguration">Amazon.CognitoIdentity.Model.RulesConfigurationType</S>
+                <S N="Type">Rules</S>
+              </Props>
+            </Obj>
+          </En>
+        </DCT>
+      </Obj>
+      <Obj N="Roles" RefId="16">
+        <TNRef RefId="7" />
+        <DCT>
+          <En>
+            <S N="Key">authenticated</S>
+            <S N="Value">arn:aws:iam::741646411745:role/TENANTa809ef5e301b45e2ae04e57b2c60937b-Trust</S>
+          </En>
+        </DCT>
+      </Obj>
+      <Obj N="ResponseMetadata" RefId="17">
+        <TNRef RefId="3" />
+        <ToString>Amazon.Runtime.ResponseMetadata</ToString>
+        <Props>
+          <S N="RequestId">a2f3a839-b9d5-11e8-9529-0b4be486f793</S>
+          <Obj N="Metadata" RefId="18">
+            <TNRef RefId="2" />
+            <DCT />
+          </Obj>
+        </Props>
+      </Obj>
+      <I64 N="ContentLength">676</I64>
+      <Obj N="HttpStatusCode" RefId="19">
+        <TNRef RefId="4" />
+        <ToString>OK</ToString>
+        <I32>200</I32>
+      </Obj>
+    </Props>
+    <MS>
+      <DT N="LoggedAt">2018-09-16T10:26:24.8348643-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="20">
+    <TNRef RefId="0" />
+    <ToString>Amazon.CognitoIdentity.Model.GetIdentityPoolRolesResponse</ToString>
+    <Props>
+      <S N="IdentityPoolId">us-east-2:e3d83d3d-eb18-48fb-8095-2ba265cfb8d1</S>
+      <Obj N="RoleMappings" RefId="21">
+        <TNRef RefId="1" />
+        <DCT />
+      </Obj>
+      <Obj N="Roles" RefId="22">
+        <TNRef RefId="2" />
+        <DCT />
+      </Obj>
+      <Obj N="ResponseMetadata" RefId="23">
+        <TNRef RefId="3" />
+        <ToString>Amazon.Runtime.ResponseMetadata</ToString>
+        <Props>
+          <S N="RequestId">a32edd38-b9d5-11e8-8f0d-f7f40b4f557d</S>
+          <Obj N="Metadata" RefId="24">
+            <TNRef RefId="2" />
+            <DCT />
+          </Obj>
+        </Props>
+      </Obj>
+      <I64 N="ContentLength">67</I64>
+      <Obj N="HttpStatusCode" RefId="25">
+        <TNRef RefId="4" />
+        <ToString>OK</ToString>
+        <I32>200</I32>
+      </Obj>
+    </Props>
+    <MS>
+      <DT N="LoggedAt">2018-09-16T10:26:25.1989553-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="26">
+    <TNRef RefId="0" />
+    <ToString>Amazon.CognitoIdentity.Model.GetIdentityPoolRolesResponse</ToString>
+    <Props>
+      <S N="IdentityPoolId">us-east-2:e5e5f38b-0d05-4f29-8f5d-336e6653b5dc</S>
+      <Obj N="RoleMappings" RefId="27">
+        <TNRef RefId="1" />
+        <DCT />
+      </Obj>
+      <Obj N="Roles" RefId="28">
+        <TNRef RefId="2" />
+        <DCT />
+      </Obj>
+      <Obj N="ResponseMetadata" RefId="29">
+        <TNRef RefId="3" />
+        <ToString>Amazon.Runtime.ResponseMetadata</ToString>
+        <Props>
+          <S N="RequestId">a33d834b-b9d5-11e8-95b2-539c62c96bc7</S>
+          <Obj N="Metadata" RefId="30">
+            <TNRef RefId="2" />
+            <DCT />
+          </Obj>
+        </Props>
+      </Obj>
+      <I64 N="ContentLength">67</I64>
+      <Obj N="HttpStatusCode" RefId="31">
+        <TNRef RefId="4" />
+        <ToString>OK</ToString>
+        <I32>200</I32>
+      </Obj>
+    </Props>
+    <MS>
+      <DT N="LoggedAt">2018-09-16T10:26:25.3064512-07:00</DT>
+    </MS>
+  </Obj>
+</Objs>

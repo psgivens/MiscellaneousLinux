@@ -50,8 +50,8 @@ Invoke-RestMethod -Method Get -Uri $useruri -Headers $newheader
 
 mkdir artifacts
 
-$token.token >> artifacts/token.jwt
-$token.access >> artifacts/access.jwt
+$token.token > artifacts/token.jwt
+$token.access > artifacts/access.jwt
 
 
 $temp = $token.token.split('.') `

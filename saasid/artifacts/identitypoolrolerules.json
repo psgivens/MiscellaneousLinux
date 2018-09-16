@@ -1,0 +1,34 @@
+[
+  {
+    "Claim": "custom:role",
+    "MatchType": {
+      "Value": "Equals"
+    },
+    "RoleARN": "arn:aws:iam::741646411745:role/SYSADMIN05f41ade28b84c27bcbf9ea8fff58a3d-SystemAdmin",
+    "Value": "SystemAdmin"
+  },
+  {
+    "Claim": "custom:role",
+    "MatchType": {
+      "Value": "Equals"
+    },
+    "RoleARN": "arn:aws:iam::741646411745:role/SYSADMIN05f41ade28b84c27bcbf9ea8fff58a3d-SystemUser",
+    "Value": "SystemUser"
+  },
+  {
+    "Claim": "custom:role",
+    "MatchType": {
+      "Value": "Equals"
+    },
+    "RoleARN": "arn:aws:iam::741646411745:role/TENANTa809ef5e301b45e2ae04e57b2c60937b-TenantAdmin",
+    "Value": "TenantAdmin"
+  },
+  {
+    "Claim": "custom:role",
+    "MatchType": {
+      "Value": "Equals"
+    },
+    "RoleARN": "arn:aws:iam::741646411745:role/TENANTa809ef5e301b45e2ae04e57b2c60937b-TenantUser",
+    "Value": "TenantUser"
+  }
+]

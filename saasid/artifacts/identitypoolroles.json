@@ -1,37 +1,40 @@
 [
   {
-    "IdentityPoolId": "us-east-2:02e8170a-46c4-4c39-b234-6c728cff12c5",
+    "LoggedAt": "2018-09-16T10:26:24.0746384-07:00",
+    "IdentityPoolId": "us-east-2:50586813-f681-49d5-be81-4f9e3ed29ee9",
+    "RoleMappings": {},
+    "Roles": {},
+    "ResponseMetadata": {
+      "RequestId": "a280e9c4-b9d5-11e8-826e-75e68bd83602",
+      "Metadata": "System.Collections.Hashtable"
+    },
+    "ContentLength": 67,
+    "HttpStatusCode": {
+      "value": 200,
+      "Value": "OK"
+    }
+  },
+  {
+    "LoggedAt": "2018-09-16T10:26:24.4462577-07:00",
+    "IdentityPoolId": "us-east-2:c42601ed-5c90-4ca5-9c5c-8069cac349ab",
     "RoleMappings": {
-      "cognito-idp.us-east-2.amazonaws.com/us-east-2_0bLlXvaCF:5d8vf6efjf4iic1ot6jaqca841": "Amazon.CognitoIdentity.Model.RoleMapping"
+      "cognito-idp.us-east-2.amazonaws.com/us-east-2_7aAInGO6z:3k6qdcael6ihv5ushte9iojsv2": "Amazon.CognitoIdentity.Model.RoleMapping"
     },
     "Roles": {
-      "authenticated": "arn:aws:iam::741646411745:role/SYSADMINf6d3e5dfb3764a4aa1d13c9dc7f31470-Trust"
+      "authenticated": "arn:aws:iam::741646411745:role/SYSADMIN05f41ade28b84c27bcbf9ea8fff58a3d-Trust"
     },
     "ResponseMetadata": {
-      "RequestId": "ba08f973-b710-11e8-9529-0b4be486f793",
-      "Metadata": "System.Collections.Generic.Dictionary`2[System.String,System.String]"
+      "RequestId": "a2bb5aaa-b9d5-11e8-be33-43262c0d8ef2",
+      "Metadata": "System.Collections.Hashtable"
     },
     "ContentLength": 682,
-    "HttpStatusCode": 200,
-    "LoggedAt": "2018-09-12T21:51:50.3960921-07:00"
+    "HttpStatusCode": {
+      "value": 200,
+      "Value": "OK"
+    }
   },
   {
-    "IdentityPoolId": "us-east-2:2de5b0f1-30e4-46ad-a978-1a4f7b31ef40",
-    "RoleMappings": {
-      "cognito-idp.us-east-2.amazonaws.com/us-east-2_7fG5FOzHz:40an5jg9t4c0ojcrnlngt5d5v0": "Amazon.CognitoIdentity.Model.RoleMapping"
-    },
-    "Roles": {
-      "authenticated": "arn:aws:iam::741646411745:role/TENANTbbdc52911d514748a5a64948dde024c2-Trust"
-    },
-    "ResponseMetadata": {
-      "RequestId": "ba2c3866-b710-11e8-ad12-4121cdc72254",
-      "Metadata": "System.Collections.Generic.Dictionary`2[System.String,System.String]"
-    },
-    "ContentLength": 676,
-    "HttpStatusCode": 200,
-    "LoggedAt": "2018-09-12T21:51:50.6257863-07:00"
-  },
-  {
+    "LoggedAt": "2018-09-16T10:26:24.8348643-07:00",
     "IdentityPoolId": "us-east-2:e1e96b3e-a303-48b8-8907-b687062cb209",
     "RoleMappings": {
       "cognito-idp.us-east-2.amazonaws.com/us-east-2_xtLCepf31:15v1kf9h3hvngso8mulm8h24da": "Amazon.CognitoIdentity.Model.RoleMapping"
@@ -40,11 +43,43 @@
       "authenticated": "arn:aws:iam::741646411745:role/TENANTa809ef5e301b45e2ae04e57b2c60937b-Trust"
     },
     "ResponseMetadata": {
-      "RequestId": "ba532171-b710-11e8-be33-43262c0d8ef2",
-      "Metadata": "System.Collections.Generic.Dictionary`2[System.String,System.String]"
+      "RequestId": "a2f3a839-b9d5-11e8-9529-0b4be486f793",
+      "Metadata": "System.Collections.Hashtable"
     },
     "ContentLength": 676,
-    "HttpStatusCode": 200,
-    "LoggedAt": "2018-09-12T21:51:50.8648696-07:00"
+    "HttpStatusCode": {
+      "value": 200,
+      "Value": "OK"
+    }
+  },
+  {
+    "LoggedAt": "2018-09-16T10:26:25.1989553-07:00",
+    "IdentityPoolId": "us-east-2:e3d83d3d-eb18-48fb-8095-2ba265cfb8d1",
+    "RoleMappings": {},
+    "Roles": {},
+    "ResponseMetadata": {
+      "RequestId": "a32edd38-b9d5-11e8-8f0d-f7f40b4f557d",
+      "Metadata": "System.Collections.Hashtable"
+    },
+    "ContentLength": 67,
+    "HttpStatusCode": {
+      "value": 200,
+      "Value": "OK"
+    }
+  },
+  {
+    "LoggedAt": "2018-09-16T10:26:25.3064512-07:00",
+    "IdentityPoolId": "us-east-2:e5e5f38b-0d05-4f29-8f5d-336e6653b5dc",
+    "RoleMappings": {},
+    "Roles": {},
+    "ResponseMetadata": {
+      "RequestId": "a33d834b-b9d5-11e8-95b2-539c62c96bc7",
+      "Metadata": "System.Collections.Hashtable"
+    },
+    "ContentLength": 67,
+    "HttpStatusCode": {
+      "value": 200,
+      "Value": "OK"
+    }
   }
 ]
