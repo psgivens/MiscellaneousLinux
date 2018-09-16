@@ -1,0 +1,177 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Amazon.CognitoIdentityProvider.Model.UserType</T>
+      <T>System.Object</T>
+    </TN>
+    <ToString>Amazon.CognitoIdentityProvider.Model.UserType</ToString>
+    <Props>
+      <Obj N="Attributes" RefId="1">
+        <TN RefId="1">
+          <T>Amazon.Runtime.Internal.Util.AlwaysSendList`1[[Amazon.CognitoIdentityProvider.Model.AttributeType, AWSSDK.CognitoIdentityProvider, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604]]</T>
+          <T>System.Collections.Generic.List`1[[Amazon.CognitoIdentityProvider.Model.AttributeType, AWSSDK.CognitoIdentityProvider, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604]]</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <Obj RefId="2">
+            <TN RefId="2">
+              <T>Amazon.CognitoIdentityProvider.Model.AttributeType</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">sub</S>
+              <S N="Value">8b768b5b-28af-4197-86d2-ca08bd0d1b41</S>
+            </Props>
+          </Obj>
+          <Obj RefId="3">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:tier</S>
+              <S N="Value">Free Tier</S>
+            </Props>
+          </Obj>
+          <Obj RefId="4">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:tenant_id</S>
+              <S N="Value">TENANTbbdc52911d514748a5a64948dde024c2</S>
+            </Props>
+          </Obj>
+          <Obj RefId="5">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">given_name</S>
+              <S N="Value">tenant1a</S>
+            </Props>
+          </Obj>
+          <Obj RefId="6">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">family_name</S>
+              <S N="Value">tenant1a</S>
+            </Props>
+          </Obj>
+          <Obj RefId="7">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:role</S>
+              <S N="Value">TenantAdmin</S>
+            </Props>
+          </Obj>
+          <Obj RefId="8">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">email</S>
+              <S N="Value">tenant1a@mailinator.com</S>
+            </Props>
+          </Obj>
+        </LST>
+      </Obj>
+      <B N="Enabled">true</B>
+      <Obj N="MFAOptions" RefId="9">
+        <TN RefId="3">
+          <T>System.Collections.Generic.List`1[[Amazon.CognitoIdentityProvider.Model.MFAOptionType, AWSSDK.CognitoIdentityProvider, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604]]</T>
+          <T>System.Object</T>
+        </TN>
+        <LST />
+      </Obj>
+      <DT N="UserCreateDate">2018-09-13T02:46:49.591Z</DT>
+      <DT N="UserLastModifiedDate">2018-09-13T02:47:38.167Z</DT>
+      <S N="Username">tenant1a@mailinator.com</S>
+      <Obj N="UserStatus" RefId="10">
+        <TN RefId="4">
+          <T>Amazon.CognitoIdentityProvider.UserStatusType</T>
+          <T>Amazon.Runtime.ConstantClass</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>CONFIRMED</ToString>
+        <Props>
+          <S N="Value">CONFIRMED</S>
+        </Props>
+      </Obj>
+    </Props>
+  </Obj>
+  <Obj RefId="11">
+    <TNRef RefId="0" />
+    <ToString>Amazon.CognitoIdentityProvider.Model.UserType</ToString>
+    <Props>
+      <Obj N="Attributes" RefId="12">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="13">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">sub</S>
+              <S N="Value">97383527-1ff1-4625-bcdb-f7829f447a58</S>
+            </Props>
+          </Obj>
+          <Obj RefId="14">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:tier</S>
+              <S N="Value">Free Tier</S>
+            </Props>
+          </Obj>
+          <Obj RefId="15">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:tenant_id</S>
+              <S N="Value">TENANTbbdc52911d514748a5a64948dde024c2</S>
+            </Props>
+          </Obj>
+          <Obj RefId="16">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">given_name</S>
+              <S N="Value">tenant1u</S>
+            </Props>
+          </Obj>
+          <Obj RefId="17">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">family_name</S>
+              <S N="Value">tenant1u</S>
+            </Props>
+          </Obj>
+          <Obj RefId="18">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">custom:role</S>
+              <S N="Value">TenantUser</S>
+            </Props>
+          </Obj>
+          <Obj RefId="19">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentityProvider.Model.AttributeType</ToString>
+            <Props>
+              <S N="Name">email</S>
+              <S N="Value">tenant1u@mailinator.com</S>
+            </Props>
+          </Obj>
+        </LST>
+      </Obj>
+      <B N="Enabled">true</B>
+      <Obj N="MFAOptions" RefId="20">
+        <TNRef RefId="3" />
+        <LST />
+      </Obj>
+      <DT N="UserCreateDate">2018-09-13T02:48:06.803Z</DT>
+      <DT N="UserLastModifiedDate">2018-09-13T02:49:02.675Z</DT>
+      <S N="Username">tenant1u@mailinator.com</S>
+      <Ref N="UserStatus" RefId="10" />
+    </Props>
+  </Obj>
+</Objs>

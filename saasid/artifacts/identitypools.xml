@@ -1,0 +1,195 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Amazon.CognitoIdentity.Model.DescribeIdentityPoolResponse</T>
+      <T>Amazon.Runtime.AmazonWebServiceResponse</T>
+      <T>System.Object</T>
+    </TN>
+    <ToString>Amazon.CognitoIdentity.Model.DescribeIdentityPoolResponse</ToString>
+    <Props>
+      <B N="AllowUnauthenticatedIdentities">false</B>
+      <Obj N="CognitoIdentityProviders" RefId="1">
+        <TN RefId="1">
+          <T>Amazon.Runtime.Internal.Util.AlwaysSendList`1[[Amazon.CognitoIdentity.Model.CognitoIdentityProviderInfo, AWSSDK.CognitoIdentity, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604]]</T>
+          <T>System.Collections.Generic.List`1[[Amazon.CognitoIdentity.Model.CognitoIdentityProviderInfo, AWSSDK.CognitoIdentity, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604]]</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <Obj RefId="2">
+            <TN RefId="2">
+              <T>Amazon.CognitoIdentity.Model.CognitoIdentityProviderInfo</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>Amazon.CognitoIdentity.Model.CognitoIdentityProviderInfo</ToString>
+            <Props>
+              <S N="ClientId">5d8vf6efjf4iic1ot6jaqca841</S>
+              <S N="ProviderName">cognito-idp.us-east-2.amazonaws.com/us-east-2_0bLlXvaCF</S>
+              <B N="ServerSideTokenCheck">true</B>
+            </Props>
+          </Obj>
+        </LST>
+      </Obj>
+      <Nil N="DeveloperProviderName" />
+      <S N="IdentityPoolId">us-east-2:02e8170a-46c4-4c39-b234-6c728cff12c5</S>
+      <S N="IdentityPoolName">SYSADMINf6d3e5dfb3764a4aa1d13c9dc7f31470</S>
+      <Obj N="OpenIdConnectProviderARNs" RefId="3">
+        <TN RefId="3">
+          <T>System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</T>
+          <T>System.Object</T>
+        </TN>
+        <LST />
+      </Obj>
+      <Obj N="SamlProviderARNs" RefId="4">
+        <TNRef RefId="3" />
+        <LST />
+      </Obj>
+      <Obj N="SupportedLoginProviders" RefId="5">
+        <TN RefId="4">
+          <T>System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT />
+      </Obj>
+      <Obj N="ResponseMetadata" RefId="6">
+        <TN RefId="5">
+          <T>Amazon.Runtime.ResponseMetadata</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>Amazon.Runtime.ResponseMetadata</ToString>
+        <Props>
+          <S N="RequestId">f10ada4d-b710-11e8-90e7-2bed154caacb</S>
+          <Obj N="Metadata" RefId="7">
+            <TNRef RefId="4" />
+            <DCT />
+          </Obj>
+        </Props>
+      </Obj>
+      <I64 N="ContentLength">340</I64>
+      <Obj N="HttpStatusCode" RefId="8">
+        <TN RefId="6">
+          <T>System.Net.HttpStatusCode</T>
+          <T>System.Enum</T>
+          <T>System.ValueType</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>OK</ToString>
+        <I32>200</I32>
+      </Obj>
+    </Props>
+    <MS>
+      <DT N="LoggedAt">2018-09-12T21:53:22.6689788-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="9">
+    <TNRef RefId="0" />
+    <ToString>Amazon.CognitoIdentity.Model.DescribeIdentityPoolResponse</ToString>
+    <Props>
+      <B N="AllowUnauthenticatedIdentities">false</B>
+      <Obj N="CognitoIdentityProviders" RefId="10">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="11">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentity.Model.CognitoIdentityProviderInfo</ToString>
+            <Props>
+              <S N="ClientId">40an5jg9t4c0ojcrnlngt5d5v0</S>
+              <S N="ProviderName">cognito-idp.us-east-2.amazonaws.com/us-east-2_7fG5FOzHz</S>
+              <B N="ServerSideTokenCheck">true</B>
+            </Props>
+          </Obj>
+        </LST>
+      </Obj>
+      <Nil N="DeveloperProviderName" />
+      <S N="IdentityPoolId">us-east-2:2de5b0f1-30e4-46ad-a978-1a4f7b31ef40</S>
+      <S N="IdentityPoolName">TENANTbbdc52911d514748a5a64948dde024c2</S>
+      <Obj N="OpenIdConnectProviderARNs" RefId="12">
+        <TNRef RefId="3" />
+        <LST />
+      </Obj>
+      <Obj N="SamlProviderARNs" RefId="13">
+        <TNRef RefId="3" />
+        <LST />
+      </Obj>
+      <Obj N="SupportedLoginProviders" RefId="14">
+        <TNRef RefId="4" />
+        <DCT />
+      </Obj>
+      <Obj N="ResponseMetadata" RefId="15">
+        <TNRef RefId="5" />
+        <ToString>Amazon.Runtime.ResponseMetadata</ToString>
+        <Props>
+          <S N="RequestId">f12bf6d7-b710-11e8-826e-75e68bd83602</S>
+          <Obj N="Metadata" RefId="16">
+            <TNRef RefId="4" />
+            <DCT />
+          </Obj>
+        </Props>
+      </Obj>
+      <I64 N="ContentLength">338</I64>
+      <Obj N="HttpStatusCode" RefId="17">
+        <TNRef RefId="6" />
+        <ToString>OK</ToString>
+        <I32>200</I32>
+      </Obj>
+    </Props>
+    <MS>
+      <DT N="LoggedAt">2018-09-12T21:53:22.8843648-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="18">
+    <TNRef RefId="0" />
+    <ToString>Amazon.CognitoIdentity.Model.DescribeIdentityPoolResponse</ToString>
+    <Props>
+      <B N="AllowUnauthenticatedIdentities">false</B>
+      <Obj N="CognitoIdentityProviders" RefId="19">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="20">
+            <TNRef RefId="2" />
+            <ToString>Amazon.CognitoIdentity.Model.CognitoIdentityProviderInfo</ToString>
+            <Props>
+              <S N="ClientId">15v1kf9h3hvngso8mulm8h24da</S>
+              <S N="ProviderName">cognito-idp.us-east-2.amazonaws.com/us-east-2_x005F_xtLCepf31</S>
+              <B N="ServerSideTokenCheck">true</B>
+            </Props>
+          </Obj>
+        </LST>
+      </Obj>
+      <Nil N="DeveloperProviderName" />
+      <S N="IdentityPoolId">us-east-2:e1e96b3e-a303-48b8-8907-b687062cb209</S>
+      <S N="IdentityPoolName">TENANTa809ef5e301b45e2ae04e57b2c60937b</S>
+      <Obj N="OpenIdConnectProviderARNs" RefId="21">
+        <TNRef RefId="3" />
+        <LST />
+      </Obj>
+      <Obj N="SamlProviderARNs" RefId="22">
+        <TNRef RefId="3" />
+        <LST />
+      </Obj>
+      <Obj N="SupportedLoginProviders" RefId="23">
+        <TNRef RefId="4" />
+        <DCT />
+      </Obj>
+      <Obj N="ResponseMetadata" RefId="24">
+        <TNRef RefId="5" />
+        <ToString>Amazon.Runtime.ResponseMetadata</ToString>
+        <Props>
+          <S N="RequestId">f14c9e42-b710-11e8-90e7-2bed154caacb</S>
+          <Obj N="Metadata" RefId="25">
+            <TNRef RefId="4" />
+            <DCT />
+          </Obj>
+        </Props>
+      </Obj>
+      <I64 N="ContentLength">338</I64>
+      <Obj N="HttpStatusCode" RefId="26">
+        <TNRef RefId="6" />
+        <ToString>OK</ToString>
+        <I32>200</I32>
+      </Obj>
+    </Props>
+    <MS>
+      <DT N="LoggedAt">2018-09-12T21:53:23.0766581-07:00</DT>
+    </MS>
+  </Obj>
+</Objs>

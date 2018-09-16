@@ -24,8 +24,25 @@ Write-Host "Current profile is: $StoredAWSCredentials"
 Set-DefaultAWSRegion -Region "us-east-2"
 
 
-
-
+Function Write-Json {
+  param(
+    [Parameter(Position=1,Mandatory=$true,ValueFromPipeline=$true)]
+    $Values,
+    [Parameter(Position=2,Mandatory=$true)]
+    $Name
+  )
+  Begin{
+    $v = @()
+  }
+  Process{
+    $v += $values
+  }
+  End{
+    if ($v) {
+      $v | ConvertTo-Json | Tee-Object -FilePath "artifacts/$name.json" 
+    }
+  }
+}
 
 
 #####################################
@@ -33,10 +50,19 @@ Set-DefaultAWSRegion -Region "us-east-2"
 ###############################
 $userpools = Get-CGIPUserPoolList 
 
-$userpoolids = Get-CGIPUserPoolList `
+$userpools | Write-Json -Name userpools
+
+$userpools = cat artifacts/userpools.json | ConvertFrom-Json 
+$userpools
+
+
+$userpoolids = $userpools `
   | %{ $_.id }
 
 $userpools | %{ $_.Name }
+
+$userpoolids = cat artifacts/userpoolids.json | ConvertFrom-Json
+$userpoolids
 
 #####################################
 # Not using Cognito User-Pool-Groups or User-Pool-Identity-Providers
@@ -52,20 +78,35 @@ $userpoolids | Get-CGIPIdentityProviderList
 ###############################
 $users = $userpoolids | Get-CGIPUserList 
 
+$users | Write-Json -Name users
+$users | Export-Clixml -Path artifacts/users.xml
+
+$tenants | Write-Json -Name tenants
+
+$users = Import-Clixml artifacts/users.xml
+$users
+
 # Notice that the tenant_ids are the same as the user-pool-names
-$users | %{
-  $_.Attributes  | ?{ $_.Name -match 'custom:tenant_id' }
+$tenants = $users | %{
+  $_.Attributes  | ?{ $_.Name -match 'custom:tenant_id' } | %{ $_.Value }
 }
+$tenants
 
-
-
+$tenants = cat artifacts/tenants.json | ConvertFrom-Json
+$tenants
 
 #####################################
 # Users from User Pools in my tenant
 ###############################
 
 # Pick a tenant
-$tenant_id = 'TENANT643f6bde9fce482fa24e93141c76050a'
+$tenant_id = $tenants[2]
+$tenant_id
+
+$tenant_id > artifacts/tenant_id.txt
+
+$tenant_id = cat artifacts/tenant_id.txt
+$tenant_id
 
 # Which users are part of that tenant? 
 $mytenantusers = $users | ?{ 
@@ -75,12 +116,15 @@ $mytenantusers = $users | ?{
 }
 $mytenantusers
 
+#$mytenantusers | Write-Json -Name 'tenantusers'
+#$mytenantusers | Export-Clixml -Path artifacts/tenantusers.xml
+
 # Json isn't so nice for cognito attributes
 $mytenantusers | ConvertTo-json
 
 # What are the roles for this tenant
 $mytenantusers | %{
-  $_.Attributes  | ?{ $_.Name -match 'custom:role' }
+  $_.Attributes  | ?{ $_.Name -match 'custom:role' } | %{ $_.Value }
 }
 
 # Who are my admins for this tenant? 
@@ -89,7 +133,7 @@ $mytenantusers | ?{
 }
 
 # Who are my users for this tenant? 
-$mytenantusers | %{
+$mytenantusers | ?{
   $_.Attributes  | ?{ $_.Name -match 'custom:role' -and $_.Value -match 'TenantUser' }
 }
 
@@ -102,8 +146,15 @@ $mytenantusers | %{
 ###############################
 
 $identitypoollist = Get-CGIIdentityPoolList 
-$identitypoolids = $identitypoollist | %{ $_.IdentityPoolId }
 $identitypoollist
+
+$identitypoollist | Write-Json -Name identitypoollist
+
+$identitypoollist = cat artifacts/identitypoollist.json | ConvertFrom-Json
+$identitypoollist
+
+$identitypoolids = $identitypoollist | %{ $_.IdentityPoolId }
+$identitypoolids 
 
 # Notice that the identity-pool-identitypoolnames are also the same as the user-pool-names
 $identitypoollist | %{ $_.IdentityPoolName }
@@ -114,6 +165,10 @@ $tenantpoolid = $identitypoollist `
   | %{ $_.IdentityPoolId }
 $tenantpoolid
 
+$tenantpoolid > artifacts/tenantpoolid.txt
+
+$tenantpoolid = cat artifacts/tenantpoolid.txt
+
 
 
 #####################################
@@ -121,6 +176,16 @@ $tenantpoolid
 ###############################
 
 $identitypoolroles = $identitypoolids | Get-CGIIdentityPoolRole 
+$identitypoolroles
+
+$identitypoolroles | Write-Json -Name identitypoolroles
+
+$identitypoolroles = cat artifacts/identitypoolroles.json | ConvertFrom-Json
+
+$identitypoolroles | Export-Clixml -Path artifacts/identitypoolroles.xml
+
+$identitypoolroles = Import-Clixml -Path artifacts/identitypoolroles.xml
+$identitypoolroles
 
 # Notice that the identity-pool-roles-identitypoolid 
 # matches the identity-pool-identitypoolnames 
@@ -171,7 +236,11 @@ $tenantpoolrolearns
 # Let's take a look at the Identity Pools 
 $identitypools = $identitypoolids | Get-CGIIdentityPool
 
-$identitypools 
+if ($identitypools) {
+  $identitypools | Export-Clixml -Path artifacts/identitypools.xml
+}
+
+$identitypools = Import-Clixml -Path artifacts/identitypools.xml
 
 # Every identity-pool has an identity-provider
 # I don't know what these do.
@@ -190,9 +259,24 @@ $identitypools | %{ $_.CognitoIdentityProviders }
 $iamroles = Get-IAMRoleList 
 #$iamroles | Format-List
 
+$iamroles | Export-Clixml -Path artifacts/iamroles.xml
+
+$iamroles = Import-Clixml -Path artifacts/iamroles.xml
+
 $tenantiamroles = $iamroles | ?{ $_.Arn -in $tenantpoolrolearns }
 
 $tenantiamroles | Format-List
+
+# TODO: Recreate
+$tenantiamroles | Write-Json -Name tenantiamroles
+
+$tenantiamroles = cat artifacts/tenantiamroles.json | ConvertFrom-Json
+
+$tenantiamroles | Export-Clixml -Path artifacts/tenantiamroles.xml
+
+$tenantiamroles | Import-Clixml -Path artifacts/tenantiamroles.xml
+$tenantiamroles
+
 
 
 
@@ -205,6 +289,9 @@ $tenantiamroles `
   | %{ [System.Web.HttpUtility]::UrlDecode($_.AssumeRolePolicyDocument) } `
   | ConvertFrom-Json 
 
+$tenantiamroles `
+  | %{ [System.Web.HttpUtility]::UrlDecode($_.AssumeRolePolicyDocument) } `
+  | jq '.' > artifacts/tenantiamroles.json
 
 
 
@@ -230,20 +317,22 @@ $tenantiamroles `
 $policies = Get-IAMPolicyList 
 $policies
 
+$policies | Export-Clixml -Path artifacts/iampolicylist.xml
+$policies = Import-Clixml -Path artifacts/iampolicylist.xml
 
 # Filter policies by name
 $tenantpolicies = $policies `
   | ?{ $_.PolicyName -match 'SYSADMIN' -or $_.PolicyName -match 'TENANT' }
 
 $tenantpolicies 
+$tenantpolicies | Measure | %{ $_.Count }
 
 # Get the actual policies (via policy version)
 $tenantpolicies `
   | Select -Skip 4 -First 1 `
   | %{ (Get-IAMPolicyVersion -PolicyArn $_.Arn -VersionId $_.DefaultVersionId) } `
   | %{ [System.Web.HttpUtility]::UrlDecode($_.Document) } `
-  | jq '.' `
-  | less
+  | jq '.' > tenantpolicies.json
 
 # Get the actual policies (via policy version)
 $tenantpolicies `
@@ -251,7 +340,8 @@ $tenantpolicies `
   | %{ (Get-IAMPolicyVersion -PolicyArn $_.Arn -VersionId $_.DefaultVersionId) } `
   | %{ [System.Web.HttpUtility]::UrlDecode($_.Document) } `
   | ConvertFrom-Json `
-  | %{ $_.Statement.Condition.'ForAllValues:StringEquals'.'dynamodb:LeadingKeys' }
+  | %{ $_.Statement.Condition.'ForAllValues:StringEquals'.'dynamodb:LeadingKeys' } `
+  > artifacts/tenantpolicyversion.txt
 
 
 $tenantpolicies | less

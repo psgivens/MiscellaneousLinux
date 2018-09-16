@@ -1,0 +1,59 @@
+[
+  {
+    "CreationDate": "2018-09-13T02:25:14.923Z",
+    "Id": "us-east-2_0bLlXvaCF",
+    "LambdaConfig": {
+      "CreateAuthChallenge": null,
+      "CustomMessage": null,
+      "DefineAuthChallenge": null,
+      "PostAuthentication": null,
+      "PostConfirmation": null,
+      "PreAuthentication": null,
+      "PreSignUp": null,
+      "PreTokenGeneration": null,
+      "UserMigration": null,
+      "VerifyAuthChallengeResponse": null
+    },
+    "LastModifiedDate": "2018-09-13T02:25:14.923Z",
+    "Name": "SYSADMINf6d3e5dfb3764a4aa1d13c9dc7f31470",
+    "Status": null
+  },
+  {
+    "CreationDate": "2018-09-13T02:46:49.105Z",
+    "Id": "us-east-2_7fG5FOzHz",
+    "LambdaConfig": {
+      "CreateAuthChallenge": null,
+      "CustomMessage": null,
+      "DefineAuthChallenge": null,
+      "PostAuthentication": null,
+      "PostConfirmation": null,
+      "PreAuthentication": null,
+      "PreSignUp": null,
+      "PreTokenGeneration": null,
+      "UserMigration": null,
+      "VerifyAuthChallengeResponse": null
+    },
+    "LastModifiedDate": "2018-09-13T02:46:49.105Z",
+    "Name": "TENANTbbdc52911d514748a5a64948dde024c2",
+    "Status": null
+  },
+  {
+    "CreationDate": "2018-09-05T19:26:12.73Z",
+    "Id": "us-east-2_xtLCepf31",
+    "LambdaConfig": {
+      "CreateAuthChallenge": null,
+      "CustomMessage": null,
+      "DefineAuthChallenge": null,
+      "PostAuthentication": null,
+      "PostConfirmation": null,
+      "PreAuthentication": null,
+      "PreSignUp": null,
+      "PreTokenGeneration": null,
+      "UserMigration": null,
+      "VerifyAuthChallengeResponse": null
+    },
+    "LastModifiedDate": "2018-09-05T19:26:12.73Z",
+    "Name": "TENANTa809ef5e301b45e2ae04e57b2c60937b",
+    "Status": null
+  }
+]

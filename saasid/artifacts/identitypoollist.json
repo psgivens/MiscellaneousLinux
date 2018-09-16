@@ -1,0 +1,14 @@
+[
+  {
+    "IdentityPoolId": "us-east-2:02e8170a-46c4-4c39-b234-6c728cff12c5",
+    "IdentityPoolName": "SYSADMINf6d3e5dfb3764a4aa1d13c9dc7f31470"
+  },
+  {
+    "IdentityPoolId": "us-east-2:2de5b0f1-30e4-46ad-a978-1a4f7b31ef40",
+    "IdentityPoolName": "TENANTbbdc52911d514748a5a64948dde024c2"
+  },
+  {
+    "IdentityPoolId": "us-east-2:e1e96b3e-a303-48b8-8907-b687062cb209",
+    "IdentityPoolName": "TENANTa809ef5e301b45e2ae04e57b2c60937b"
+  }
+]

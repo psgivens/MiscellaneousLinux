@@ -1,0 +1,40 @@
+[
+  {
+    "Attributes": [
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType"
+    ],
+    "Enabled": true,
+    "MFAOptions": [],
+    "UserCreateDate": "2018-09-13T02:46:49.591Z",
+    "UserLastModifiedDate": "2018-09-13T02:47:38.167Z",
+    "Username": "tenant1a@mailinator.com",
+    "UserStatus": {
+      "Value": "CONFIRMED"
+    }
+  },
+  {
+    "Attributes": [
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType"
+    ],
+    "Enabled": true,
+    "MFAOptions": [],
+    "UserCreateDate": "2018-09-13T02:48:06.803Z",
+    "UserLastModifiedDate": "2018-09-13T02:49:02.675Z",
+    "Username": "tenant1u@mailinator.com",
+    "UserStatus": {
+      "Value": "CONFIRMED"
+    }
+  }
+]

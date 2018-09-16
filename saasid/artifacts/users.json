@@ -1,0 +1,97 @@
+[
+  {
+    "Attributes": [
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType"
+    ],
+    "Enabled": true,
+    "MFAOptions": [],
+    "UserCreateDate": "2018-09-13T02:25:15.48Z",
+    "UserLastModifiedDate": "2018-09-13T02:44:30.481Z",
+    "Username": "Phillip.Givens@PatientPop.com",
+    "UserStatus": {
+      "Value": "CONFIRMED"
+    }
+  },
+  {
+    "Attributes": [
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType"
+    ],
+    "Enabled": true,
+    "MFAOptions": [],
+    "UserCreateDate": "2018-09-13T02:45:12.592Z",
+    "UserLastModifiedDate": "2018-09-13T02:46:09.627Z",
+    "Username": "systemu@mailinator.com",
+    "UserStatus": {
+      "Value": "CONFIRMED"
+    }
+  },
+  {
+    "Attributes": [
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType"
+    ],
+    "Enabled": true,
+    "MFAOptions": [],
+    "UserCreateDate": "2018-09-13T02:46:49.591Z",
+    "UserLastModifiedDate": "2018-09-13T02:47:38.167Z",
+    "Username": "tenant1a@mailinator.com",
+    "UserStatus": {
+      "Value": "CONFIRMED"
+    }
+  },
+  {
+    "Attributes": [
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType"
+    ],
+    "Enabled": true,
+    "MFAOptions": [],
+    "UserCreateDate": "2018-09-13T02:48:06.803Z",
+    "UserLastModifiedDate": "2018-09-13T02:49:02.675Z",
+    "Username": "tenant1u@mailinator.com",
+    "UserStatus": {
+      "Value": "CONFIRMED"
+    }
+  },
+  {
+    "Attributes": [
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType",
+      "Amazon.CognitoIdentityProvider.Model.AttributeType"
+    ],
+    "Enabled": true,
+    "MFAOptions": [],
+    "UserCreateDate": "2018-09-05T19:26:13.215Z",
+    "UserLastModifiedDate": "2018-09-05T19:26:13.215Z",
+    "Username": "tenant1admin@mailinator.com",
+    "UserStatus": {
+      "Value": "FORCE_CHANGE_PASSWORD"
+    }
+  }
+]
