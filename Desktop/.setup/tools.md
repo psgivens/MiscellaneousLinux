@@ -49,6 +49,7 @@
    
 ### Powershell and cloud environments
 
+    mkdir ./psmodules
     Save-Module -Name AWSPowerShell.NetCore -Path ./psmodules/
     Install-Module -Name AWSPowerShell.NetCore -Scope CurrentUser
     Save-Module -Path ./psmodules/ -Name DockerMsftProvider
@@ -63,9 +64,9 @@
     sudo apt install -y npm
 
 ### yarn
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt update && sudo apt install -y yarn
+    #curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    #echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    #sudo apt update && sudo apt install -y yarn
 
 
 ### dotnet core
@@ -110,21 +111,21 @@
 
 
 ### Azure CLI 
-    AZ_REPO=$(lsb_release -cs)
-    echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
-        sudo tee /etc/apt/sources.list.d/azure-cli.list
+    #AZ_REPO=$(lsb_release -cs)
+    #echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+        #sudo tee /etc/apt/sources.list.d/azure-cli.list
+   
+    #curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
     
-    curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-    
-    sudo apt-get install apt-transport-https
+    #sudo apt-get install apt-transport-https
     sudo apt-get update && sudo apt-get install azure-cli
     
 ### Atom
 
-    curl -L https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-    sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-    sudo apt-get update
-    sudo apt install -y atom
+    #curl -L https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+    #sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+    #sudo apt-get update
+    #sudo apt install -y atom
     
 
 
