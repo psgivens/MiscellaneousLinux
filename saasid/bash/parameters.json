@@ -1,0 +1,30 @@
+[
+  {
+    "ParameterKey": "AvailabilityZones",
+    "ParameterValue": "us-east-2a,us-east-2b"
+  },
+  {
+    "ParameterKey": "Lastname",
+    "ParameterValue": "Givens"
+  },
+  {
+    "ParameterKey": "InstanceType",
+    "ParameterValue": "t2.micro"
+  },
+  {
+    "ParameterKey": "KeyPairName",
+    "ParameterValue": "SaasIdentities"
+  },
+  {
+    "ParameterKey": "Company",
+    "ParameterValue": "ppop-psgivens"
+  },
+  {
+    "ParameterKey": "Email",
+    "ParameterValue": "Phillip.Givens@PatientPop.com"
+  },
+  {
+    "ParameterKey": "Firstname",
+    "ParameterValue": "Phillip"
+  }
+]
