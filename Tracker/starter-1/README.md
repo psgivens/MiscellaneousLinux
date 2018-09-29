@@ -6,9 +6,7 @@ http://reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-compone
 ### Method Invocation Pattern
 If there are dots in your function call, your function context will be the right-most element of your dots chain.
 
-
-
-
+https://github.com/Microsoft/TypeScript-React-Starter
 
 
 
