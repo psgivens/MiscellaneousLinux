@@ -11,3 +11,5 @@ let g:slime_target = "tmux"
 " This is necessary for slime to work when Powershell is the default shell. 
 set shell=/bin/bash
 
+set foldmethod=manual
+

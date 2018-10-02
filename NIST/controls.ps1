@@ -4,7 +4,7 @@
 $controls = Select-Xml -Path ./800-53-controls.xml -XPath /
 
 # Show the controls
-$controls.Node.controls
+$controls.Node.controls.control
 
 # What does 'supplemental-guidance' mean? 
 $controls.Node.controls.control.'supplemental-guidance' | gm -MemberType Property
@@ -51,7 +51,45 @@ $controls.Node.controls.control |%{
   #cat $file
 }
 
+less $file
+
 cat *.txt | less
+
+
+
+
+
+$file = "nist80053.md"
+rm $file
+$controls.Node.controls.control |%{
+  "## {0}: {1}`n" -f $_.number, $_.title >> $file
+  $_.'supplemental-guidance'.description >> $file
+  #$file = ("{0}.txt" -f $control.number)
+  $_.statement | %{ 
+    "### {0}`n" -f $_.description >> $file
+    if ($_.statement) { $_.statement | %{  
+        "* {0}: {1}" -f $_.number, $_.description >> $file
+        if ($_.statement) {
+          $_.statement | %{ "* * {0}: {1}" -f $_.number, $_.description } >> $file
+        }
+      }
+    }
+    echo "" >> $file
+  }
+}
+remarkable $file &
+
+remarkable $file &
+
+
+$controls.Node.controls.control[2]
+
+$controls.Node.controls.control[2].'supplemental-guidance'.description
+
+$controls.Node.controls.control[2].statement
+
+$controls.Node.controls.control[2].statement.statement
+
 
 
 
