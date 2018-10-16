@@ -24,11 +24,8 @@ import createPomodoroSaga from './actions/PomodoroSaga'
 
 // import { createWorker, ITypedWorker } from 'typed-web-workers'
 
-// import { databaseWorker } from './workers/DatabaseWorker'
-
-import { DatabaseWorker } from './workers/DatabaseWorker'
-
 import { DatabaseWorkerEvent } from './data/PomodoroData'
+import { DatabaseWorker } from './workers/DatabaseWorker'
 
 // import * as workerPath from "file-loader?name=[name].js!./workers/DatabaseWorker";
 

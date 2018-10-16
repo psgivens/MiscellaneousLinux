@@ -17,8 +17,6 @@ export const createPomodoro = (userId:string, planned:string, actual:string="", 
     version: 0
 })
 
-
-
 export type DatabaseWorkerCommand = {
     type: "LOAD_DATA"
   } | {
