@@ -6,6 +6,7 @@ import { PomodoroCommand, PomodoroCommands } from '../../actions/PomodoroSaga'
 
 import { PomodoroTimerState } from '../../reducers'
 
+
 export type AttributeProps = {} & {
     name: string
 }

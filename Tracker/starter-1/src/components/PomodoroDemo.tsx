@@ -3,7 +3,7 @@ import * as React from 'react'
 import '../App.css'
 import logo from '../logo.svg'
 import { PomodoroArc } from './pomodoroDemo/PomodoroArc'
-import { Counter } from './pomodoroDemo/PomodoroControls'
+import { PomodoroControls } from './pomodoroDemo/PomodoroControls'
 
 
 class PomodoroDemo extends React.Component {
@@ -20,7 +20,7 @@ class PomodoroDemo extends React.Component {
 
         <div className="columns">
           <div className="column">
-            <Counter name="first_pomodoro" />
+            <PomodoroControls name="first_pomodoro" />
           </div>
           <div className="column">
             <PomodoroArc guageId="first_pomodoro" />

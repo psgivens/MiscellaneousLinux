@@ -31,7 +31,7 @@ const renderCounter:React.SFC<CombinedProps> = ({ pomodoroState, reset, start, s
   </div>
 }
   
-export const Counter = 
+export const PomodoroControls = 
   connect<{}, {}, container.AttributeProps>(container.mapStateToProps, container.mapDispatchToProps) (renderCounter)
 
 

@@ -112,12 +112,12 @@ class PomodoroArcComponent extends React.Component<ThisProps, ComponentState> {
       
       case "RUNNING":
         {
-          const value = newValue.remaining / (25*6) / 5
+          const value = newValue.remaining / (25*60)
           const arc2 = d3.arc()
             .innerRadius(50)
             .outerRadius(70)
             .startAngle(0)
-            .endAngle(value * Math.PI);
+            .endAngle(value * 2 * Math.PI);
             
           g2.transition()
               .duration(this.config.transitionMs)

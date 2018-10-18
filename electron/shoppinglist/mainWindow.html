@@ -36,7 +36,7 @@
             });
 
 
-        ipcRenderer.on('item:add', function(e, item){
+        ipcRenderer.on('item:add2', function(e, item){
             ul.className = 'collection';
             const li = document.createElement('li');
             const itemText = document.createTextNode(item);

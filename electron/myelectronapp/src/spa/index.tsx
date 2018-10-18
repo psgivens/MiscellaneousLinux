@@ -1,17 +1,13 @@
 import * as React from "react";
+import { applyMiddleware, createStore, Store as ReduxStore } from 'redux'
 import * as ReactDOM from "react-dom";
-
-import { createStore, Store as ReduxStore } from 'redux'
+import { Provider } from 'react-redux'
+import createSagaMiddleware from 'redux-saga'
+import { incrementCounter } from './actions'
+import mySaga from './actions/PomodoroActions'
 import { reducers } from './reducers'
 import * as state from './reducers'
-import { incrementCounter } from './actions'
-import { Provider } from 'react-redux'
 
-
-import { applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-
-import mySaga from './actions/PomodoroActions'
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
 

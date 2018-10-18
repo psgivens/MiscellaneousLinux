@@ -34,7 +34,7 @@ app.on('ready', function (){
     Menu.setApplicationMenu(mainMenu);
 
     setTimeout(function(){        
-    mainWindow.webContents.send('item:add', "sample item");
+    mainWindow.webContents.send('item:add2', "sample item");
 
     },1000);
 });
@@ -54,14 +54,14 @@ function createAddWindow() {
 }
 
 // Catch item:add
-ipcMain.on('item:add', function(e, item){
-    mainWindow.webContents.send('item:add', item);
+ipcMain.on('item:add1', function(e, item){
+    mainWindow.webContents.send('item:add2', item);
     addWindow.close();
 });
 
 // Catch item:add
 ipcMain.on('item:receive', function(e, item){
-    mainWindow.webContents.send('item:add', item);
+    mainWindow.webContents.send('item:add2', item);
 });
 
 const mainMenuTemplate = [
