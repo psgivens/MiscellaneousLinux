@@ -7,6 +7,21 @@
     sudo apt install -y docker.io
     sudo apt install -y docker
 
+### Minikube
+
+    curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/minikube-linux-amd64 \
+      && chmod +x minikube \
+      && sudo mv minikube /usr/local/bin/
+    
+    minikube start
+    
+    stable=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+    echo https://storage.googleapis.com/kubernetes-release/release/$stable/bin/linux/amd64/kubectl 
+    
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/$stable/bin/linux/amd64/kubectl \
+      && chmod +x kubectl \
+      && sudo mv kubectl /usr/local/bin/
+
 ## Development Envronments
 
 ### Powershell Ubuntu 17.04
