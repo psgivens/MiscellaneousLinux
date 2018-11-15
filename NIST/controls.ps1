@@ -56,6 +56,9 @@ less $file
 cat *.txt | less
 
 
+$controls.Node.controls.control `
+  | Select -Property family, number, title `
+  | Export-Csv nist80053.csv
 
 
 
@@ -89,6 +92,16 @@ $controls.Node.controls.control[2].'supplemental-guidance'.description
 $controls.Node.controls.control[2].statement
 
 $controls.Node.controls.control[2].statement.statement
+
+
+
+
+
+$controls.Node.controls.control `
+  | Select -ExpandProperty family `
+  | Get-Unique `
+  | Measure
+
 
 
 

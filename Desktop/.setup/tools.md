@@ -7,6 +7,40 @@
     sudo apt install -y docker.io
     sudo apt install -y docker
 
+### Docker creds
+
+# https://stackoverflow.com/questions/52179879/problem-with-aws-ecr-docker-login-on-ubuntu-18-04
+wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz 
+tar -xf docker-credential-pass-v0.6.0-amd64.tar.gz
+chmod +x docker-credential-pass
+sudo mv docker-credential-pass /opt/docker/bin
+
+sudo apt-get update
+sudo apt-get install -y pass gpg
+
+
+# User "Phillip Scott Givens" and password in bitwarden
+gpg2 --gen-key
+
+pass init "269FEEBEE82FCE5D5CF361F398E8CFB1B84CAC37"
+
+pass insert docker-credential-helpers/docker-pass-initialized-check
+
+(Set it as "pass")
+
+pass show docker-credential-helpers/docker-pass-initialized-check
+
+docker-credential-pass list
+
+(You should not see "pass store is uninitialized")
+
+{
+    "auths": {
+        **SKIPPED**
+    },
+    "credsStore": "pass"
+}
+
 ### Minikube
 
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/minikube-linux-amd64 \
@@ -125,14 +159,19 @@
 
 
 ### Azure CLI 
-    #AZ_REPO=$(lsb_release -cs)
-    #echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
-        #sudo tee /etc/apt/sources.list.d/azure-cli.list
+
+    $AZ_REPO=$(lsb_release -cs)
+
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" `
+      | sudo tee /etc/apt/sources.list.d/azure-cli.list
    
-    #curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+    curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
     
-    #sudo apt-get install apt-transport-https
-    sudo apt-get update && sudo apt-get install azure-cli
+    sudo apt-get install apt-transport-https
+
+    sudo apt-get update 
+
+    sudo apt-get install azure-cli
     
 ### Atom
 

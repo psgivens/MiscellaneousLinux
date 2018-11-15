@@ -1,0 +1,1 @@
+{"csp-report":{"blocked-uri":"https://raw.githubusercontent.com/psgivens/MiscellaneousLinux/master/cspanary/canary.js","document-uri":"http://localhost:8000/","original-policy":"default-src 'self'; report-uri http://localhost:8000/","referrer":"","violated-directive":"default-src"}}
