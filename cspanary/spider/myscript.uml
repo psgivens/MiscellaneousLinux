@@ -1,0 +1,14 @@
+title Content Security Policy
+participant Script as script 
+participant Browser as browser
+participant Mountebank as mb
+participant "Monolith Docker" as docker
+participant "Content Security Policy Endpoint" as csp
+
+script -> browser: Vist ppadmin-dev
+browser -> mb: Get ppadmin-dev
+mb -> docker: Get ppadmin-dev
+docker --> mb: Response page
+mb --> browser: Response page + CSP header
+browser -> csp: Report with vulnerable includes
+
