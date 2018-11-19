@@ -26,12 +26,20 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
-        body = self.rfile.read(content_length)
+        body = self.rfile.read(content_length).decode("UTF-8")
+        #cookie = self.headers['Cookie'] #.decode("UTF-8")
         self.send_response(200)
         self.end_headers()
         response = BytesIO()
-        print(body)
+        print("body: " + body)
+        print("\n")
+        #print("Cookie: " + cookie)
         self.wfile.write(response.getvalue())
+        f = open("logs.txt", "w")
+        try:
+            f.write(body)
+        finally:
+            f.close()
 
 httpd = HTTPServer(('localhost', 8000), SimpleHTTPRequestHandler)
 print ("Serving on http://localhost:8000")
