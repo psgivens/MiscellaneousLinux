@@ -10,3 +10,9 @@ Run the following to install git, curl, vim, tmux, and vim plugins: ctrlp, slime
             | sudo /bin/bash
 
 More can be installed by looking at tools.md            
+
+## Azure Notes
+
+* StorageExplorer requires libgnome-keyring0 (available through apt)
+
+## Visual Studio Code
