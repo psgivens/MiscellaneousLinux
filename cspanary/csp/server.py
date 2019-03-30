@@ -7,7 +7,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
-        self.send_header("Content-Security-Policy", "default-src 'self'; report-uri / ")
+        self.send_header("Content-Security-Policy", "default-src 'self'; report-uri http://localhost:8000/ ")
         #self.send_header("Content-Security-Policy-Report-Only", "default-src 'self'; report-uri /")
         self.end_headers()
 
