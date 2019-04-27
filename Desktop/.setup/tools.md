@@ -2,21 +2,7 @@
 
 # Optional Tools
 
-### Docker
-
-    sudo apt install -y docker.io
-    sudo apt install -y docker
-
 ### Docker creds
-
-# https://stackoverflow.com/questions/52179879/problem-with-aws-ecr-docker-login-on-ubuntu-18-04
-wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz 
-tar -xf docker-credential-pass-v0.6.0-amd64.tar.gz
-chmod +x docker-credential-pass
-sudo mv docker-credential-pass /opt/docker/bin
-
-sudo apt-get update
-sudo apt-get install -y pass gpg
 
 
 # User "Phillip Scott Givens" and password in bitwarden
@@ -41,58 +27,9 @@ docker-credential-pass list
     "credsStore": "pass"
 }
 
-### Minikube
-
-    curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/minikube-linux-amd64 \
-      && chmod +x minikube \
-      && sudo mv minikube /usr/local/bin/
-    
-    minikube start
-    
-    stable=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
-    echo https://storage.googleapis.com/kubernetes-release/release/$stable/bin/linux/amd64/kubectl 
-    
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/$stable/bin/linux/amd64/kubectl \
-      && chmod +x kubectl \
-      && sudo mv kubectl /usr/local/bin/
-
 ## Development Envronments
 
-### Powershell Ubuntu 17.04
-
-    # Import the public repository GPG keys
-    curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-    # Register the Microsoft Ubuntu repository
-    curl https://packages.microsoft.com/config/ubuntu/17.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list
-    # Update the list of products
-    sudo apt-get update
-    # Install PowerShell
-    sudo apt-get install -y powershell
-    
-    # https://github.com/PowerShell/PowerShell/blob/master/docs/learning-powershell/using-vscode.md#editing-with-vs-code
-    pwsh -c "Update-Help"
-
-
-### Powershell Ubuntu 18.04
-
-    # Download the Microsoft repository GPG keys
-    wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
-    
-    # Register the Microsoft repository GPG keys
-    sudo dpkg -i packages-microsoft-prod.deb
-    
-    # Update the list of products
-    sudo apt-get update
-    
-    # Install PowerShell
-    sudo apt-get install -y powershell
-    
-    # Start PowerShell
-    pwsh
-
 ### Powershell Azure
-
-    sudo pwsh-preview 
 
     Install-Module AzureRM.NetCore
    
@@ -104,13 +41,10 @@ docker-credential-pass list
     Save-Module -Path ./psmodules/ -Name DockerMsftProvider
     Install-Module -Name DockerMsftProvider -Scope CurrentUser
 
-### python-pip
-
-    sudo apt install -y python-pip
-    
 ### Node/npm
 
-    sudo apt install -y npm
+    sudo apt install -y npm -g
+    sudo apt install -y typescript -g
 
 ### yarn
 
@@ -128,7 +62,7 @@ docker-credential-pass list
 
     sudo apt-get install -y apt-transport-https
 
-    sudo apt-get install -y dotnet-sdk-2.1
+    sudo apt-get install -y dotnet-sdk-2.2
     
 ### Java
 

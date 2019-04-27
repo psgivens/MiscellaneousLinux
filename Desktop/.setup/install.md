@@ -8,8 +8,7 @@ exit
 ### Utils
 ```
 
-sudo apt install -y docker.io docker jq
-sudo apt install -y python-pip
+sudo apt install -y python3-pip
 
 sudo apt-get install -y p7zip-full
 
@@ -18,17 +17,16 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 ```
-#sudo apt install -y flashplugin-installer
-
 
 ### Docker Compose
+```
 https://docs.docker.com/compose/install/#install-compose
 https://docs.docker.com/compose/completion/
  
 sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo curl -L https://raw.githubusercontent.com/docker/compose/1.21.2/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
-
+```
 
 # TODO: Install dropbox through Ubuntu software center
 # https://www.pwsafe.org/readmore.shtml
@@ -58,19 +56,6 @@ sudo apt update
 sudo apt install -y code
 
 
-# Atom
-
-curl -L https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-
-sudo apt-get update
-
-sudo apt install -y atom
-
-
-# ao app for microsoft TODO
-snap install ao
-
 
 sudo apt-get install -y sqlite3 libsqlite3-dev
 
@@ -79,20 +64,13 @@ sudo apt-get install -y sqlite3 libsqlite3-dev
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # Register the Microsoft Ubuntu repository
-# Uncomment one of the following
-    #curl https://packages.microsoft.com/config/ubuntu/17.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list
-
-    curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list
+    curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list
 
 # Update the list of products
 sudo apt-get update
 
 # Install PowerShell
 sudo apt-get install -y powershell
-
-# Start PowerShell
-#pwsh
-
 
 # install eclipse
 # install DB Browser for Sqlite
@@ -121,16 +99,9 @@ pwsh -c "Update-Help"
 ##########################################
 Save-Module -Name AWSPowerShell.NetCore -Path ./psmodules/
 Install-Module -Name AWSPowerShell.NetCore -Scope CurrentUser
+
 Save-Module -Path ./psmodules/ -Name DockerMsftProvider
 Install-Module -Name DockerMsftProvider -Scope CurrentUser
-
-##########################################
-# Install Apache/PHP
-##########################################
-#sudo ufw allow in "Apache Full"
-#sudo apt install libapache2-mod-php7.1 php-mcrypt php-pgsql
-#https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04
-#sudo apache2ctl configtest
 
 
 sudo apt install -y golang
@@ -141,9 +112,6 @@ go get -u github.com/govend/govend
 
 #https://www.dropbox.com/install-linux
 
-# Install through 'Ubuntu Software'
-# * Password Safe (Bruce Schneier)
-
 sudo apt install -y meld
 git config --global diff.tool meld
 git config --global difftool.prompt false
@@ -152,3 +120,4 @@ sudo snap install slack
 sudo snap install postman
 
 sudo apt install -y gnome-shell-pomodoro
+
