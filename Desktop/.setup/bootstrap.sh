@@ -21,6 +21,7 @@
    
     ln -s "$(pwd)/.vimrc" ~/.vimrc
     ln -s "$(pwd)/.tmux.conf" ~/.tmux.conf
+    mkdir -p ~/.config/powershell
     ln -s "$(pwd)/.config/powershell/profile.ps1" ~/.config/powershell/profile.ps1
     
 ### Configure vim for pathogen
@@ -41,7 +42,7 @@
     sudo apt-get update
 
     # Install PowerShell
-    sudo apt-get install -y powershell
+    #sudo apt-get install -y powershell
 
 ### Use slime to install rest
     
