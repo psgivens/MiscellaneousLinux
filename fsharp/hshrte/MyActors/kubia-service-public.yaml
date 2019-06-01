@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myactors-public
+spec:
+  selector:
+    app: myactors
+  ports:
+  - port: 80
+    targetPort: 8080
