@@ -2,6 +2,26 @@
 
 # Optional Tools
 
+    sudo apt install -y htop
+
+### SSH setup
+
+Check the bookmarks in Firefox. Although I have this working, I did not record how I got it to work. 
+
+    # If they don't already exist
+    sudo apt install -y openssh-server
+    sudo apt install -y openssh-client
+
+    # https://www.kevinkuszyk.com/2016/11/24/ssh-to-a-linux-host-from-windows-10/
+    # From the client, you can do this. It will work from WSL
+    ssh-keygen -t rsa
+    ssh-copy-id {username}@{host}
+
+### Docker
+
+    sudo apt install -y docker.io
+    sudo apt install -y docker
+
 ### Docker creds
 
 
