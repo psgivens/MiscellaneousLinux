@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mykubia
+spec:
+  clusterIP: None
+  selector:
+    app: mykubia
+  ports:
+  - name: http
+    port: 80

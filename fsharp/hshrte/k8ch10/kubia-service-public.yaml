@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mykubia-public
+spec:
+  selector:
+    app: mykubia
+  ports:
+  - port: 80
+    targetPort: 8080

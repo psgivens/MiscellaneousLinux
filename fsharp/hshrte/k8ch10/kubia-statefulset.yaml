@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: mykubia
+spec:
+  serviceName: mykubia
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: mykubia
+    spec:
+      containers:
+      - name: mykubia
+        image: localhost:32000/mykubia
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts:
+        - name: data
+          mountPath: /var/data
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      resources:
+        requests:
+          storage: 1Mi
+      accessModes:
+      - ReadWriteOnce
