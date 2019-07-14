@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "Y:\\Repos\\other\\kubernetes-in-action"
+		},
+		{
+			"path": "sample.tests"
 		}
 	],
 	"settings": {}
