@@ -22,10 +22,35 @@ Check the bookmarks in Firefox. Although I have this working, I did not record h
     sudo apt install -y docker.io
     sudo apt install -y docker
 
+    sudo usermod -a -G docker psgivens
+    newgrp docker
+
+    sudo docker run hello-world
+    sudo docker run -it ubuntu bash
+
+### microk8s
+
+https://tutorials.ubuntu.com/tutorial/install-a-local-kubernetes-with-microk8s
+https://microk8s.io/docs/
+
+    sudo snap install microk8s
+
+    sudo usermod -a -G microk8s psgivens
+    newgrp microk8s
+
+    microk8s.status
+
+    sudo ufw allow in on cni0 && sudo ufw allow out on cni0
+    sudo ufw default allow routed
+
+    microk8s.enable dns storage registry
+
+    alias kubectl='microk8s.kubectl'
+
 ### Docker creds
 
 
-# User "Phillip Scott Givens" and password in bitwarden
+# User "Phillip Scott Givens" and password in your cloud password manager
 gpg2 --gen-key
 
 pass init "269FEEBEE82FCE5D5CF361F398E8CFB1B84CAC37"
@@ -64,7 +89,7 @@ docker-credential-pass list
 ### Node/npm
 
     sudo apt install -y npm -g
-    sudo apt install -y typescript -g
+    sudo npm install -g typescript
 
 ### yarn
 
@@ -83,6 +108,10 @@ docker-credential-pass list
     sudo apt-get install -y apt-transport-https
 
     sudo apt-get install -y dotnet-sdk-2.2
+
+Add the following to profile.ps1
+
+    $env:MSBuildSDKsPath = "/usr/share/dotnet/sdk/2.2.402/Sdks/"
     
 ### Java
 
