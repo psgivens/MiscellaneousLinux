@@ -20,7 +20,11 @@ Use DKMS installation
 ### Utils
 ```
 
+sudo apt install -y python3.8 python3.8-venv python3.8-pip
 sudo apt install -y python3-pip
+sudo update-alternatives /usr/bin/python python /usr/bin/python3.8 1
+sudo update-alternatives /usr/bin/pip pip /usr/bin/python3 1
+
 
 sudo apt-get install -y p7zip-full
 
